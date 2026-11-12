@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udaipur travel guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap">
+<style>
+/* Layout idea: a layered guide. A blurred, darkened copy of the hero photo sits fixed behind everything; content floats on glass panels above it; the hero photo, title card and fact tiles overlap; parallax photo bands break the sections. Night map palette with a warm amber ornament. */
+:root {
+  --bg: #0A1317;
+  --glass: rgba(14, 26, 31, 0.58);
+  --glass-strong: rgba(10, 19, 23, 0.72);
+  --edge: rgba(255, 255, 255, 0.16);
+  --line: rgba(255, 255, 255, 0.14);
+  --ink: #EEF3F4;
+  --muted: #B3C4CA;
+  --parks: #7CE0C3;
+  --local: #F2B94B;
+  --accent: #7CE0C3;
+  --onaccent: #0A1317;
+  --focus: #F2B94B;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+a { color: var(--parks); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.1; font-family: var(--serif); font-weight: 600; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+[hidden] { display: none !important; }
+
+/* Fixed ambient layer: the hero photo, blurred and darkened */
+.ambient { position: fixed; inset: -10%; z-index: -1; background: #0A1317 url(img/p00.jpg) center / cover no-repeat; filter: blur(70px) saturate(1.3) brightness(0.42); transform: translateZ(0); }
+
+/* Glass surface */
+.glass { background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02) 55%), var(--glass); -webkit-backdrop-filter: blur(24px) saturate(1.5); backdrop-filter: blur(24px) saturate(1.5); border: 1px solid var(--edge); border-radius: 6px; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 6px 18px rgba(0, 0, 0, 0.22); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+
+/* Floating glass navigation */
+.bar { position: sticky; top: 0; z-index: 30; width: 100%; max-width: none; margin: 0; border-radius: 0 !important; border-width: 0 0 1px 0; padding: 4px max(24px, calc((100% - 1200px) / 2 + 24px)); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 24px; box-shadow: none; }
+.logo { color: var(--ink); font-family: var(--serif); font-weight: 600; font-size: 26px; padding: 6px 0; letter-spacing: 0.01em; }
+.logo:hover { text-decoration: none; color: var(--parks); }
+.nav { display: flex; flex-wrap: wrap; gap: 0 6px; font-family: var(--mono); font-size: 13px; }
+.nav a { color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 4px; }
+.nav a:hover { background: rgba(255, 255, 255, 0.1); text-decoration: none; }
+
+/* Hero */
+.hero-wrap { position: relative; height: 560px; overflow: hidden; }
+.hero-img { position: absolute; left: 0; top: -40px; width: 100%; height: calc(100% + 80px); object-fit: cover; object-position: center 40%; will-change: transform; }
+.hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10, 19, 23, 0.6), rgba(10, 19, 23, 0) 35%); pointer-events: none; }
+.hero-inner { position: absolute; left: 0; right: 0; bottom: 96px; }
+.title-card { max-width: 900px; padding: 40px 0 8px 0; display: flex; flex-direction: column; gap: 16px; }
+.crumbs { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+h1 { font-size: clamp(42px, 6.4vw, 80px); font-weight: 500; line-height: 1; }
+.byline { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-family: var(--mono); font-size: 12px; padding: 4px 12px; border: 1px solid var(--edge); border-radius: 4px; color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 24px; z-index: 2; }
+.fact { padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-radius: 6px; }
+.fact span:first-child { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--local); }
+.fact span:last-child { font-size: 16px; font-weight: 500; line-height: 1.35; }
+
+.layout { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; padding-top: 56px; padding-bottom: 80px; }
+.toc { flex: 0 0 230px; position: sticky; top: 100px; display: flex; flex-direction: column; gap: 2px; padding: 20px 14px 14px 14px; }
+.toc h2 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 0 10px 10px 10px; }
+.toc a { color: var(--ink); display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 4px; font-size: 15px; line-height: 1.3; }
+.toc a:hover { background: rgba(255, 255, 255, 0.1); text-decoration: none; }
+.main { flex: 1 1 560px; min-width: 0; max-width: 880px; display: flex; flex-direction: column; gap: 64px; }
+section { display: flex; flex-direction: column; gap: 28px; }
+
+/* Section headings with a fading gold rule */
+h2.sec { font-size: clamp(34px, 4.4vw, 52px); font-weight: 500; display: flex; align-items: center; gap: 20px; }
+h2.sec::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--local), rgba(242, 185, 75, 0)); }
+
+.item { display: flex; flex-direction: column; gap: 16px; }
+.item.panel { padding: 26px; }
+.item h3 { font-size: 34px; }
+.time { font-family: var(--mono); font-size: 13px; color: var(--parks); }
+.prose { display: flex; flex-direction: column; gap: 16px; }
+.prose p { max-width: 65ch; }
+.prose .open { font-family: var(--serif); font-size: 34px; font-style: italic; font-weight: 500; color: var(--local); }
+
+.callout { padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; max-width: 70ch; border-left: 3px solid var(--local); }
+.callout strong { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: var(--local); }
+
+/* Photos */
+.gal { display: flex; flex-wrap: wrap; gap: 6px; }
+.gal::after { content: ""; flex-grow: 1000000; }
+.ph { flex: calc(var(--ar) * 100) 1 calc(var(--ar) * 170px); min-width: 0; margin: 0; padding: 0; border: 0; background: rgba(255, 255, 255, 0.05); cursor: zoom-in; display: block; border-radius: 4px; overflow: hidden; position: relative; }
+.ph img { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); object-fit: cover; transition: transform 0.5s, opacity 0.2s; }
+.ph:hover img { transform: scale(1.04); }
+.strip { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 4px; padding: 4px 4px 0 4px; }
+.sq { flex: none; aspect-ratio: 1 / 1; border-radius: 6px; }
+.sq img { height: 100%; aspect-ratio: auto; object-position: center 40%; }
+.sq[data-more]::after { content: attr(data-more); position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 19, 23, 0.66); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-weight: 700; font-size: 22px; color: var(--ink); }
+.banner { display: block; width: 100%; aspect-ratio: 16 / 7; border-radius: 6px; flex: none; }
+.banner img { height: 100%; aspect-ratio: auto; }
+
+/* Parallax photo band with a glass caption */
+.band { position: relative; height: 380px; border-radius: 6px; overflow: hidden; border: 1px solid var(--edge); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.band img { position: absolute; left: 0; top: -60px; width: 100%; height: calc(100% + 120px); object-fit: cover; will-change: transform; }
+.band figcaption { position: absolute; left: 20px; bottom: 20px; padding: 12px 18px; font-family: var(--mono); font-size: 13px; border-radius: 4px; }
+figure.band { margin: 0; }
+
+/* Cards */
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.span2 { grid-column: 1 / -1; }
+.rcard { display: flex; flex-direction: column; overflow: hidden; }
+.rb { padding: 22px 24px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+.rcard h3, .tipcard h3 { font-size: 30px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--mono); font-size: 12px; border: 1px solid var(--edge); border-radius: 4px; padding: 3px 11px; color: var(--ink); background: rgba(255, 255, 255, 0.05); }
+.chip.hl { border-color: var(--parks); color: var(--parks); }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.dl li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.dl li:last-child { border-bottom: 0; }
+.note { color: var(--muted); }
+.hotels { display: flex; flex-direction: column; }
+.hotel { padding: 14px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.hn { font-weight: 700; }
+.tipcard { padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+.rows { display: flex; flex-direction: column; overflow: hidden; }
+.row { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 8px 28px; padding: 18px 24px; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.row .k { font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.15; }
+.bullets li { position: relative; padding: 4px 0 4px 22px; }
+.bullets li::before { content: ""; position: absolute; left: 4px; top: 15px; width: 8px; height: 8px; background: var(--local); border-radius: 4px; }
+
+.slot { border: 1px dashed var(--edge); border-radius: 6px; min-height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font-family: var(--mono); font-size: 13px; color: var(--muted); background: rgba(255, 255, 255, 0.03); }
+.partner { padding: 22px 26px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+.partner p { flex: 1 1 320px; font-size: 16px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 26px; background: var(--accent); color: var(--onaccent); font-weight: 700; font-size: 15px; border-radius: 4px; }
+.btn:hover { text-decoration: none; opacity: 0.88; }
+
+footer { margin-top: 0; border-top: 1px solid var(--edge); background: rgba(10, 19, 23, 0.7); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-top: 24px; padding-bottom: 24px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+footer a { color: var(--muted); display: inline-flex; align-items: center; min-height: 44px; }
+
+dialog { padding: 0; border: 1px solid var(--edge); border-radius: 6px; overflow: hidden; background: var(--glass-strong); color: var(--ink); max-width: 94vw; max-height: 94vh; -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); }
+dialog::backdrop { background: rgba(5, 10, 12, 0.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+dialog img { display: block; max-width: 92vw; max-height: 78vh; width: auto; height: auto; margin: 0 auto; }
+.lb-close { position: absolute; top: 10px; right: 10px; min-height: 44px; padding: 8px 18px; background: var(--glass-strong); color: var(--ink); border: 1px solid var(--edge); border-radius: 4px; font-family: inherit; font-size: 14px; cursor: pointer; }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.lb-bar button { width: 48px; height: 48px; background: transparent; color: var(--ink); border: 1px solid var(--edge); border-radius: 4px; font-size: 20px; cursor: pointer; }
+#lbCap { flex: 1; text-align: center; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .bar { border-radius: 6px; margin-bottom: -60px; }
+  .nav { display: none; }
+  .hero-wrap { height: 380px; }
+  .title-card { padding: 28px 0 4px 0; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toc { position: static; flex: 1 1 100%; }
+  .cards2 { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; }
+  .band { height: 280px; }
+  .item.panel { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ph img { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass, footer, dialog { -webkit-backdrop-filter: none; backdrop-filter: none; background: #0E1A1F; }
+}
+
+.band figcaption.glass { border-radius: 4px; }
+.nav a { border-radius: 4px; }
+
+/* Photo mosaic: one lead image + tidy square tiles */
+.mosaic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 168px; gap: 6px; margin: 4px 0 8px; }
+.mosaic .tile { flex: none; border-radius: 4px; }
+.mosaic .tile img { height: 100%; aspect-ratio: auto; }
+.mosaic .lead { grid-column: span 2; grid-row: span 2; }
+.mosaic .tile[data-more]::after { content: attr(data-more); position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 19, 23, 0.6); font-weight: 700; font-size: 24px; color: var(--ink); }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 6px; }
+.lk { font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em; display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--edge); border-radius: 4px; color: var(--ink); background: rgba(255, 255, 255, 0.05); }
+.lk:hover { background: rgba(255, 255, 255, 0.12); text-decoration: none; }
+.lk-gyg, .lk-hotel { border-color: var(--local); color: var(--local); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 860px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; } }
+.lk { white-space: nowrap; flex: none; }
+.links { align-self: flex-start; }
+.strip .sq { aspect-ratio: auto; height: 104px; }
+
+/* Buttons: filled / outlined, sans, bold. Tags: quiet mono labels, no border. */
+.links { gap: 10px; margin: 6px 0 10px; }
+.hotel { gap: 0; }
+.hotel .hn { margin-bottom: 2px; }
+.hotel p { margin-top: 4px; }
+.lk { font-family: inherit; font-size: 14px; font-weight: 600; letter-spacing: 0; min-height: 40px; padding: 0 16px; border: 1px solid var(--edge); border-radius: 4px; color: var(--ink); background: transparent; }
+.lk:hover { background: rgba(255, 255, 255, 0.1); }
+.lk-gyg, .lk-hotel { background: var(--accent); border-color: var(--accent); color: var(--onaccent); }
+.lk-gyg:hover, .lk-hotel:hover { filter: brightness(1.1); background: var(--accent); }
+.tag, .chip { border: 0; border-radius: 2px; background: rgba(255, 255, 255, 0.08); color: var(--muted); padding: 3px 8px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.lk > span[aria-hidden] { margin-left: 6px; }
+
+@media (max-width: 860px) { .bar { gap: 0 12px; } .nav { display: flex !important; width: 100%; overflow-x: auto; flex-wrap: nowrap; font-size: 13px; } .nav a { flex: none; padding: 0 12px; } }
+
+
+.bar.home-bar{background:#0E1A1F;border:0;border-bottom:1px solid #2B424B;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:10px 16px;margin:0;width:100%;max-width:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:4px 16px}
+.home-bar .logo{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;font-size:20px;letter-spacing:.02em;padding:8px 4px}
+.home-bar .nav{display:flex!important;flex-wrap:nowrap;width:auto;overflow:visible;margin-right:auto;margin-left:20px;font-family:"Space Grotesk",system-ui,sans-serif;font-size:14px;font-weight:500;gap:4px}
+.home-bar .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:0;color:var(--ink)}
+.home-bar .nav a[aria-current]{color:#7CE0C3}
+.home-bar .hsearch{display:flex;align-items:center;gap:8px}
+.home-bar .hsearch label{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:#9FB5BD}
+.home-bar .hsearch input{width:170px;min-height:44px;padding:8px 12px;background:#17303A;border:1px solid #2B424B;border-radius:0;color:#E8EEF0;font:500 14px "Space Grotesk",system-ui,sans-serif}
+.home-bar .hsearch input:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
+@media(max-width:860px){.home-bar .nav{margin-left:0;width:100%;order:3;overflow-x:auto}.home-bar .hsearch{margin-left:auto}.home-bar .hsearch input{width:130px}}
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+
+<header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></header><script>(function(){var f=document.querySelector('.hsearch');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('hq').value.trim();var q=document.getElementById('q');if(q){q.value=v;q.dispatchEvent(new Event('input'));q.scrollIntoView({block:'center'});}else{window.open('/guides/#q='+encodeURIComponent(v),'_blank');}});})();</script>
+
+<main>
+  <div class="hero-wrap">
+    <img class="hero-img" id="heroImg" src="img/p00.jpg" alt="City Palace glowing at dusk above the lake" width="1400" height="1050">
+    <div class="hero-scrim"></div>
+  </div>
+  <div class="wrap">
+      <div class="title-card">
+        <div class="crumbs"><a href="#">Destinations</a> / <a href="#">Asia</a> / Udaipur</div>
+        <h1>Udaipur, India: a first-timer's guide to the City of Lakes</h1>
+        <div class="byline"><span>Written by Rhea Manocha</span><span>January 2, 2025</span></div>
+        <div class="tags" aria-label="Tags"><span class="tag">Asia</span><span class="tag">India</span><span class="tag">Rajasthan</span><span class="tag">Udaipur</span></div>
+      </div>
+  </div>
+
+  <div class="wrap facts" aria-label="Quick facts">
+    <div class="glass fact"><span>Best time</span><span>November and December, though busy with weddings</span></div>
+    <div class="glass fact"><span>Getting in</span><span>Fly into UDR, take the train, or hire a car</span></div>
+    <div class="glass fact"><span>Visa</span><span>30-day e-visa, plus a digital form 72 hours ahead</span></div>
+    <div class="glass fact"><span>Money</span><span>Cash is still used frequently</span></div>
+  </div>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <a href="#overview">Overview</a>
+      <a href="#experiences">Top experiences</a>
+      <a href="#eat">What and where to eat</a>
+      <a href="#stay">Where to stay</a>
+      <a href="#getting-around">How to get around</a>
+      <a href="#tips">General tips</a>
+    </nav>
+
+    <article class="main">
+
+      <section id="overview">
+        <div class="prose">
+          <p class="open">Khamma ghani!</p>
+          <p>Udaipur, also known as the &ldquo;City of Lakes&rdquo; is a stunning gem in the heart of Rajasthan. A short trip from major cities like Delhi or Mumbai or the nearby Jaipur, you&rsquo;ll find a city rich in history, luxury, architecture, and culture.</p>
+          <p>Udaipur is dotted with seven glittering lakes, the most popular being Lake Pichola and Fateh Sagar Lake. It is also known for being a popular wedding destination due to many luxury hotels and its historic architecture.</p>
+          <p>November and December in India are very pleasant times to visit, though might be busy due to wedding season.</p>
+        </div>
+        <div class="glass callout">
+          <strong>Safety as a female traveler</strong>
+          <p>As a female traveler, I generally felt safe and welcomed in Udaipur. However, always be cautious &ndash; we traveled in a group, mostly stuck to city areas, had Hindi speakers, avoided being out too late at night, and opt to take a car over walking at night.</p>
+        </div>
+      </section>
+
+      <section id="experiences">
+        <h2 class="sec">Top Experiences in Udaipur</h2>
+
+        <div class="glass item panel">
+          <h3>City Palace tour</h3><div class="links"><a class="lk lk-gyg" href="https://www.getyourguide.com/s/?q=City+Palace+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Tickets &amp; tours<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=City+Palace+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+          <div class="time">Time: 3 to 4 hours</div>
+          <div class="mosaic" role="group" aria-label="City Palace photos">
+<button type="button" class="ph tile lead" data-full="img/p07.jpg" data-alt="City Palace glowing at dusk" aria-label="Enlarge photo: City Palace glowing at dusk"><img src="img/p07.jpg" alt="City Palace glowing at dusk" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
+<button type="button" class="ph tile" data-full="img/p04.jpg" data-alt="Stained-glass floral windows set in a carved wall" aria-label="Enlarge photo: Stained-glass floral windows set in a carved wall"><img src="img/p04.jpg" alt="Stained-glass floral windows set in a carved wall" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 30%"></button>
+<button type="button" class="ph tile" data-full="img/p06.jpg" data-alt="Close-up of a carved arched facade" aria-label="Enlarge photo: Close-up of a carved arched facade"><img src="img/p06.jpg" alt="Close-up of a carved arched facade" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 45%"></button>
+<button type="button" class="ph tile" data-full="img/p05.jpg" data-alt="Palace courtyard with a black-and-white checkered floor" aria-label="Enlarge photo: Palace courtyard with a black-and-white checkered floor"><img src="img/p05.jpg" alt="Palace courtyard with a black-and-white checkered floor" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 35%"></button>
+<button type="button" class="ph tile" data-full="img/p03.jpg" data-alt="Palace courtyard garden with trees and visitors" data-more="+1" aria-label="View all 6 photos. First: Palace courtyard garden with trees and visitors"><img src="img/p03.jpg" alt="" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 60%"></button>
+<button type="button" class="ph tile" hidden data-full="img/p02.jpg" data-alt="A traveler in a pink outfit under the arches of City Palace" aria-label="Enlarge photo: A traveler in a pink outfit under the arches of City Palace"></button>
+</div>
+          <div class="prose">
+            <p>The most popular destination in Udaipur is City Palace. Built 450 years ago, it was the residence for the rulers of Mewar and has been incredibly well preserved. It showcases unique Indian architecture and a rotating Indian art collection, including depictions of local history. Built on the banks of Lake Pichola, the palace offers expansive views of the lake.</p>
+            <p>One of my favorite parts was the courtyard, a common feature in Indian homes and palaces that serves as a private gathering place and helps naturally cool the building.</p>
+            <p>When we visited, though half the palace was shut down due to a luxury wedding teardown, it took a significant amount of time to tour the palace. Be sure to give yourself enough time to explore.</p>
+          </div>
+        </div>
+
+        <div class="glass item panel">
+          <h3>Boat ride to Jagmandir Island Palace</h3><div class="links"><a class="lk lk-gyg" href="https://www.getyourguide.com/s/?q=Lake+Pichola+boat+ride+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Book a boat ride<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Jagmandir+Island+Palace+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+          <div class="time">Time: 1 hour</div>
+          <div class="mosaic" role="group" aria-label="Lake Pichola boat ride photos">
+<button type="button" class="ph tile lead" data-full="img/p01.jpg" data-alt="City Palace stretching along Lake Pichola, seen from the water" aria-label="Enlarge photo: City Palace stretching along Lake Pichola, seen from the water"><img src="img/p01.jpg" alt="City Palace stretching along Lake Pichola, seen from the water" loading="lazy" decoding="async" width="900" height="900" style="object-position: 35% 50%"></button>
+<button type="button" class="ph tile" data-full="img/p10.jpg" data-alt="Sun setting over Lake Pichola" aria-label="Enlarge photo: Sun setting over Lake Pichola"><img src="img/p10.jpg" alt="Sun setting over Lake Pichola" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 45%"></button>
+<button type="button" class="ph tile" data-full="img/p08.jpg" data-alt="Jagmandir Island palace with a palm tree, seen from the lake" aria-label="Enlarge photo: Jagmandir Island palace with a palm tree, seen from the lake"><img src="img/p08.jpg" alt="Jagmandir Island palace with a palm tree, seen from the lake" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 45%"></button>
+<button type="button" class="ph tile" data-full="img/p09.jpg" data-alt="Clipped hedges and garden paths on Jagmandir Island" aria-label="Enlarge photo: Clipped hedges and garden paths on Jagmandir Island"><img src="img/p09.jpg" alt="Clipped hedges and garden paths on Jagmandir Island" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
+<button type="button" class="ph tile" data-full="img/p12.jpg" data-alt="Passengers inside a canopied boat on the lake" aria-label="Enlarge photo: Passengers inside a canopied boat on the lake"><img src="img/p12.jpg" alt="Passengers inside a canopied boat on the lake" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
+</div>
+          <div class="prose">
+            <p>After your self-guided tour of City Palace, you can also take a boat ride on Lake Pichola. The boat ride will take you around the lake, with views of City Palace and a stop at Jagmandir Island. Highly recommend not skipping the boat, as the views are breathtaking.</p>
+            <p>After purchasing your ticket, there&rsquo;s a 10 minute walk or shuttle (extra cost) down to the dock. Sunset is the most popular (and most expensive) time, but after seeing how the sunset illuminates the palace and the lake it is well worth it. The boats leave repeatedly, with a last boat going out around sunset (timings dependent on season).</p>
+          </div>
+        </div>
+
+        <div class="glass item panel">
+          <h3>Monsoon Palace</h3><div class="links"><a class="lk lk-gyg" href="https://www.getyourguide.com/s/?q=Monsoon+Palace+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Tickets &amp; tours<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Monsoon+Palace+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+          <div class="prose">
+            <p>Monsoon Palace was the residence for the ruling family during the monsoon season. From below, you can see its formidable presence upon the mountain &ndash; it was built so high that it sits above the clouds.</p>
+          </div>
+        </div>
+
+        <div class="glass item panel">
+          <h3>Vintage car museum and Jeep tour</h3><div class="links"><a class="lk lk-gyg" href="https://www.getyourguide.com/s/?q=Vintage+Car+Collection+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Tours<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Vintage+Car+Collection+Fateh+Vilas+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+          <div class="time">Time: 1 to 3 hours</div>
+          <div class="mosaic" role="group" aria-label="Vintage car collection and jeep tour photos">
+<button type="button" class="ph tile lead" data-full="img/p15.jpg" data-alt="A row of vintage cars in a showroom" aria-label="Enlarge photo: A row of vintage cars in a showroom"><img src="img/p15.jpg" alt="A row of vintage cars in a showroom" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 60%"></button>
+<button type="button" class="ph tile" data-full="img/p13.jpg" data-alt="Burgundy vintage car in the collection" aria-label="Enlarge photo: Burgundy vintage car in the collection"><img src="img/p13.jpg" alt="Burgundy vintage car in the collection" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
+<button type="button" class="ph tile" data-full="img/p16.jpg" data-alt="An old horse-drawn carriage" aria-label="Enlarge photo: An old horse-drawn carriage"><img src="img/p16.jpg" alt="An old horse-drawn carriage" loading="lazy" decoding="async" width="900" height="900" style="object-position: 65% 50%"></button>
+<button type="button" class="ph tile" data-full="img/p19.jpg" data-alt="A horse nuzzling two visitors in face masks" aria-label="Enlarge photo: A horse nuzzling two visitors in face masks"><img src="img/p19.jpg" alt="A horse nuzzling two visitors in face masks" loading="lazy" decoding="async" width="900" height="900" style="object-position: 55% 40%"></button>
+<button type="button" class="ph tile" data-full="img/p20.jpg" data-alt="Green vintage Land Rover parked at a viewpoint" data-more="+3" aria-label="View all 8 photos. First: Green vintage Land Rover parked at a viewpoint"><img src="img/p20.jpg" alt="" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 65%"></button>
+<button type="button" class="ph tile" hidden data-full="img/p17.jpg" data-alt="Cream-colored classic car with an information plaque" aria-label="Enlarge photo: Cream-colored classic car with an information plaque"></button>
+<button type="button" class="ph tile" hidden data-full="img/p14.jpg" data-alt="Burgundy vintage car with its doors open" aria-label="Enlarge photo: Burgundy vintage car with its doors open"></button>
+<button type="button" class="ph tile" hidden data-full="img/p18.jpg" data-alt="A visitor at a railing above a river valley" aria-label="Enlarge photo: A visitor at a railing above a river valley"></button>
+</div>
+          <div class="prose">
+            <p>A scenic road takes you to a hidden gem nestled in the hills of Udaipur: the Vintage Car Collection at Fateh Vilas, a must stop for car enthusiasts. Behind dramatic Indian heritage doors lies a collection that ranges from Land Rovers to Rolls Royces to an Impala and even an old carriage. My personal favorite was a burgundy behemoth, dubbed the &ldquo;mafia car.&rdquo;</p>
+            <p>This purported quick stop unexpectedly became our favorite experience in Udaipur. Our tour guide (who was also the auto mechanic, receptionist, and more), took us on a private tour of the collection. His depth of knowledge on each car, from its history to how rare it was to the inner workings, gave much color to the tour. If you ask nicely, you may even get to look under the hood or sit inside one.</p>
+            <p>After viewing the collection, we took the safari tour to the outskirts of Udaipur in an 80 year old Land Rover that was still in perfect working condition. Along the tour we spotted a local village, viewpoints of the river, Monsoon Palace, luxury hotels, a herd of goats, and many other wildlife. We ended with a quick stop to pet the collection owner&rsquo;s polo horses.</p>
+          </div>
+        </div>
+
+        <div class="glass item panel">
+          <h3>Shopping in Hathipole market</h3><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hathipole+Market+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+          <div class="prose">
+            <p>If you&rsquo;re looking to get some local souvenirs, Hathipole market is an excellent stop. Most shops will open around 11am. Suggested souvenirs include bandhani textiles, Pichawi art, jhooti (traditional footwear), marble and wood carvings, and jewelry.</p>
+            <p>Negotiation is usually expected, but will be more challenging if you are a foreigner. Especially when coming from countries with stronger currency, be conscious of what the value of bargaining is to you vs. the shopkeeper.</p>
+          </div>
+          <div class="glass callout tip">
+            <strong>Tip</strong>
+            <p>If you&rsquo;re the first customer of the day, make sure to buy something. It&rsquo;s a common superstition that if the first customer makes a purchase, the shopkeeper will have good sales for the day.</p>
+          </div>
+        </div>
+
+        <div class="glass item panel">
+          <h3>Folk dancing at Bagore Ki Haveli</h3><div class="links"><a class="lk lk-gyg" href="https://www.getyourguide.com/s/?q=Bagore+Ki+Haveli+dharohar+dance+show+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Tickets<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Bagore+Ki+Haveli+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+          <div class="prose">
+            <p>Watch a traditional Rajasthani dance at Bagore Ki Haveli in Udaipur&rsquo;s Old City.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="slot" role="note" aria-label="Advertisement placeholder">Ad slot &middot; in-content</div>
+
+      <figure class="band"><img src="img/p28.jpg" alt="Sun setting over the rooftops" loading="lazy" decoding="async" width="1400" height="700" style="object-position: center 52%"><figcaption class="glass">Sunset over the Udaipur rooftops</figcaption></figure>
+
+      <section id="eat">
+        <h2 class="sec">What and where to eat</h2>
+        <div class="prose">
+          <p>Udaipur has no shortage of rooftop restaurants with a view. Walk into any restaurant and you&rsquo;re almost guaranteed excellent food, views, and architecture. Indian food also has copious options for vegetarians and vegans.</p>
+        </div>
+
+        <div class="cards2">
+
+          <article class="glass rcard">
+            <div class="strip" role="group" aria-label="Nyoto and rooftop photos" style="--n: 3">
+<button type="button" class="ph sq" data-full="img/p21.jpg" data-alt="Fried chicken popcorn served in a paper cone" aria-label="Enlarge photo: Fried chicken popcorn served in a paper cone"><img src="img/p21.jpg" alt="Fried chicken popcorn served in a paper cone" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p24.jpg" data-alt="Nyoto tawa pulao in a bowl" aria-label="Enlarge photo: Nyoto tawa pulao in a bowl"><img src="img/p24.jpg" alt="Nyoto tawa pulao in a bowl" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p25.jpg" data-alt="Rooftop view over the old town and the lake" data-more="+7" aria-label="View all 10 photos. First: Rooftop view over the old town and the lake"><img src="img/p25.jpg" alt="" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" hidden data-full="img/p22.jpg" data-alt="Samosas in a basket" aria-label="Enlarge photo: Samosas in a basket"></button>
+<button type="button" class="ph sq" hidden data-full="img/p23.jpg" data-alt="Filter coffee mille feuille dessert" aria-label="Enlarge photo: Filter coffee mille feuille dessert"></button>
+<button type="button" class="ph sq" hidden data-full="img/p26.jpg" data-alt="Rooftop view over white domes and the old city" aria-label="Enlarge photo: Rooftop view over white domes and the old city"></button>
+<button type="button" class="ph sq" hidden data-full="img/p27.jpg" data-alt="Hotel pool lit up at night" aria-label="Enlarge photo: Hotel pool lit up at night"></button>
+<button type="button" class="ph sq" hidden data-full="img/p28.jpg" data-alt="Sun setting over the rooftops" aria-label="Enlarge photo: Sun setting over the rooftops"></button>
+<button type="button" class="ph sq" hidden data-full="img/p29.jpg" data-alt="Scalloped arch window framing the lake" aria-label="Enlarge photo: Scalloped arch window framing the lake"></button>
+<button type="button" class="ph sq" hidden data-full="img/p30.jpg" data-alt="Rooftop restaurant with hanging lamps and flowers" aria-label="Enlarge photo: Rooftop restaurant with hanging lamps and flowers"></button>
+</div>
+            <div class="rb">
+              <h3>Nyoto</h3><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Nyoto+restaurant+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+              <div class="chips"><span class="chip">Modern fusion</span><span class="chip">Old town</span><span class="chip">Lake Pichola views</span></div>
+              <p>Modern fusion food restaurant in the heart of the old town with expansive views of Lake Pichola.</p>
+              <div class="label">What we ordered</div>
+              <ul class="dl">
+                <li>Jeeravan chicken popcorn</li>
+                <li>Kra pao samosa</li>
+                <li>Nyoto tawa pulao <span class="note">(my favorite bite)</span></li>
+                <li>Thai omlette</li>
+                <li>Filter coffee mille feuille</li>
+                <li>Fresh lime soda</li>
+              </ul>
+              <p>The rosette chaat is another popular dish.</p>
+            </div>
+          </article>
+
+          <article class="glass rcard">
+            <div class="strip" role="group" aria-label="Ambrai photos" style="--n: 4">
+<button type="button" class="ph sq" data-full="img/p32.jpg" data-alt="Lake and palace glowing at night, with restaurant tables in the foreground" aria-label="Enlarge photo: Lake and palace glowing at night, with restaurant tables in the foreground"><img src="img/p32.jpg" alt="Lake and palace glowing at night, with restaurant tables in the foreground" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p34.jpg" data-alt="Colorful drinks beside a plate of chaat" aria-label="Enlarge photo: Colorful drinks beside a plate of chaat"><img src="img/p34.jpg" alt="Colorful drinks beside a plate of chaat" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p31.jpg" data-alt="Hotel facade lit up at night" aria-label="Enlarge photo: Hotel facade lit up at night"><img src="img/p31.jpg" alt="Hotel facade lit up at night" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p33.jpg" data-alt="City lights reflected on the lake at night" aria-label="Enlarge photo: City lights reflected on the lake at night"><img src="img/p33.jpg" alt="City lights reflected on the lake at night" loading="lazy" decoding="async" width="600" height="600"></button>
+</div>
+            <div class="rb">
+              <h3>Ambrai</h3><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Ambrai+restaurant+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+              <div class="chips"><span class="chip">Hotel setting</span><span class="chip">City Palace views</span><span class="chip">Cocktails</span></div>
+              <p>Set against the backdrop of a beautiful hotel and views of City Palace, Ambrai restaurant serves elegance with every dish, from traditional dishes to beautiful modern cocktails.</p>
+              <p>We had a vegetarian feast but what I remember most was the fragrant Squirrel Sour. Still wishing we had stolen the glassware.</p>
+            </div>
+          </article>
+
+          <article class="glass rcard span2">
+            <div class="rb">
+              <h3>Rajasthani thali at Dhabology or Navidya</h3><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Dhabology+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Dhabology<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Navidya+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Navidya<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+              <div class="chips"><span class="chip hl">Dhabology</span><span class="chip hl">Navidya</span></div>
+              <p>A thali is a platter of a variety of dishes and one of the best ways to try local delicacies. The thali might include:</p>
+              <div class="chips"><span class="chip">Dal baati churma</span><span class="chip">Kadhi</span><span class="chip">Ker sangri</span><span class="chip">Bajra roti</span><span class="chip">Chutneys</span><span class="chip">Yogurt</span><span class="chip">Pickles</span><span class="chip">Sweets</span></div>
+            </div>
+          </article>
+
+          <article class="glass rcard">
+            <div class="strip" role="group" aria-label="Ghati Pe photos" style="--n: 3">
+<button type="button" class="ph sq" data-full="img/p37.jpg" data-alt="Dal baati churma on a steel platter" aria-label="Enlarge photo: Dal baati churma on a steel platter"><img src="img/p37.jpg" alt="Dal baati churma on a steel platter" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p38.jpg" data-alt="Red curry in a bowl" aria-label="Enlarge photo: Red curry in a bowl"><img src="img/p38.jpg" alt="Red curry in a bowl" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p35.jpg" data-alt="Rooftop terrace with a black-and-white floor" data-more="+2" aria-label="View all 5 photos. First: Rooftop terrace with a black-and-white floor"><img src="img/p35.jpg" alt="" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" hidden data-full="img/p36.jpg" data-alt="Hazy view over the city and the lake from a balcony" aria-label="Enlarge photo: Hazy view over the city and the lake from a balcony"></button>
+<button type="button" class="ph sq" hidden data-full="img/p39.jpg" data-alt="Curry in a steel serving dish" aria-label="Enlarge photo: Curry in a steel serving dish"></button>
+</div>
+            <div class="rb">
+              <h3>Ghati Pe</h3><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Ghati+Pe+restaurant+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+              <div class="chips"><span class="chip">Well decorated</span><span class="chip">Great portions</span></div>
+              <p>Well decorated with great portion sizes. We tried dal baati churma here.</p>
+            </div>
+          </article>
+
+          <article class="glass rcard">
+            <div class="strip" role="group" aria-label="O&#x27;Brew photos" style="--n: 4">
+<button type="button" class="ph sq" data-full="img/p40.jpg" data-alt="O&#x27;Brew entrance with a carved wooden door" aria-label="Enlarge photo: O&#x27;Brew entrance with a carved wooden door"><img src="img/p40.jpg" alt="O&#x27;Brew entrance with a carved wooden door" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p43.jpg" data-alt="A hand holding an iced coffee" aria-label="Enlarge photo: A hand holding an iced coffee"><img src="img/p43.jpg" alt="A hand holding an iced coffee" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p41.jpg" data-alt="View of the lake over the rooftops" aria-label="Enlarge photo: View of the lake over the rooftops"><img src="img/p41.jpg" alt="View of the lake over the rooftops" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p42.jpg" data-alt="View through a large window inside the cafe" aria-label="Enlarge photo: View through a large window inside the cafe"><img src="img/p42.jpg" alt="View through a large window inside the cafe" loading="lazy" decoding="async" width="600" height="600"></button>
+</div>
+            <div class="rb">
+              <h3>O&rsquo;Brew</h3><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=O%27Brew+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+              <div class="chips"><span class="chip">Filter coffee</span><span class="chip">Spacious balcony</span></div>
+              <p>Around the corner of Ghati Pe lies O&rsquo;Brew. If you&rsquo;re craving an iced coffee, make sure to grab filter coffee from here and sip on it on the spacious balcony. We&rsquo;re still debating if it was iced coffee or ice cream coffee.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="glass callout tip">
+          <strong>Tip</strong>
+          <p>If you&rsquo;re concerned about getting sick from food, avoid:</p>
+          <ul class="bullets">
+            <li>Street food</li>
+            <li>Food that is spicier than you typically eat</li>
+            <li>Raw vegetables</li>
+            <li>Tap water and ice</li>
+            <li>Food/drink prepared with tap water that isn&rsquo;t boiled</li>
+            <li>Most importantly &ndash; keep good hygiene by washing your hands before and after every meal and avoid touching money or phones while eating.</li>
+          </ul>
+        </div>
+      </section>
+
+      <figure class="band"><img src="img/p33.jpg" alt="City lights reflected on the lake at night" loading="lazy" decoding="async" width="1400" height="700" style="object-position: center 62%"><figcaption class="glass">Udaipur and the lake after dark</figcaption></figure>
+
+      <section id="stay">
+        <h2 class="sec">Where to stay</h2>
+
+        <div class="cards2">
+
+          <article class="glass rcard">
+            <div class="strip" role="group" aria-label="Luxury hotel photos" style="--n: 4">
+<button type="button" class="ph sq" data-full="img/p44.jpg" data-alt="Colorful hotel facade with flowers in the foreground" aria-label="Enlarge photo: Colorful hotel facade with flowers in the foreground"><img src="img/p44.jpg" alt="Colorful hotel facade with flowers in the foreground" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p45.jpg" data-alt="Hotel lounge with arched windows and mountain views" aria-label="Enlarge photo: Hotel lounge with arched windows and mountain views"><img src="img/p45.jpg" alt="Hotel lounge with arched windows and mountain views" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p46.jpg" data-alt="Domed pavilions reflected in a dark floor at night" aria-label="Enlarge photo: Domed pavilions reflected in a dark floor at night"><img src="img/p46.jpg" alt="Domed pavilions reflected in a dark floor at night" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p47.jpg" data-alt="A car decorated with flowers in front of the hotel" data-more="+1" aria-label="View all 5 photos. First: A car decorated with flowers in front of the hotel"><img src="img/p47.jpg" alt="" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" hidden data-full="img/p48.jpg" data-alt="Ornate bed on a checkered floor" aria-label="Enlarge photo: Ornate bed on a checkered floor"></button>
+</div>
+            <div class="rb">
+              <h3>Luxury hotels</h3>
+              <div class="hotels">
+                <div class="hotel">
+                  <div class="hn">Chunda Palace</div><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Chunda+Palace+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Chunda+Palace+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+                  <p>If you&rsquo;re looking for a venue with historic Indian charm where every room is unique and every surface is covered in artistic detail, look no further than Chunda Palace. We attended a wedding here and the hotel was nothing short of spectacular.</p>
+                </div>
+                <div class="hotel">
+                  <div class="hn">Taj Lake Palace</div><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Taj+Lake+Palace+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Taj+Lake+Palace+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+                  <p>Stay in an unbeatable location in the middle of Lake Pichola in the historic residence of the Mewar royal family.</p>
+                </div>
+                <div class="hotel">
+                  <div class="hn">Leela Palace</div><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=The+Leela+Palace+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=The+Leela+Palace+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass rcard">
+            <div class="strip" role="group" aria-label="More affordable hotel photos" style="--n: 3">
+<button type="button" class="ph sq" data-full="img/p49.jpg" data-alt="Hotel room with twin beds and a window view" aria-label="Enlarge photo: Hotel room with twin beds and a window view"><img src="img/p49.jpg" alt="Hotel room with twin beds and a window view" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p50.jpg" data-alt="Rooftop infinity pool facing the hills" aria-label="Enlarge photo: Rooftop infinity pool facing the hills"><img src="img/p50.jpg" alt="Rooftop infinity pool facing the hills" loading="lazy" decoding="async" width="600" height="600"></button>
+<button type="button" class="ph sq" data-full="img/p51.jpg" data-alt="Window view over the city from a hotel room" aria-label="Enlarge photo: Window view over the city from a hotel room"><img src="img/p51.jpg" alt="Window view over the city from a hotel room" loading="lazy" decoding="async" width="600" height="600"></button>
+</div>
+            <div class="rb">
+              <h3>More affordable than luxury</h3>
+              <div class="hotels">
+                <div class="hotel">
+                  <div class="hn">Howard Johnson by Wyndham</div><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Howard+Johnson+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Howard+Johnson+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+                  <p>We stayed here while sightseeing &ndash; while a little further from the city center, it had spacious rooms, an excellent breakfast buffet, much needed AC and great water pressure, and a rooftop infinity pool with expansive views.</p>
+                </div>
+                <div class="hotel">
+                  <div class="hn">Ramada by Wyndham</div><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Ramada+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Ramada+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="glass partner">
+          <p>Partner slot: hotel search or booking link (affiliate disclosure goes here).</p>
+          <a class="btn" href="#">Check prices</a>
+        </div>
+      </section>
+
+      <section id="getting-around">
+        <h2 class="sec">How to get around</h2>
+        <button type="button" class="ph banner" style="--ar: 2.2" data-full="img/p52.jpg" data-alt="An auto rickshaw ride seen from the back seat" aria-label="Enlarge photo: An auto rickshaw ride seen from the back seat"><img src="img/p52.jpg" alt="An auto rickshaw ride seen from the back seat" loading="lazy" decoding="async" width="1400" height="600" style="object-position: center 58%"></button>
+        <div class="cards2">
+          <div class="glass tipcard">
+            <h3>Planes, trains, automobiles</h3>
+            <p>Fly into local airport UDR, travel by train, or hire a car</p>
+          </div>
+          <div class="glass tipcard">
+            <h3>Get around in an auto rickshaw</h3>
+            <p>Many of the historic areas have narrow roads that cars can&rsquo;t access, and it will be much faster to get around by auto. Bring a mask or face covering to protect you from the dust and pollution.</p>
+          </div>
+          <div class="glass tipcard">
+            <h3>Uber and Ola</h3>
+            <p>Popular ridesharing apps, you can use these to call autos and cars or get an idea of pricing to negotiate with auto drivers</p>
+          </div>
+          <div class="glass tipcard">
+            <h3>Bring cash</h3>
+            <p>Sometimes there can be a processing issue in the Uber app where it takes 24 hours for international credit cards to process, so cash is recommended for payments.</p>
+          </div>
+          <div class="glass tipcard span2">
+            <h3>At your hotel</h3>
+            <p>At hotels, sometimes we requested the reception to call a car or auto for us as they have relationships with local car companies or apps like Ola which require an Indian phone number.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tips">
+        <h2 class="sec">General tips</h2>
+        <div class="glass rows">
+          <div class="row"><div class="k">Cash</div><p>Cash is still used frequently in India</p></div>
+          <div class="row"><div class="k">Language</div><p>As it&rsquo;s a popular tourist destination, many people will speak English. However, it might be useful to learn some basic Hindi phrases or have a translator app. Other languages that might be spoken are Marwari and Mewari.</p></div>
+          <div class="row"><div class="k">Mornings start later</div><p>Most places won&rsquo;t be open before 10 or 11am.</p></div>
+          <div class="row"><div class="k">Wifi is limited, data is king</div><p>Get an e-sim through an app like Airalo. Install before your trip with stable wifi.</p></div>
+          <div class="row"><div class="k">Download Whatsapp</div><p>Many businesses use this for communication</p></div>
+          <div class="row"><div class="k">Local markets</div><p>Convenient places to pickup bottled water and snacks. Delivery apps like Blinkit and Zomato are popular but require an Indian phone number</p></div>
+          <div class="row"><div class="k">Visa</div><p>It&rsquo;s convenient to travel to India from the US by applying for an e-visa for 30 days of access. All travelers will also have to fill out a digital disembarkation form 72 hours in advance of arrival. If you have OCI and got a new passport after turning 20 or 50, make sure to renew your OCI well in advance of your travel dates.</p></div>
+        </div>
+        <div class="tags" aria-label="Tags"><span class="tag">Asia</span><span class="tag">India</span><span class="tag">Rajasthan</span><span class="tag">Udaipur</span></div>
+      </section>
+
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>run away with rhea &middot; Adventure travel</div>
+    <div><a href="#">Instagram</a> &middot; <a href="#">Newsletter</a> &middot; <a href="#">Contact</a></div>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Photo viewer">
+  <button type="button" class="lb-close" id="lbClose" aria-label="Close photo">Close</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-bar">
+    <button type="button" id="lbPrev" aria-label="Previous photo">&larr;</button>
+    <div id="lbCap" aria-live="polite"></div>
+    <button type="button" id="lbNext" aria-label="Next photo">&rarr;</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  /* Photo viewer */
+  var dlg = document.getElementById('lb');
+  var img = document.getElementById('lbImg');
+  var cap = document.getElementById('lbCap');
+  var photos = Array.prototype.slice.call(document.querySelectorAll('.ph'));
+  var cur = 0;
+  function show(i) {
+    cur = (i + photos.length) % photos.length;
+    var p = photos[cur];
+    img.src = p.getAttribute('data-full');
+    img.alt = p.getAttribute('data-alt') || '';
+    cap.textContent = (p.getAttribute('data-alt') || '') + ' (' + (cur + 1) + ' of ' + photos.length + ')';
+  }
+  photos.forEach(function (p, i) {
+    p.addEventListener('click', function () {
+      show(i);
+      if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', function () { dlg.close(); });
+  document.getElementById('lbPrev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { show(cur + 1); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { show(cur - 1); }
+    else if (e.key === 'ArrowRight') { show(cur + 1); }
+  });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) { dlg.close(); } });
+
+  /* Parallax for the hero photo and the photo bands */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { return; }
+  var hero = document.getElementById('heroImg');
+  var bands = Array.prototype.slice.call(document.querySelectorAll('.band img'));
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var vh = window.innerHeight || 800;
+    if (hero) {
+      var y = Math.min(window.scrollY || 0, 900);
+      hero.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
+    }
+    bands.forEach(function (b) {
+      var r = b.parentNode.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) { return; }
+      var p = ((r.top + r.height / 2) - vh / 2) / vh;
+      b.style.transform = 'translate3d(0,' + (-p * 60).toFixed(1) + 'px,0)';
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  frame();
+})();
+
+</script>
+</body>
+</html>
