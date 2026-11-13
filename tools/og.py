@@ -30,10 +30,12 @@ def card(src,focus,name):
         d.text((84,H//2+36),'Adventure travel guides and itineraries',font=f2,fill=(124,224,195))
     return im
 for page,(name,src,focus,desc,path) in PAGES.items():
-    out=f'img/og/{name}.jpg'; card(src,focus,name).save(out,quality=84,optimize=True)
+    out=f'img/og/{name}.jpg'
+    if name!='home': card(src,focus,name).save(out,quality=84,optimize=True)  # home.jpg is a hand-built map card (live map + title); keep it
     t=open(page).read()
     t=re.sub(r'\n?<!-- og:start -->.*?<!-- og:end -->','',t,flags=re.S)
     title=re.search(r'<title>(.*?)</title>',t,re.S).group(1)
+    v='?v=2' if name=='home' else ''
     d=desc.replace("'","&#39;")
     tags=f'''<!-- og:start -->
 <meta name="description" content="{d}">
@@ -43,13 +45,13 @@ for page,(name,src,focus,desc,path) in PAGES.items():
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{d}">
 <meta property="og:url" content="{SITE}{path}">
-<meta property="og:image" content="{SITE}/{out}">
+<meta property="og:image" content="{SITE}/{out}{v}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{d}">
-<meta name="twitter:image" content="{SITE}/{out}">
+<meta name="twitter:image" content="{SITE}/{out}{v}">
 <!-- og:end -->'''
     t=t.replace('</title>','</title>\n'+tags,1)
     open(page,'w').write(t); print(page,os.path.getsize(out)//1024,'KB')
