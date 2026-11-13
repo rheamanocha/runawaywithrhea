@@ -291,9 +291,56 @@ h2.sec::after { background: var(--line); }
 #philosophy .rcard h3 { font-weight: 500; margin: 0 0 10px; }
 #philosophy .rcard p { margin: 0 0 12px; line-height: 1.75; color: #D5E0E4; }
 #philosophy .rcard p:last-child { margin-bottom: 0; }
-.about-intro { display: grid; grid-template-columns: minmax(220px, 340px) 1fr; gap: 40px; align-items: center; }
+.about-intro { display: grid; grid-template-columns: minmax(280px, 500px) 1fr; gap: 44px; align-items: center; }
 .about-photo { margin: 0; }
 .about-photo img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.digicam{position:relative;padding:36px 30px 20px 20px;border-radius:16px 22px 22px 16px;background:linear-gradient(90deg,#6f7d83 0%,#8b989e 50%,#a5b1b6 88%,#d4dcdf 100%);border:1px solid #cfd8db;box-shadow:0 22px 44px rgba(0,0,0,.5),inset -2px 0 0 rgba(255,255,255,.7),inset 3px 0 0 rgba(0,0,0,.28);transform:rotate(1.2deg);color:#1a2328;margin-top:6px}
+.digicam::before{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,rgba(0,0,0,.04) 1px 3px);pointer-events:none}
+.dc-top{position:absolute;top:9px;left:20px;right:30px;display:flex;align-items:center;gap:10px}
+.dc-vf{width:30px;height:12px;border-radius:3px;background:linear-gradient(#10181c,#27353b);box-shadow:0 0 0 2px #5f6d73}
+.dc-flash{width:44px;height:12px;border-radius:2px;background:linear-gradient(#f4f8f9,#aebcc1);box-shadow:0 0 0 2px #5f6d73}
+.dc-brand{margin-left:auto;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2c383e}
+.dc-shutter{position:absolute;right:-9px;top:52%;width:11px;height:46px;border-radius:0 5px 5px 0;background:linear-gradient(90deg,#8e9ba1,#e9eef0);box-shadow:0 0 0 1px #5a686e}
+.dc-dial{position:absolute;right:-8px;top:36%;width:10px;height:34px;border-radius:0 5px 5px 0;background:repeating-linear-gradient(0deg,#46535a 0 2px,#7d8b91 2px 4px);box-shadow:0 0 0 1px #3c484e}
+.dc-screen{position:relative;border-radius:5px;overflow:hidden;background:#000;aspect-ratio:3/4;box-shadow:0 0 0 4px #1b252a,0 0 0 5px rgba(255,255,255,.25),inset 0 0 12px rgba(0,0,0,.7)}
+.dc-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;border-radius:0!important}
+.dc-hud{position:absolute;left:0;right:0;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.95);display:flex;justify-content:space-between;align-items:center;padding:0 9px;pointer-events:none}
+.dc-hud.t{top:7px}.dc-hud.b{bottom:7px}
+.dc-batt{display:inline-block;width:18px;height:8px;border:1.5px solid #fff;border-radius:2px;position:relative}
+.dc-batt::before{content:"";position:absolute;inset:1px 4px 1px 1px;background:#7CE0C3}
+.dc-batt::after{content:"";position:absolute;right:-4px;top:1px;width:2px;height:3px;background:#fff}
+.dc-stamp{color:#F2A33A;letter-spacing:.14em}
+.dc-focus{position:absolute;left:55%;top:55.5%;width:21%;aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;background:
+linear-gradient(#7CE0C3,#7CE0C3) top left/10px 2px no-repeat,linear-gradient(#7CE0C3,#7CE0C3) top left/2px 10px no-repeat,
+linear-gradient(#7CE0C3,#7CE0C3) top right/10px 2px no-repeat,linear-gradient(#7CE0C3,#7CE0C3) top right/2px 10px no-repeat,
+linear-gradient(#7CE0C3,#7CE0C3) bottom left/10px 2px no-repeat,linear-gradient(#7CE0C3,#7CE0C3) bottom left/2px 10px no-repeat,
+linear-gradient(#7CE0C3,#7CE0C3) bottom right/10px 2px no-repeat,linear-gradient(#7CE0C3,#7CE0C3) bottom right/2px 10px no-repeat}
+.dc-base{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-top:16px}
+.dc-keys{display:flex;flex-direction:column;gap:6px;width:62px}
+.dc-keys span{height:16px;border-radius:8px;background:linear-gradient(#c7d1d5,#7d8b91);box-shadow:0 0 0 1px #46535a;font:700 7px/16px var(--mono);text-align:center;color:#26323a;letter-spacing:.04em}
+.dc-pad{position:relative;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle,#c9d3d7 0 28%,#44525a 29% 32%,#9aa7ad 33%);box-shadow:0 0 0 2px #3c484e,0 2px 4px rgba(0,0,0,.4)}
+.dc-pad::after{content:"OK";position:absolute;inset:34%;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e8eef0,#8a979d);font:700 7px var(--mono);color:#2a363d;box-shadow:0 0 0 1px #46535a}
+.dc-pad i{position:absolute;font:700 8px var(--mono);font-style:normal;color:#2a363d}
+.dc-pad .u{top:7%;left:50%;transform:translateX(-50%)}.dc-pad .d{bottom:7%;left:50%;transform:translateX(-50%)}.dc-pad .l{left:9%;top:50%;transform:translateY(-50%)}.dc-pad .r{right:9%;top:50%;transform:translateY(-50%)}
+.dc-zoom{justify-self:end;width:18px;height:62px;border-radius:9px;background:linear-gradient(90deg,#c7d1d5,#7d8b91);box-shadow:0 0 0 1px #46535a;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:8px 0;font:700 8px var(--mono);color:#26323a}
+.dc-mp{position:absolute;left:5px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font:600 8px var(--mono);letter-spacing:.14em;color:#2c383e;white-space:nowrap}
+.dc-lug{position:absolute;bottom:-3px;left:40%;height:8px;width:22px;border-radius:0 0 4px 4px;background:#46535a}
+.about-photo{max-width:380px}
+
+.reel{--fh:230px;position:relative;margin:26px 0 6px;padding:14px 0;background:#0b1114;border-block:1px solid rgba(255,255,255,.1);overflow:hidden}
+.reel::before,.reel::after{content:"";display:block;height:12px;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(233,227,210,.5) 9px 19px,transparent 19px 28px);-webkit-mask:linear-gradient(#000,#000);margin:0 0 10px}
+.reel::after{margin:10px 0 0}
+.reel-edge{display:flex;justify-content:space-between;padding:0 18px 8px;font:500 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#e8a33d}
+.reel-track{display:flex;gap:10px;width:max-content;animation:reel 70s linear infinite}
+.reel:hover .reel-track,.reel:focus-within .reel-track,.reel.paused .reel-track{animation-play-state:paused}
+.fr{display:block;height:var(--fh);flex:0 0 auto;border-radius:2px;overflow:hidden;background:#1a2428;outline-offset:3px}
+.fr img{display:block;height:100%;width:100%;object-fit:cover;transition:transform .5s}
+.fr:hover img,.fr:focus-visible img{transform:scale(1.04)}
+.reel-btn{position:absolute;right:12px;top:30px;z-index:2;background:rgba(10,19,23,.75);color:#e8a33d;border:1px solid rgba(232,163,61,.5);border-radius:3px;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;cursor:pointer}
+.reel-btn:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
+@keyframes reel{to{transform:translateX(calc(-50% - 5px))}}
+@media(max-width:720px){.reel{--fh:170px}}
+@media(prefers-reduced-motion:reduce){.reel-track{animation:none}.reel{overflow-x:auto}.reel-btn{display:none}}
 @media (max-width: 720px) { .about-intro { grid-template-columns: 1fr; gap: 24px; } .about-photo { max-width: 340px; } }
 </style>
 <style id="menu-css">
@@ -350,11 +397,12 @@ html.pp-armed .stamp.in .st{opacity:.88;transform:translate(var(--x),var(--y)) r
 <div class="wrap" style="padding-top:64px">
   <div class="title-card"><div class="crumbs">About</div><h1>Hi, I&rsquo;m Rhea</h1><div class="byline"><span>Travel content creator, San Francisco Bay Area</span></div></div>
 </div>
+<section class="reel" aria-label="Photos from my trips"><div class="reel-edge" aria-hidden="true"><span>Run away 400</span><span>Udaipur · Ojai · Puerto Rico</span></div><button type="button" class="reel-btn" id="reelBtn" aria-pressed="false">Pause</button><div class="reel-track" id="reelTrack"><a class="fr" href="/udaipur/" style="aspect-ratio:1400/788"><img src="/udaipur/img/p01.jpg" alt="Udaipur: City Palace across Lake Pichola" width="1400" height="788" fetchpriority="high" decoding="async"></a><a class="fr" href="/ojai/" style="aspect-ratio:825/1100"><img src="/ojai/img/oj-hammock.jpg" alt="Ojai: a hammock afternoon" width="825" height="1100" fetchpriority="high" decoding="async"></a><a class="fr" href="/puerto-rico/" style="aspect-ratio:787/1400"><img src="/puerto-rico/img/pr-zip-flying.jpg" alt="Puerto Rico: flying on the zipline" width="787" height="1400" fetchpriority="high" decoding="async"></a><a class="fr" href="/udaipur/" style="aspect-ratio:1050/1400"><img src="/udaipur/img/p28.jpg" alt="Udaipur: sunset over the rooftops" width="1050" height="1400" fetchpriority="high" decoding="async"></a><a class="fr" href="/puerto-rico/" style="aspect-ratio:722/963"><img src="/puerto-rico/img/pr-culebra.jpg" alt="Puerto Rico: Culebra" width="722" height="963" loading="lazy" decoding="async"></a><a class="fr" href="/ojai/" style="aspect-ratio:825/1100"><img src="/ojai/img/oj-sun1.jpg" alt="Ojai: sunset at the Ojai Valley sign" width="825" height="1100" loading="lazy" decoding="async"></a><a class="fr" href="/udaipur/" style="aspect-ratio:1050/1400"><img src="/udaipur/img/p05.jpg" alt="Udaipur: palace courtyard" width="1050" height="1400" loading="lazy" decoding="async"></a><a class="fr" href="/udaipur/" style="aspect-ratio:1050/1400"><img src="/udaipur/img/p04.jpg" alt="Udaipur: painted palace windows" width="1050" height="1400" loading="lazy" decoding="async"></a><a class="fr" href="/ojai/" style="aspect-ratio:825/1100"><img src="/ojai/img/oj-barts-sign.jpg" alt="Ojai: Bart’s Books" width="825" height="1100" loading="lazy" decoding="async"></a><a class="fr" href="/udaipur/" style="aspect-ratio:1050/1400"><img src="/udaipur/img/p22.jpg" alt="Udaipur: samosas" width="1050" height="1400" loading="lazy" decoding="async"></a><a class="fr" href="/puerto-rico/" style="aspect-ratio:722/963"><img src="/puerto-rico/img/pr-oldsj.jpg" alt="Puerto Rico: Old San Juan" width="722" height="963" loading="lazy" decoding="async"></a><a class="fr" href="/ojai/" style="aspect-ratio:1100/619"><img src="/ojai/img/oj-ride.jpg" alt="Ojai: a horseback ride" width="1100" height="619" loading="lazy" decoding="async"></a><a class="fr" href="/udaipur/" style="aspect-ratio:1050/1400"><img src="/udaipur/img/p27.jpg" alt="Udaipur: rooftop pool at night" width="1050" height="1400" loading="lazy" decoding="async"></a><a class="fr" href="/puerto-rico/" style="aspect-ratio:1050/1400"><img src="/puerto-rico/img/pr-kayak.jpg" alt="Puerto Rico: bioluminescent bay kayak" width="1050" height="1400" loading="lazy" decoding="async"></a><a class="fr" href="/ojai/" style="aspect-ratio:825/1100"><img src="/ojai/img/oj-chicken.jpg" alt="Ojai: a roast chicken plate" width="825" height="1100" loading="lazy" decoding="async"></a><a class="fr" href="/udaipur/" style="aspect-ratio:1050/1400"><img src="/udaipur/img/p13.jpg" alt="Udaipur: vintage car museum" width="1050" height="1400" loading="lazy" decoding="async"></a></div></section><script>(function(){var t=document.getElementById("reelTrack"),b=document.getElementById("reelBtn"),r=t.parentNode;Array.prototype.slice.call(t.children).forEach(function(n){var c=n.cloneNode(true);c.setAttribute("aria-hidden","true");c.tabIndex=-1;var i=c.querySelector("img");i.alt="";i.loading="lazy";i.removeAttribute("fetchpriority");t.appendChild(c)});b.addEventListener("click",function(){var p=r.classList.toggle("paused");b.setAttribute("aria-pressed",p);b.textContent=p?"Play":"Pause"})})();</script>
 <div class="wrap layout" style="padding-top:24px">
   <nav class="toc" aria-label="On this page"><h2>On this page</h2><a href="#story">My story</a><a href="#passport">Passport stamps</a><a href="#philosophy">My travel philosophy</a><a href="#memories">Favorite travel memories</a></nav>
   <article class="main">
     <section id="story"><h2 class="sec">My story</h2>
-      <div class="about-intro"><figure class="about-photo"><img src="rhea-machu-picchu.jpg" alt="Rhea kneeling on a grassy terrace with Machu Picchu and Huayna Picchu behind her" width="722" height="963" decoding="async"></figure>
+      <div class="about-intro"><figure class="about-photo"><div class="digicam"><span class="dc-shutter" aria-hidden="true"></span><span class="dc-dial" aria-hidden="true"></span><div class="dc-top" aria-hidden="true"><span class="dc-vf"></span><span class="dc-flash"></span><span class="dc-brand">run away cam</span></div><div class="dc-screen"><img src="rhea-machu-picchu.jpg" alt="Rhea kneeling on a grassy terrace with Machu Picchu and Huayna Picchu behind her" width="722" height="963" decoding="async"><span class="dc-focus" aria-hidden="true"></span><div class="dc-hud t" aria-hidden="true"><span>AUTO</span><span class="dc-batt"></span></div><div class="dc-hud b" aria-hidden="true"><span>Peru</span><span class="dc-stamp">SEP</span></div></div><div class="dc-base" aria-hidden="true"><div class="dc-keys"><span>MENU</span><span>DISP</span></div><div class="dc-pad"><i class="u">&#9650;</i><i class="d">&#9660;</i><i class="l">&#9664;</i><i class="r">&#9654;</i></div><div class="dc-zoom"><span>T</span><span>W</span></div></div><span class="dc-mp" aria-hidden="true">12.1 MEGA PIXELS</span><span class="dc-lug" aria-hidden="true"></span></div></figure>
       <div class="prose"><p>I&rsquo;m a travel content creator based in the San Francisco Bay Area. I have an insatiable wanderlust, a love for active adventures, and a habit of sharing recommendations with anyone who will listen.</p><p>I dream that my stories inspire you to plan your next adventure.</p></div></div>
     </section>
     <section id="passport"><h2 class="sec">Passport stamps</h2>
