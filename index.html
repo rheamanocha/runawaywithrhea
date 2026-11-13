@@ -442,12 +442,13 @@ a:hover { color: var(--parks); }
     $('kind').textContent = cur.kind;
     $('title').textContent = cur.title;
     var ul = $('stops'), pl = $('posts');
-    function row(parent, s, arrow) {
+    function row(parent, s, arrow, iconOnly) {
       var li = document.createElement('li');
       if (s[2]) {
         var a = document.createElement('a'); a.href = s[2]; a.target = '_blank'; a.rel = 'noopener';
         var n = document.createElement('span'); n.textContent = s[0];
-        var m = document.createElement('span'); m.textContent = s[1] + (arrow ? ' \u2197' : '');
+        var m = document.createElement('span');
+        if (iconOnly) { m.textContent = '\u2197'; m.setAttribute('aria-hidden', 'true'); a.setAttribute('aria-label', s[0] + ' (' + s[1] + ')'); } else { m.textContent = s[1] + (arrow ? ' \u2197' : ''); }
         a.appendChild(n); a.appendChild(m); li.appendChild(a);
       } else {
         var a2 = document.createElement('span'); a2.textContent = s[0];
@@ -459,7 +460,7 @@ a:hover { color: var(--parks); }
     ul.textContent = ''; pl.textContent = '';
     cur.stops.forEach(function (s) { row(ul, s, true); });
     var many = cur.posts && cur.posts.length > 1;
-    if (many) { cur.posts.forEach(function (p) { row(pl, p, true); }); }
+    if (many) { cur.posts.forEach(function (p) { row(pl, p, true, true); }); }
     $('tabs').hidden = !many;
     $('tabPosts').textContent = many ? 'Guides \u00b7 ' + cur.posts.length : '';
     showTab(many && state.tab !== 'stops' ? 'posts' : 'stops');
