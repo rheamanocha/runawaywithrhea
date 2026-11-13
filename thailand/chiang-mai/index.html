@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiang Mai: elephants, temples, and khao soi | run away with rhea</title>
+<!-- og:start -->
+<meta name="description" content="Chiang Mai highlights: a full day with elephants, Wat Phra That Doi Suthep, a Thai cooking class, Nimman markets, great coffee, and the meals worth planning around.">
+<link rel="canonical" href="https://runawaywithrhea.com/thailand/chiang-mai/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="run away with rhea">
+<meta property="og:title" content="Chiang Mai: elephants, temples, and khao soi | run away with rhea">
+<meta property="og:description" content="Chiang Mai highlights: a full day with elephants, Wat Phra That Doi Suthep, a Thai cooking class, Nimman markets, great coffee, and the meals worth planning around.">
+<meta property="og:url" content="https://runawaywithrhea.com/thailand/chiang-mai/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- og:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap">
+<style>
+/* Layout idea: a layered guide. A blurred, darkened copy of the hero photo sits fixed behind everything; content floats on glass panels above it; the hero photo, title card and fact tiles overlap; parallax photo bands break the sections. Night map palette with a warm amber ornament. */
+:root {
+  --bg: #0A1317;
+  --glass: rgba(14, 26, 31, 0.58);
+  --glass-strong: rgba(10, 19, 23, 0.72);
+  --edge: rgba(255, 255, 255, 0.16);
+  --line: rgba(255, 255, 255, 0.14);
+  --ink: #EEF3F4;
+  --muted: #B3C4CA;
+  --parks: #7CE0C3;
+  --local: #F2B94B;
+  --accent: #7CE0C3;
+  --onaccent: #0A1317;
+  --focus: #F2B94B;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+a { color: var(--parks); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.1; font-family: var(--serif); font-weight: 600; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+[hidden] { display: none !important; }
+
+/* Fixed ambient layer: the hero photo, blurred and darkened */
+.ambient { position: fixed; inset: -10%; z-index: -1; background: #0A1317 url(img/p00.jpg) center / cover no-repeat; filter: blur(70px) saturate(1.3) brightness(0.42); transform: translateZ(0); }
+
+/* Glass surface */
+.glass { background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02) 55%), var(--glass); -webkit-backdrop-filter: blur(24px) saturate(1.5); backdrop-filter: blur(24px) saturate(1.5); border: 1px solid var(--edge); border-radius: 6px; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 6px 18px rgba(0, 0, 0, 0.22); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+
+/* Floating glass navigation */
+.bar { position: sticky; top: 0; z-index: 30; width: 100%; max-width: none; margin: 0; border-radius: 0 !important; border-width: 0 0 1px 0; padding: 4px max(24px, calc((100% - 1200px) / 2 + 24px)); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 24px; box-shadow: none; }
+.logo { color: var(--ink); font-family: var(--serif); font-weight: 600; font-size: 26px; padding: 6px 0; letter-spacing: 0.01em; }
+.logo:hover { text-decoration: none; color: var(--parks); }
+.nav { display: flex; flex-wrap: wrap; gap: 0 6px; font-family: var(--mono); font-size: 13px; }
+.nav a { color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 4px; }
+.nav a:hover { background: rgba(255, 255, 255, 0.1); text-decoration: none; }
+
+/* Hero */
+.hero-wrap { position: relative; height: 560px; overflow: hidden; }
+.hero-img { position: absolute; left: 0; top: -40px; width: 100%; height: calc(100% + 80px); object-fit: cover; object-position: center 40%; will-change: transform; }
+.hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10, 19, 23, 0.6), rgba(10, 19, 23, 0) 35%); pointer-events: none; }
+.hero-inner { position: absolute; left: 0; right: 0; bottom: 96px; }
+.title-card { max-width: 900px; padding: 40px 0 8px 0; display: flex; flex-direction: column; gap: 16px; }
+.crumbs { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+h1 { font-size: clamp(42px, 6.4vw, 80px); font-weight: 500; line-height: 1; }
+.byline { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-family: var(--mono); font-size: 12px; padding: 4px 12px; border: 1px solid var(--edge); border-radius: 4px; color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 24px; z-index: 2; }
+.fact { padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-radius: 6px; }
+.fact span:first-child { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--local); }
+.fact span:last-child { font-size: 16px; font-weight: 500; line-height: 1.35; }
+
+.layout { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; padding-top: 56px; padding-bottom: 80px; }
+.toc { flex: 0 0 230px; position: sticky; top: 100px; display: flex; flex-direction: column; gap: 2px; padding: 20px 14px 14px 14px; }
+.toc h2 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 0 10px 10px 10px; }
+.toc a { color: var(--ink); display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 4px; font-size: 15px; line-height: 1.3; }
+.toc a:hover { background: rgba(255, 255, 255, 0.1); text-decoration: none; }
+.main { flex: 1 1 560px; min-width: 0; max-width: 880px; display: flex; flex-direction: column; gap: 64px; }
+section { display: flex; flex-direction: column; gap: 28px; }
+
+/* Section headings with a fading gold rule */
+h2.sec { font-size: clamp(34px, 4.4vw, 52px); font-weight: 500; display: flex; align-items: center; gap: 20px; }
+h2.sec::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--local), rgba(242, 185, 75, 0)); }
+
+.item { display: flex; flex-direction: column; gap: 16px; }
+.item.panel { padding: 26px; }
+.item h3 { font-size: 34px; }
+.time { font-family: var(--mono); font-size: 13px; color: var(--parks); }
+.prose { display: flex; flex-direction: column; gap: 16px; }
+.prose p { max-width: 65ch; }
+.prose .open { font-family: var(--serif); font-size: 34px; font-style: italic; font-weight: 500; color: var(--local); }
+
+.callout { padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; max-width: 70ch; border-left: 3px solid var(--local); }
+.callout strong { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: var(--local); }
+
+/* Photos */
+.gal { display: flex; flex-wrap: wrap; gap: 6px; }
+.gal::after { content: ""; flex-grow: 1000000; }
+.ph { flex: calc(var(--ar) * 100) 1 calc(var(--ar) * 170px); min-width: 0; margin: 0; padding: 0; border: 0; background: rgba(255, 255, 255, 0.05); cursor: zoom-in; display: block; border-radius: 4px; overflow: hidden; position: relative; }
+.ph img { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); object-fit: cover; transition: transform 0.5s, opacity 0.2s; }
+.ph:hover img { transform: scale(1.04); }
+.strip { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 4px; padding: 4px 4px 0 4px; }
+.sq { flex: none; aspect-ratio: 1 / 1; border-radius: 6px; }
+.sq img { height: 100%; aspect-ratio: auto; object-position: center 40%; }
+.sq[data-more]::after { content: attr(data-more); position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 19, 23, 0.66); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-weight: 700; font-size: 22px; color: var(--ink); }
+.banner { display: block; width: 100%; aspect-ratio: 16 / 7; border-radius: 6px; flex: none; }
+.banner img { height: 100%; aspect-ratio: auto; }
+
+/* Parallax photo band with a glass caption */
+.band { position: relative; height: 380px; border-radius: 6px; overflow: hidden; border: 1px solid var(--edge); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.band img { position: absolute; left: 0; top: -60px; width: 100%; height: calc(100% + 120px); object-fit: cover; will-change: transform; }
+.band figcaption { position: absolute; left: 20px; bottom: 20px; padding: 12px 18px; font-family: var(--mono); font-size: 13px; border-radius: 4px; }
+figure.band { margin: 0; }
+
+/* Cards */
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.span2 { grid-column: 1 / -1; }
+.rcard { display: flex; flex-direction: column; overflow: hidden; }
+.rb { padding: 22px 24px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+.rcard h3, .tipcard h3 { font-size: 30px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--mono); font-size: 12px; border: 1px solid var(--edge); border-radius: 4px; padding: 3px 11px; color: var(--ink); background: rgba(255, 255, 255, 0.05); }
+.chip.hl { border-color: var(--parks); color: var(--parks); }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.dl li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.dl li:last-child { border-bottom: 0; }
+.note { color: var(--muted); }
+.hotels { display: flex; flex-direction: column; }
+.hotel { padding: 14px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.hn { font-weight: 700; }
+.tipcard { padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+.rows { display: flex; flex-direction: column; overflow: hidden; }
+.row { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 8px 28px; padding: 18px 24px; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.row .k { font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.15; }
+.bullets li { position: relative; padding: 4px 0 4px 22px; }
+.bullets li::before { content: ""; position: absolute; left: 4px; top: 15px; width: 8px; height: 8px; background: var(--local); border-radius: 4px; }
+
+.slot { border: 1px dashed var(--edge); border-radius: 6px; min-height: 110px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font-family: var(--mono); font-size: 13px; color: var(--muted); background: rgba(255, 255, 255, 0.03); }
+.partner { padding: 22px 26px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+.partner p { flex: 1 1 320px; font-size: 16px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 26px; background: var(--accent); color: var(--onaccent); font-weight: 700; font-size: 15px; border-radius: 4px; }
+.btn:hover { text-decoration: none; opacity: 0.88; }
+
+footer { margin-top: 0; border-top: 1px solid var(--edge); background: rgba(10, 19, 23, 0.7); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-top: 24px; padding-bottom: 24px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+footer a { color: var(--muted); display: inline-flex; align-items: center; min-height: 44px; }
+
+dialog { padding: 0; border: 1px solid var(--edge); border-radius: 6px; overflow: hidden; background: var(--glass-strong); color: var(--ink); max-width: 94vw; max-height: 94vh; -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); }
+dialog::backdrop { background: rgba(5, 10, 12, 0.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+dialog img { display: block; max-width: 92vw; max-height: 78vh; width: auto; height: auto; margin: 0 auto; }
+.lb-close { position: absolute; top: 10px; right: 10px; min-height: 44px; padding: 8px 18px; background: var(--glass-strong); color: var(--ink); border: 1px solid var(--edge); border-radius: 4px; font-family: inherit; font-size: 14px; cursor: pointer; }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.lb-bar button { width: 48px; height: 48px; background: transparent; color: var(--ink); border: 1px solid var(--edge); border-radius: 4px; font-size: 20px; cursor: pointer; }
+#lbCap { flex: 1; text-align: center; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .bar { border-radius: 6px; margin-bottom: -60px; }
+  .nav { display: none; }
+  .hero-wrap { height: 380px; }
+  .title-card { padding: 28px 0 4px 0; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toc { position: static; flex: 1 1 100%; }
+  .cards2 { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; }
+  .band { height: 280px; }
+  .item.panel { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ph img { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass, footer, dialog { -webkit-backdrop-filter: none; backdrop-filter: none; background: #0E1A1F; }
+}
+
+.band figcaption.glass { border-radius: 4px; }
+.nav a { border-radius: 4px; }
+
+/* Photo mosaic: one lead image + tidy square tiles */
+.mosaic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 168px; gap: 6px; margin: 4px 0 8px; }
+.mosaic .tile { flex: none; border-radius: 4px; }
+.mosaic .tile img { height: 100%; aspect-ratio: auto; }
+.mosaic .lead { grid-column: span 2; grid-row: span 2; }
+.mosaic .tile[data-more]::after { content: attr(data-more); position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 19, 23, 0.6); font-weight: 700; font-size: 24px; color: var(--ink); }
+.mosaic.more { margin: 22px 0; }
+.mosaic.tall { grid-auto-rows: 300px; }
+.mosaic.pair .tile { grid-column: span 2; }
+.mosaic.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mosaic.solo { grid-template-columns: minmax(0, 340px); grid-auto-rows: 440px; }
+@media (max-width: 860px) { .mosaic.tall { grid-auto-rows: 240px; } .mosaic.pair .tile { grid-column: span 1; } .mosaic.three { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mosaic.three .tile:nth-child(3) { grid-column: span 2; } .mosaic.solo { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 380px; } }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 6px; }
+.lk { font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em; display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--edge); border-radius: 4px; color: var(--ink); background: rgba(255, 255, 255, 0.05); }
+.lk:hover { background: rgba(255, 255, 255, 0.12); text-decoration: none; }
+.lk-gyg, .lk-hotel { border-color: var(--local); color: var(--local); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 860px) { .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; } }
+.lk { white-space: nowrap; flex: none; }
+.links { align-self: flex-start; }
+.strip .sq { aspect-ratio: auto; height: 104px; }
+
+/* Buttons: filled / outlined, sans, bold. Tags: quiet mono labels, no border. */
+.links { gap: 10px; margin: 6px 0 10px; }
+.hotel { gap: 0; }
+.hotel .hn { margin-bottom: 2px; }
+.hotel p { margin-top: 4px; }
+.lk { font-family: inherit; font-size: 14px; font-weight: 600; letter-spacing: 0; min-height: 40px; padding: 0 16px; border: 1px solid var(--edge); border-radius: 4px; color: var(--ink); background: transparent; }
+.lk:hover { background: rgba(255, 255, 255, 0.1); }
+.lk-gyg, .lk-hotel { background: var(--accent); border-color: var(--accent); color: var(--onaccent); }
+.lk-gyg:hover, .lk-hotel:hover { filter: brightness(1.1); background: var(--accent); }
+.tag, .chip { border: 0; border-radius: 2px; background: rgba(255, 255, 255, 0.08); color: var(--muted); padding: 3px 8px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.lk > span[aria-hidden] { margin-left: 6px; }
+
+@media (max-width: 860px) { .bar { gap: 0 12px; } .nav { display: flex !important; width: 100%; overflow-x: auto; flex-wrap: nowrap; font-size: 13px; } .nav a { flex: none; padding: 0 12px; } }
+
+
+.bar.home-bar{background:#0E1A1F;border:0;border-bottom:1px solid #2B424B;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:10px 16px;margin:0;width:100%;max-width:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:4px 16px}
+.home-bar .logo{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;font-size:20px;letter-spacing:.02em;padding:8px 4px}
+.home-bar .nav{display:flex!important;flex-wrap:nowrap;width:auto;overflow:visible;margin-right:auto;margin-left:20px;font-family:"Space Grotesk",system-ui,sans-serif;font-size:14px;font-weight:500;gap:4px}
+.home-bar .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:0;color:var(--ink)}
+.home-bar .nav a[aria-current]{color:#7CE0C3}
+.home-bar .hsearch{display:flex;align-items:center;gap:8px}
+.home-bar .hsearch label{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:#9FB5BD}
+.home-bar .hsearch input{width:170px;min-height:44px;padding:8px 12px;background:#17303A;border:1px solid #2B424B;border-radius:0;color:#E8EEF0;font:500 14px "Space Grotesk",system-ui,sans-serif}
+.home-bar .hsearch input:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
+@media(max-width:860px){.home-bar .nav{margin-left:0;width:100%;order:3;overflow-x:auto}.home-bar .hsearch{margin-left:auto}.home-bar .hsearch input{width:130px}}
+
+/* Peru bones */
+.photo-slot { display: grid; place-items: center; text-align: center; padding: 16px; min-height: 168px; border: 1px dashed var(--edge); border-radius: 4px; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; background: rgba(255,255,255,0.03); }
+.mosaic .photo-slot { min-height: 0; height: 100%; }
+.mosaic .photo-slot.lead { grid-column: span 2; grid-row: span 2; }
+.hero-wrap.empty .photo-slot { position: absolute; inset: 0; min-height: 0; border: 0; border-radius: 0; background: linear-gradient(135deg, rgba(47,181,201,0.18), rgba(242,185,75,0.10) 60%, rgba(10,19,23,0.35)); }
+.hero-wrap.empty .photo-slot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,19,23,0.6), rgba(10,19,23,0) 35%); }
+.story { border-left: 3px solid var(--local); padding: 14px 18px; color: var(--muted); font-style: italic; background: rgba(255,255,255,0.03); border-radius: 0 4px 4px 0; }
+.story strong { color: var(--ink); font-style: normal; }
+.region-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.days-chip { font-family: var(--mono); font-size: 12px; color: var(--parks); letter-spacing: 0.06em; text-transform: uppercase; }
+.itin-tools { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 16px; }
+.itin-tools button { font: inherit; font-weight: 600; font-size: 14px; min-height: 40px; padding: 0 16px; border: 1px solid var(--edge); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer; }
+.itin-tools button:hover { background: rgba(255,255,255,0.1); }
+.itin-group { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--local); margin: 22px 0 8px; }
+details.day { border: 1px solid var(--edge); border-radius: 6px; margin-bottom: 8px; background: rgba(10,19,23,0.38); }
+details.day summary { display: grid; grid-template-columns: 64px 1fr 24px; gap: 14px; align-items: center; padding: 12px 16px; cursor: pointer; list-style: none; min-height: 56px; }
+details.day summary::-webkit-details-marker { display: none; }
+details.day summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dnum { font-family: var(--serif); font-size: 34px; line-height: 1; text-align: center; }
+.dnum small { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.dtitle { font-weight: 700; font-size: 17px; }
+.droute { color: var(--muted); font-size: 14px; }
+.dchev { transition: transform .15s; color: var(--muted); }
+details.day[open] .dchev { transform: rotate(90deg); }
+.dbody { padding: 4px 16px 16px 94px; }
+.drow { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.drow:first-child { border-top: 0; }
+.drow .t { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
+.dnote { margin-top: 10px; padding: 10px 14px; border-radius: 4px; background: rgba(255,255,255,0.05); font-size: 14px; color: var(--muted); }
+.series { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+.series .glass { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+.series a.gl { color: var(--ink); } .series a.gl:hover { text-decoration: none; background: rgba(255,255,255,0.1); }
+.series .soon { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--local); }
+@media (max-width: 860px) { .series { grid-template-columns: 1fr; } .dbody { padding-left: 16px; } .drow { grid-template-columns: 1fr; gap: 0; } details.day summary { grid-template-columns: 48px 1fr 20px; } }
+@media (max-width: 860px) { .bar { gap: 0 12px; } .nav { display: flex !important; width: 100%; overflow-x: auto; flex-wrap: nowrap; font-size: 13px; } .nav a { flex: none; padding: 0 12px; } }
+@media print { details.day .dbody { display: block; } }
+/* lighter pass: fewer boxes, calmer background, more air */
+.ambient { filter: blur(90px) saturate(1) brightness(0.28); }
+.glass { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.band figcaption.glass { background: rgba(10,19,23,0.72); }
+.facts { gap: 0; margin-top: 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.fact { padding: 20px 22px; border-radius: 0; border-left: 1px solid var(--line); }
+.fact:first-child { border-left: 0; padding-left: 0; }
+@media (max-width: 860px) { .fact:nth-child(odd) { border-left: 0; padding-left: 0; } }
+.toc { padding: 0; }
+.toc a { min-height: 38px; color: var(--muted); }
+.toc a:hover { color: var(--ink); background: none; }
+h2.sec { font-size: clamp(28px, 3.4vw, 38px); font-weight: 400; }
+h2.sec::after { background: var(--line); }
+.main { gap: 96px; }
+.prose p { font-size: 17px; line-height: 1.85; color: #D5E0E4; }
+.layout { padding-top: 72px; }
+details.day { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; margin: 0; }
+details.day summary { padding: 18px 0; }
+.dtitle { font-weight: 500; }
+.dnum { font-size: 30px; color: var(--local); }
+.dbody { padding: 0 0 20px 78px; }
+.drow { border-top: 0; padding: 6px 0; }
+.dnote { background: none; padding: 8px 0 0; }
+.callout, .tipcard, .story { background: rgba(255,255,255,0.025) !important; border: 0 !important; border-left: 2px solid var(--local) !important; border-radius: 0 !important; }
+.band { border: 0; box-shadow: none; border-radius: 0; }
+.series .glass { border: 1px solid var(--line); border-radius: 4px; }
+.itin-tools button { border-color: var(--line); font-weight: 500; }
+.tags .tag { background: none; border: 1px solid var(--line); }
+.mini { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--local); margin: 22px 0 -4px; }
+.prose .mini:first-child { margin-top: 0; }
+</style>
+<style id="glance-css">.gh{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--local);margin:30px 0 12px}.gl{list-style:none;margin:0;padding:0;columns:3 190px;column-gap:28px}.gl li{break-inside:avoid;padding:5px 0}.gl a{color:var(--ink);text-decoration:none;font-size:1.05rem;border-bottom:1px solid transparent}.gl a::after{content:"\2197";font-size:.8em;margin-left:6px;color:var(--muted);transition:color .2s}.gl a:hover,.gl a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}.gl a:hover::after,.gl a:focus-visible::after{color:var(--accent)}.gl a:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}.eg{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:6px 28px}.eg h4{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:400;color:var(--muted);margin:0 0 4px;opacity:.8}.eg .gl{columns:1}@media(max-width:640px){.eg{grid-template-columns:1fr;gap:18px}}</style><style id="plinks-css">.plinks{margin:14px 0 4px;font-size:15px;color:var(--muted)}.tlink{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:5px}.tlink:hover,.tlink:focus-visible{color:var(--accent)}</style><style id="menu-css">
+.menu-btn{display:none}
+.menu-panel{display:contents}
+@media(max-width:820px){
+ .bar.home-bar{flex-wrap:nowrap!important;justify-content:space-between!important;position:relative;padding:4px 12px!important;gap:8px!important}
+ .home-bar .logo{font-size:17px;padding:6px 2px}
+ .menu-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;background:transparent;border:1px solid #2B424B;color:#E8EEF0;font:500 14px "Space Grotesk",system-ui,sans-serif;cursor:pointer}
+ .menu-ico{width:14px;height:10px;background:linear-gradient(currentColor 0 0) top/100% 2px no-repeat,linear-gradient(currentColor 0 0) center/100% 2px no-repeat,linear-gradient(currentColor 0 0) bottom/100% 2px no-repeat}
+ .menu-btn[aria-expanded="true"]{background:#7CE0C3;color:#0E1A1F;border-color:#7CE0C3}
+ .menu-btn:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
+ .menu-panel{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:16px;padding:12px 12px 18px;background:#0E1A1F;border-bottom:1px solid #2B424B;box-shadow:0 18px 30px rgba(0,0,0,.45);z-index:60}
+ .bar.open .menu-panel{display:flex}
+ .home-bar .nav{flex-direction:column;width:100%!important;margin:0!important;order:0;gap:0;border-top:1px solid #2B424B;overflow:visible}
+ .home-bar .nav a{padding:0 4px;font-size:16px;border-bottom:1px solid #2B424B}
+ .home-bar .hsearch{margin:0;width:100%}
+ .home-bar .hsearch input{flex:1;width:auto}
+}
+
+/* Film strip galleries (3+ photos) */
+.film { --hole: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2712%27%3E%3Crect x=%276%27 y=%270%27 width=%278%27 height=%2711%27 rx=%271%27 fill=%27%23e9e3d2%27 fill-opacity=%27.5%27/%3E%3C/svg%3E"); position: relative; margin: 26px 0; border-radius: 6px; overflow: hidden; background: linear-gradient(115deg, rgba(255,255,255,.14), rgba(255,255,255,0) 38%, rgba(255,255,255,.07) 68%, rgba(255,255,255,0)), rgba(24,20,16,.62); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,.14); }
+.film::before, .film::after { content: ""; display: block; height: 12px; background: var(--hole) repeat-x; margin: 8px 0; }
+.film .edge { display: flex; justify-content: space-between; gap: 12px; padding: 0 18px 6px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #e8a33d; }
+.mosaic.filmstrip { display: flex; gap: 10px; overflow-x: auto; margin: 0; padding: 0 18px 2px; scrollbar-width: thin; scrollbar-color: rgba(232,163,61,.5) transparent; counter-reset: fr; }
+.mosaic.filmstrip .tile { flex: 0 0 auto; width: auto; height: auto; grid-column: auto; grid-row: auto; border-radius: 2px; counter-increment: fr; }
+.mosaic.filmstrip .tile::before { content: counter(fr); position: absolute; top: 5px; left: 7px; z-index: 2; font-family: var(--mono); font-size: 10px; color: #e8a33d; text-shadow: 0 1px 3px rgba(0,0,0,.8); pointer-events: none; }
+.mosaic.filmstrip .tile img { height: 230px; width: auto; max-width: none; aspect-ratio: auto; object-fit: cover; }
+@media (max-width: 860px) { .mosaic.filmstrip .tile img { height: 190px; } .film .edge, .mosaic.filmstrip { padding-left: 14px; padding-right: 14px; } }
+</style></head>
+
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+
+<header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel"><span class="menu-ico" aria-hidden="true"></span>Menu</button><div class="menu-panel" id="menuPanel"><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></div></header>
+
+<main>
+  <div class="hero-wrap empty"><div class="photo-slot">Hero photo (wide, roughly 3:1 crop works best)</div></div>
+  <div class="wrap"><div class="title-card"><div class="crumbs"><a href="/">Destinations</a> / <a href="/guides/">Asia</a> / <a href="/thailand/">Thailand</a> / Chiang Mai</div><h1>Chiang Mai: elephants, temples, and khao soi</h1><div class="byline"><span>[Month year]</span></div></div></div>
+  <div class="wrap facts" aria-label="Quick facts"><div class="glass fact"><span>When</span><span>[Month]</span></div><div class="glass fact"><span>Highlights</span><span>Elephants, temples, a cooking class</span></div><div class="glass fact"><span>Must try</span><span>Khao soi, a northern specialty</span></div><div class="glass fact"><span>Coffee</span><span>Lots of great coffee shops</span></div></div>
+  <div class="wrap layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><a href="#overview">Overview</a><a href="#glance">At a glance</a><a href="#do">Things to do</a><a href="#eat">Where we ate</a><a href="#tips">Tips if you go</a><a href="#series">More from this trip</a></nav><article class="main"><section id="overview"><h2 class="sec">Overview</h2><div class="story"><strong>Your story:</strong> what Chiang Mai felt like compared with Bangkok, and how many days you spent here.</div><div class="prose"><p>[Two or three sentences on Chiang Mai.] This page covers the elephant day, the temples, the cooking class, and where we ate.</p></div></section><section id="glance"><h2 class="sec">At a glance</h2><h3 class="gh">Where to eat</h3><ul class="gl"><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Four+Seasons+Resort+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Four Seasons Chiang Mai restaurant<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Hong+Tauw+Inn+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Hong Tauw Inn<span class="sr"> (opens in a new tab)</span></a></li><li>Khao soi</li></ul><h3 class="gh">Things to do</h3><ul class="gl"><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Cha+Lai+Orchard+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Cha Lai Orchard<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=DN+Wellness+Massage+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">DN Wellness Massage<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Elephant+Nature+Park+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Elephant Nature Park<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=One+Nimman+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">One Nimman<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Thai+Farm+Cooking+School+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Thai Farm Cooking School<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Wat+Phra+That+Doi+Suthep+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Wat Phra That Doi Suthep<span class="sr"> (opens in a new tab)</span></a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Zabb+E+Lee+Chiang+Mai" target="_blank" rel="noopener noreferrer" data-aff="pending">Zabb E Lee cooking class<span class="sr"> (opens in a new tab)</span></a></li></ul></section><section id="do"><h2 class="sec">Things to do</h2><div class="item" id="elephants"><h3>A full day with elephants</h3><div class="prose"><p>Cha Lai Orchard and Elephant Nature Park both offer a full-day elephant experience. [Which one you chose, and what the day looked like.]</p></div></div><div class="item" id="temples"><h3>Wat Phra That Doi Suthep</h3><div class="prose"><p>The temple to see in Chiang Mai. [How you got up there and what to expect.]</p></div></div><div class="item" id="class"><h3>A Thai cooking class</h3><div class="prose"><p>We took a class at Thai Farm Cooking School. I also heard good things about Zabb E Lee. [What you cooked.]</p></div></div><div class="item" id="nimman"><h3>One Nimman</h3><div class="prose"><p>A cute spot for local markets and a night market. [What you bought or ate.]</p></div></div><div class="item" id="massage"><h3>Massage at DN Wellness Massage</h3><div class="prose"><p>[One or two lines on the massage.]</p></div></div><div class="item" id="coffee"><h3>Coffee shops</h3><div class="prose"><p>There are lots of good coffee shops in town. [Add your favorites by name.]</p></div></div><div class="item" id="wishlist"><h3>Still on our list</h3><div class="prose"><p>A tiger experience was on our list but we didn&rsquo;t get to it. [Decide whether to include it.]</p></div></div></section><section id="eat"><h2 class="sec">Where we ate</h2><div class="item" id="khaosoi"><h3>Khao soi</h3><div class="prose"><p>Make sure to try khao soi, a northern specialty. [Where you had your favorite bowl.]</p></div></div><div class="item" id="hongtauw"><h3>Hong Tauw Inn</h3><div class="prose"><p>The food here was incredible, and in my opinion better than the Michelin-listed place across the street. [What you ordered.]</p></div></div><div class="item" id="fourseasons"><h3>The restaurant at Four Seasons Chiang Mai</h3><div class="prose"><p>[What you ordered, and whether you&rsquo;d go back.]</p></div></div></section><section id="tips"><h2 class="sec">Tips if you go</h2><div class="item glass panel" style="margin-top:14px"><ul class="bullets"><li>Try khao soi, a northern specialty, at least once</li><li>Book your elephant day ahead</li></ul></div><div class="story"><strong>Your story:</strong> anything else you&rsquo;d tell a friend before they go.</div></section><section id="series"><h2 class="sec">More from this trip</h2><div class="series"><a class="glass gl" href="/thailand/"><strong>Thailand travel guide</strong><span class="droute">The overview, plus tips for the whole trip.</span></a><a class="glass gl" href="/thailand/bangkok/"><strong>Bangkok</strong><span class="droute">Temples, night markets, malls, and great meals.</span></a><a class="glass gl" href="/thailand/phuket/"><strong>Phuket and Krabi</strong><span class="droute">Warm water and a boat tour to Hong Island.</span></a></div></section></article></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>run away with rhea &middot; Adventure travel</div>
+    <div><a href="https://www.instagram.com/runawaywithrhea/" target="_blank" rel="noopener noreferrer">Instagram<span class="sr"> (opens in a new tab)</span></a></div>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Photo viewer">
+  <button type="button" class="lb-close" id="lbClose" aria-label="Close photo">Close</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-bar">
+    <button type="button" id="lbPrev" aria-label="Previous photo">&larr;</button>
+    <div id="lbCap" aria-live="polite"></div>
+    <button type="button" id="lbNext" aria-label="Next photo">&rarr;</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  /* Photo viewer */
+  var dlg = document.getElementById('lb');
+  var img = document.getElementById('lbImg');
+  var cap = document.getElementById('lbCap');
+  var photos = Array.prototype.slice.call(document.querySelectorAll('.ph'));
+  var cur = 0;
+  function show(i) {
+    cur = (i + photos.length) % photos.length;
+    var p = photos[cur];
+    img.src = p.getAttribute('data-full');
+    img.alt = p.getAttribute('data-alt') || '';
+    cap.textContent = (p.getAttribute('data-alt') || '') + ' (' + (cur + 1) + ' of ' + photos.length + ')';
+  }
+  photos.forEach(function (p, i) {
+    p.addEventListener('click', function () {
+      show(i);
+      if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', function () { dlg.close(); });
+  document.getElementById('lbPrev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { show(cur + 1); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { show(cur - 1); }
+    else if (e.key === 'ArrowRight') { show(cur + 1); }
+  });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) { dlg.close(); } });
+
+  /* Parallax for the hero photo and the photo bands */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { return; }
+  var hero = document.getElementById('heroImg');
+  var bands = Array.prototype.slice.call(document.querySelectorAll('.band img'));
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var vh = window.innerHeight || 800;
+    if (hero) {
+      var y = Math.min(window.scrollY || 0, 900);
+      hero.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
+    }
+    bands.forEach(function (b) {
+      var r = b.parentNode.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) { return; }
+      var p = ((r.top + r.height / 2) - vh / 2) / vh;
+      b.style.transform = 'translate3d(0,' + (-p * 60).toFixed(1) + 'px,0)';
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  frame();
+})();
+
+</script>
+<script>
+(function () {
+  var ds = Array.prototype.slice.call(document.querySelectorAll('details.day'));
+  var e = document.getElementById('expandAll'), c = document.getElementById('collapseAll');
+  if (e) { e.addEventListener('click', function () { ds.forEach(function (d) { d.open = true; }); }); }
+  if (c) { c.addEventListener('click', function () { ds.forEach(function (d) { d.open = false; }); }); }
+  if (location.hash) { var t = document.querySelector(location.hash); if (t && t.tagName === 'DETAILS') { t.open = true; } }
+})();
+</script>
+<script id="menu-js">(function(){var b=document.querySelector('.bar'),m=document.getElementById('menuBtn');if(!b||!m)return;function s(o){b.classList.toggle('open',o);m.setAttribute('aria-expanded',o?'true':'false')}m.addEventListener('click',function(){s(!b.classList.contains('open'))});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)});document.addEventListener('click',function(e){if(!b.contains(e.target))s(false)});window.addEventListener('resize',function(){if(innerWidth>820)s(false)})})();</script></body>
+</html>
