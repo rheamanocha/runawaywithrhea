@@ -12,7 +12,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # page folder -> map trip id (None if the page has no map card)
-PAGES = {'udaipur': 'udaipur', 'puerto-rico': 'puertorico', 'peru': 'peru', 'ojai': None}
+PAGES = {'udaipur': 'udaipur', 'puerto-rico': 'puertorico', 'peru': 'peru', 'ojai': None, 'iceland': 'iceland'}
 
 def read(p):
     with open(os.path.join(ROOT, p), encoding='utf-8') as f: return f.read()
