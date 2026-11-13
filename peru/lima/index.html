@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lima food guide | run away with rhea</title>
+<title>Everything to eat in Lima | run away with rhea</title>
+<meta name="description" content="Thirteen things to eat and drink in Lima, from ceviche and picarones to chifa and Inca Kola.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap">
@@ -285,100 +286,268 @@ details.day summary { padding: 18px 0; }
 .series .glass { border: 1px solid var(--line); border-radius: 4px; }
 .itin-tools button { border-color: var(--line); font-weight: 500; }
 .tags .tag { background: none; border: 1px solid var(--line); }
+
+/* Everything to eat: slideshow */
+.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
+.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
+.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
+.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
+.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
+.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
+.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
+.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.slide .shots.n1 img { aspect-ratio: 3 / 4; }
+.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
+.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
+.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
+.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
+.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
+.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.eat-arrow:hover { background: rgba(10,19,23,.9); }
+.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
+.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
+.eat-tabs::-webkit-scrollbar { display: none; }
+.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
+.eat-tabs button:hover { color: var(--ink); }
+.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
+.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
+@media (max-width: 860px) {
+  .eat-head { padding: 36px 0 24px; }
+  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
+  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 52%; bottom: auto; justify-content: center; }
+  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
+  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
+  .eat-card h2 { font-size: 28px; }
+  .eat-card p:last-child { font-size: 14.5px; }
+  .eat-arrow { top: 22%; width: 40px; height: 40px; }
+  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
+.after section { display: flex; flex-direction: column; gap: 28px; }
+
+/* Everything to eat: slideshow */
+.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
+.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
+.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
+.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
+.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
+.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
+.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
+.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.slide .shots.n1 img { aspect-ratio: 3 / 4; }
+.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
+.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
+.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
+.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
+.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
+.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.eat-arrow:hover { background: rgba(10,19,23,.9); }
+.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
+.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
+.eat-tabs::-webkit-scrollbar { display: none; }
+.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
+.eat-tabs button:hover { color: var(--ink); }
+.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
+.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
+@media (max-width: 860px) {
+  .eat-head { padding: 36px 0 24px; }
+  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
+  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 52%; bottom: auto; justify-content: center; }
+  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
+  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
+  .eat-card h2 { font-size: 28px; }
+  .eat-card p:last-child { font-size: 14.5px; }
+  .eat-arrow { top: 22%; width: 40px; height: 40px; }
+  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
+.after section { display: flex; flex-direction: column; gap: 28px; }
+
+/* Everything to eat: slideshow */
+.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
+.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
+.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
+.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
+.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
+.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
+.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
+.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.slide .shots.n1 img { aspect-ratio: 3 / 4; }
+.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
+.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
+.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
+.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
+.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
+.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.eat-arrow:hover { background: rgba(10,19,23,.9); }
+.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
+.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
+.eat-tabs::-webkit-scrollbar { display: none; }
+.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
+.eat-tabs button:hover { color: var(--ink); }
+.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
+.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
+@media (max-width: 860px) {
+  .eat-head { padding: 36px 0 24px; }
+  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
+  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 52%; bottom: auto; justify-content: center; }
+  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
+  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
+  .eat-card h2 { font-size: 28px; }
+  .eat-card p:last-child { font-size: 14.5px; }
+  .eat-arrow { top: 22%; width: 40px; height: 40px; }
+  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
+.after section { display: flex; flex-direction: column; gap: 28px; }
+
+/* Everything to eat: slideshow */
+.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
+.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
+.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
+.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
+.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
+.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
+.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
+.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.slide .shots.n1 img { aspect-ratio: 3 / 4; }
+.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
+.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
+.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
+.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
+.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
+.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.eat-arrow:hover { background: rgba(10,19,23,.9); }
+.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
+.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
+.eat-tabs::-webkit-scrollbar { display: none; }
+.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
+.eat-tabs button:hover { color: var(--ink); }
+.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
+.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
+@media (max-width: 860px) {
+  .eat-head { padding: 36px 0 24px; }
+  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
+  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 58%; bottom: auto; justify-content: center; }
+  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
+  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
+  .eat-card h2 { font-size: 28px; }
+  .eat-card p:last-child { font-size: 14.5px; }
+  .eat-arrow { top: 22%; width: 40px; height: 40px; }
+  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
+.after section { display: flex; flex-direction: column; gap: 28px; }
+
+/* Everything to eat: slideshow */
+.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
+.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
+.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
+.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
+.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
+.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
+.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
+.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.slide .shots.n1 img { aspect-ratio: 3 / 4; }
+.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
+.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
+.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
+.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
+.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
+.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; padding: 0; line-height: 0; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.eat-arrow:hover { background: rgba(10,19,23,.9); }
+.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
+.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
+.eat-tabs::-webkit-scrollbar { display: none; }
+.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
+.eat-tabs button:hover { color: var(--ink); }
+.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
+.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
+@media (max-width: 860px) {
+  .eat-head { padding: 36px 0 24px; }
+  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
+  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 58%; bottom: auto; justify-content: center; }
+  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
+  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
+  .eat-card h2 { font-size: 28px; }
+  .eat-card p:last-child { font-size: 14.5px; }
+  .eat-arrow { top: 22%; width: 40px; height: 40px; }
+  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
+.after section { display: flex; flex-direction: column; gap: 28px; }
 </style>
 </head>
 <body>
 <div class="ambient" aria-hidden="true"></div>
 <header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></header><script>(function(){var f=document.querySelector('.hsearch');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('hq').value.trim();var q=document.getElementById('q');if(q){q.value=v;q.dispatchEvent(new Event('input'));q.scrollIntoView({block:'center'});}else{window.open('/guides/#q='+encodeURIComponent(v),'_blank');}});})();</script>
 <main>
-  <div class="hero-wrap empty"><div class="photo-slot">Hero photo (wide, roughly 3:1 crop works best)</div></div>
-  <div class="wrap"><div class="title-card"><div class="crumbs"><a href="#">Destinations</a> / <a href="#">South America</a> / <a href="#">Peru</a> / Lima</div><h1>Eating and wandering through Lima: a food tour, a sunset, and where to stay</h1><div class="byline"><span>Written by Rhea Manocha</span><span>September 2026</span></div><div class="tags" aria-label="Tags"><span class="tag">Peru</span><span class="tag">Lima</span><span class="tag">Food</span><span class="tag">Miraflores</span></div></div></div>
-  <div class="wrap facts" aria-label="Quick facts"><div class="glass fact"><span>Days</span><span>1&ndash;2 and 12&ndash;13</span></div><div class="glass fact"><span>Food tour</span><span>12 Peruvian Snacks, 3.5 hours</span></div><div class="glass fact"><span>Sunset</span><span>About 5:50pm in early September</span></div><div class="glass fact"><span>Getting around</span><span>Uber only in Lima</span></div></div>
-  <div class="wrap layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><a href="#overview">Overview</a><a href="#food-tour">The 12 Peruvian Snacks food tour</a><a href="#sunset">Sunset at the Malec&oacute;n</a><a href="#eat">Where to eat</a><a href="#stay">Where to stay</a><a href="#tips">Tips for Lima</a><a href="#series">More from this trip</a></nav><article class="main"><section id="overview"><h2 class="sec">Overview</h2><div class="story"><strong>Your story:</strong> why Lima, and what you wanted to eat. A line on first impressions.</div><div class="prose"><p>Lima bookends this trip: a first day of food and sunset after the overnight flight, and a calm last night before flying home.</p></div></section><section id="food-tour"><h2 class="sec">The 12 Peruvian Snacks food tour</h2><div class="mosaic" role="img" aria-label="Photo placeholders: Food tour photos"><div class="photo-slot lead">Food tour photos</div><div class="photo-slot">Photo</div><div class="photo-slot">Photo</div><div class="photo-slot">Photo</div><div class="photo-slot">Photo</div></div><div class="story"><strong>Your story:</strong> what you tried, the best bite, and whether you&rsquo;d book it again.</div><div class="glass rows" style="margin-top:14px"><div class="row"><div class="term">Where</div><div class="detail">Historic Center, Jir&oacute;n Cusco 400</div></div><div class="row"><div class="term">When</div><div class="detail">1:20&ndash;4:50p</div></div><div class="row"><div class="term">How long</div><div class="detail">3.5 hours</div></div></div><div class="links"><a class="lk lk-gyg" href="https://www.getyourguide.com/s/?q=12+Peruvian+Snacks+food+tour+Lima" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Book a food tour<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Jir%26oacute%3Bn+Cusco+400+Lima" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></section><section id="sunset"><h2 class="sec">Sunset at the Malec&oacute;n</h2><div class="mosaic" role="img" aria-label="Photo placeholders: Malec&amp;oacute;n photos"><div class="photo-slot lead">Malec&oacute;n photos</div><div class="photo-slot">Photo</div><div class="photo-slot">Photo</div></div><div class="prose"><p>The downtown Historic Center isn&rsquo;t on the coast, so for an ocean sunset we headed to the Miraflores/Barranco side (25&ndash;35 minutes away) and arrived around 5:25pm for sunset at about 5:50pm.</p></div><div class="story"><strong>Your story:</strong> what the Malec&oacute;n felt like at sunset.</div><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Malec%26oacute%3Bn+de+Miraflores+Lima" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></section><section id="eat"><h2 class="sec">Where to eat</h2><div class="story"><strong>Your story:</strong> add each restaurant: name, what you ordered, what it cost, whether you&rsquo;d go back.</div><article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Dinner in Miraflores/Barranco</h3><p>Add the name of the restaurant and your order.</p><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Miraflores+Lima+restaurants" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></article><article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Isidro Bistro Lime&ntilde;o</h3><p>The in-hotel dinner at Hyatt Centric San Isidro on your last night.</p><div class="links"><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Isidro+Bistro+Lime%26ntilde%3Bo+Lima" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></article></section><section id="stay"><h2 class="sec">Where to stay</h2><article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Holiday Inn Lima Airport</h3><p>First night. On airport property, with a free shuttle every 30 minutes, which made the 6:20am Amazon flight easy.</p><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Holiday+Inn+Lima+Airport" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Holiday+Inn+Lima+Airport" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></article><article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Hyatt Centric San Isidro</h3><p>Last night. Av. Jorge Basadre 367, with an airport shuttle (about 18 minutes to LIM).</p><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Hyatt+Centric+San+Isidro+Lima" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hyatt+Centric+San+Isidro+Lima" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></article></section><section id="tips"><h2 class="sec">Tips for Lima</h2><div class="glass rows" style="margin-top:14px"><div class="row"><div class="term">Getting around</div><div class="detail">Use Uber in Lima only.</div></div><div class="row"><div class="term">Arrival</div><div class="detail">Budget 8:00&ndash;9:20a for immigration, customs, and baggage; LIM can run slow for international arrivals.</div></div><div class="row"><div class="term">Money</div><div class="detail">Exchange cash and grab water near the airport hotel, not in Miraflores. Much less travel.</div></div><div class="row"><div class="term">Traffic</div><div class="detail">Allow 35&ndash;60 min from the airport to the Historic Center and 45&ndash;75 min back, depending on traffic.</div></div></div><div class="story"><strong>Your story:</strong> add anything you&rsquo;d tell a friend.</div></section><section id="series"><h2 class="sec">More from this trip</h2><div class="series"><a class="glass gl" href="/peru/"><strong>Peru in 2 weeks</strong></a><a class="glass gl" href="/peru/amazon/"><strong>Refugio Amazonas review</strong></a><a class="glass gl" href="/peru/ausangate/"><strong>Ausangate 7 Lakes</strong></a><a class="glass gl" href="/peru/inca-trail/"><strong>Inca Trail and Machu Picchu</strong></a><a class="glass gl" href="/peru/practicalities/"><strong>Peru practicalities</strong></a></div></section></article></div>
+  <div class="wrap eat-head">
+    <div class="crumbs"><a href="/">Destinations</a> / <a href="/guides/">South America</a> / <a href="/peru/">Peru</a> / Lima</div>
+    <h1>Everything to eat in Lima</h1>
+    <div class="byline"><span>September 2026</span></div>
+    <p class="lede">Fourteen things I ate and drank around Lima, from street snacks to a sit-down seafood lunch. Click through the tabs or use the arrow keys.</p>
+  </div>
+  <div class="eats" id="eats" role="region" aria-roledescription="carousel" aria-label="Lima food slideshow">
+    <div class="slide on" id="slide-coffee" role="tabpanel" aria-labelledby="tab-coffee" data-slug="coffee" data-bg="img/coffee-1.jpg" style="--h:15" ><div class="bg" aria-hidden="true"></div><div class="shots n3"><img src="img/coffee-1.jpg" alt="Iced coffee next to a Museo del Café Peruano brochure" fetchpriority="high" decoding="async"><img src="img/coffee-2.jpg" alt="Wooden civet figure among coffee beans at the museum" fetchpriority="high" decoding="async"><img src="img/coffee-3.jpg" alt="Jars and bowls of coffee beans at different roasts" fetchpriority="high" decoding="async"></div><div class="eat-card"><p class="count">01 / 14</p><h2>Local coffee and Museo del Café Peruano</h2><p>Peruvian coffee is grown in the highlands, and the museum walks through it from bean to cup. Order an iced coffee and look at the beans up close.</p></div></div><div class="slide" id="slide-empanadas" role="tabpanel" aria-labelledby="tab-empanadas" data-slug="empanadas" data-bg="img/empanadas-1.jpg" style="--h:52" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/empanadas-1.jpg" alt="Cut open chicken empanada with an iced coffee" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">02 / 14</p><h2>Empanadas</h2><p>Baked pastry pockets with a savory filling. This one was stuffed with shredded chicken and came with a lime wedge.</p></div></div><div class="slide" id="slide-chifa" role="tabpanel" aria-labelledby="tab-chifa" data-slug="chifa" data-bg="img/chifa-1.jpg" style="--h:89" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/chifa-1.jpg" alt="Crispy wontons with a dipping sauce" loading="lazy" decoding="async"><img src="img/chifa-2.jpg" alt="Pork dumplings in a cup" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">03 / 14</p><h2>Chifa</h2><p>Peru’s Chinese-Peruvian cooking, and a whole genre of its own in Lima. Wontons, dumplings, and wok dishes made with Peruvian ingredients.</p></div></div><div class="slide" id="slide-choco-museo" role="tabpanel" aria-labelledby="tab-choco-museo" data-slug="choco-museo" data-bg="img/choco-museo-1.jpg" style="--h:126" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/choco-museo-1.jpg" alt="Cacao tree with colorful pods at Choco Museo" loading="lazy" decoding="async"><img src="img/choco-museo-2.jpg" alt="Illustrated wall showing how cacao becomes chocolate" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">04 / 14</p><h2>Choco Museo</h2><p>A small museum and shop for Peruvian cacao. The wall map follows the pod from harvest to roasting, grinding, and chocolate.</p></div></div><div class="slide" id="slide-choclo-con-queso" role="tabpanel" aria-labelledby="tab-choclo-con-queso" data-slug="choclo-con-queso" data-bg="img/choclo-con-queso-1.jpg" style="--h:163" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/choclo-con-queso-1.jpg" alt="Boiled choclo with a block of fresh cheese in a bag" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">05 / 14</p><h2>Choclo con queso</h2><p>Choclo is the Andean corn with huge, chewy kernels. Street vendors serve it boiled with a slab of fresh, salty cheese.</p></div></div><div class="slide" id="slide-papa-rellena" role="tabpanel" aria-labelledby="tab-papa-rellena" data-slug="papa-rellena" data-bg="img/papa-rellena-1.jpg" style="--h:200" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/papa-rellena-1.jpg" alt="Fried papa rellena on a plate" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">06 / 14</p><h2>Papa rellena</h2><p>A mashed potato shell stuffed with seasoned filling, then fried until golden. A classic street snack.</p></div></div><div class="slide" id="slide-inca-kola" role="tabpanel" aria-labelledby="tab-inca-kola" data-slug="inca-kola" data-bg="img/inca-kola-1.jpg" style="--h:237" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/inca-kola-1.jpg" alt="Bottle of Inca Kola on a diner table" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">07 / 14</p><h2>Inca Kola</h2><p>Peru’s fluorescent yellow soda, sweet and a little like bubblegum. It is everywhere, and it goes with just about everything.</p></div></div><div class="slide" id="slide-chifles-cancha" role="tabpanel" aria-labelledby="tab-chifles-cancha" data-slug="chifles-cancha" data-bg="img/chifles-cancha-1.jpg" style="--h:274" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/chifles-cancha-1.jpg" alt="Plantain chips and cancha on a plate" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">08 / 14</p><h2>Plantain chips and corn nuts</h2><p>Chifles are crisp fried plantain slices. Cancha is toasted corn kernels, salty and crunchy. Both show up next to ceviche.</p></div></div><div class="slide" id="slide-ceviche" role="tabpanel" aria-labelledby="tab-ceviche" data-slug="ceviche" data-bg="img/ceviche-1.jpg" style="--h:311" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/ceviche-1.jpg" alt="Plate of fish ceviche with cancha and plantain chips" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">09 / 14</p><h2>Ceviche</h2><p>Raw fish cured in lime juice with onion and chili. Peru’s national dish, served cold and best eaten at lunch.</p></div></div><div class="slide" id="slide-jalea-mixta" role="tabpanel" aria-labelledby="tab-jalea-mixta" data-slug="jalea-mixta" data-bg="img/jalea-mixta-1.jpg" style="--h:348" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/jalea-mixta-1.jpg" alt="Plate of fried seafood topped with red onion salad" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">10 / 14</p><h2>Jalea mixta</h2><p>A pile of fried seafood under a heap of pickled red onion, with crispy plantain chips on the side. Made to share.</p></div></div><div class="slide" id="slide-fruit" role="tabpanel" aria-labelledby="tab-fruit" data-slug="fruit" data-bg="img/fruit-1.jpg" style="--h:25" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/fruit-1.jpg" alt="Fruit stand stacked with bananas, grapes, oranges, and avocados" loading="lazy" decoding="async"><img src="img/fruit-2.jpg" alt="Cherimoya, passion fruit, and other local fruits" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">11 / 14</p><h2>Local fruits</h2><p>The markets are stacked with fruit you rarely see at home, including cherimoya, passion fruit, and lucuma. Buy a few and taste your way through.</p></div></div><div class="slide" id="slide-lucuma-smoothie" role="tabpanel" aria-labelledby="tab-lucuma-smoothie" data-slug="lucuma-smoothie" data-bg="img/lucuma-smoothie-1.jpg" style="--h:62" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/lucuma-smoothie-1.jpg" alt="Cheers with small cups of lucuma smoothie" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">12 / 14</p><h2>Lucuma smoothie</h2><p>Lucuma is a Peruvian fruit with a creamy, caramel-like flavor, and it is blended into smoothies and ice cream. Easy to find at the markets.</p></div></div><div class="slide" id="slide-picarones" role="tabpanel" aria-labelledby="tab-picarones" data-slug="picarones" data-bg="img/picarones-1.jpg" style="--h:99" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/picarones-1.jpg" alt="Vendor frying picarones at a street cart" loading="lazy" decoding="async"><img src="img/picarones-2.jpg" alt="Plate of freshly fried picarones" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">13 / 14</p><h2>Picarones</h2><p>Ring-shaped fritters made from squash and sweet potato, fried to order and served with a sweet syrup.</p></div></div><div class="slide" id="slide-turkey-sandwich" role="tabpanel" aria-labelledby="tab-turkey-sandwich" data-slug="turkey-sandwich" data-bg="img/turkey-sandwich-1.jpg" style="--h:136" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/turkey-sandwich-1.jpg" alt="Roast turkey sandwich on a crusty roll" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">14 / 14</p><h2>Turkey sandwich</h2><p>A warm roll piled with sliced roast turkey and onions. A simple Lima lunch, and one of the best sandwiches on the trip.</p></div></div>
+    <button type="button" class="eat-arrow prev" aria-label="Previous dish"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="eat-arrow next" aria-label="Next dish"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="eat-tabs" role="tablist" aria-label="Dishes"><button type="button" role="tab" id="tab-coffee" aria-controls="slide-coffee" aria-selected="true" tabindex="0">Coffee</button><button type="button" role="tab" id="tab-empanadas" aria-controls="slide-empanadas" aria-selected="false" tabindex="-1">Empanadas</button><button type="button" role="tab" id="tab-chifa" aria-controls="slide-chifa" aria-selected="false" tabindex="-1">Chifa</button><button type="button" role="tab" id="tab-choco-museo" aria-controls="slide-choco-museo" aria-selected="false" tabindex="-1">Choco Museo</button><button type="button" role="tab" id="tab-choclo-con-queso" aria-controls="slide-choclo-con-queso" aria-selected="false" tabindex="-1">Choclo con queso</button><button type="button" role="tab" id="tab-papa-rellena" aria-controls="slide-papa-rellena" aria-selected="false" tabindex="-1">Papa rellena</button><button type="button" role="tab" id="tab-inca-kola" aria-controls="slide-inca-kola" aria-selected="false" tabindex="-1">Inca Kola</button><button type="button" role="tab" id="tab-chifles-cancha" aria-controls="slide-chifles-cancha" aria-selected="false" tabindex="-1">Plantain chips and corn nuts</button><button type="button" role="tab" id="tab-ceviche" aria-controls="slide-ceviche" aria-selected="false" tabindex="-1">Ceviche</button><button type="button" role="tab" id="tab-jalea-mixta" aria-controls="slide-jalea-mixta" aria-selected="false" tabindex="-1">Jalea mixta</button><button type="button" role="tab" id="tab-fruit" aria-controls="slide-fruit" aria-selected="false" tabindex="-1">Local fruits</button><button type="button" role="tab" id="tab-lucuma-smoothie" aria-controls="slide-lucuma-smoothie" aria-selected="false" tabindex="-1">Lucuma smoothie</button><button type="button" role="tab" id="tab-picarones" aria-controls="slide-picarones" aria-selected="false" tabindex="-1">Picarones</button><button type="button" role="tab" id="tab-turkey-sandwich" aria-controls="slide-turkey-sandwich" aria-selected="false" tabindex="-1">Turkey sandwich</button></div>
+  </div>
+  <div class="wrap"><div class="after"><section id="stay"><h2 class="sec">Where to stay</h2><article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Holiday Inn Lima Airport</h3><p>First night. On airport property, with a free shuttle every 30 minutes, which made the 6:20am Amazon flight easy.</p><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Holiday+Inn+Lima+Airport" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Holiday+Inn+Lima+Airport" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></article><article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Hyatt Centric San Isidro</h3><p>Last night. Av. Jorge Basadre 367, with an airport shuttle (about 18 minutes to LIM).</p><div class="links"><a class="lk lk-hotel" href="https://www.booking.com/searchresults.html?ss=Hyatt+Centric+San+Isidro+Lima" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Check rates<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a><a class="lk lk-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hyatt+Centric+San+Isidro+Lima" target="_blank" rel="noopener noreferrer" data-aff="pending">Map<span aria-hidden="true"> &#8599;</span><span class="sr"> (opens in a new tab)</span></a></div></article></section><section id="tips"><h2 class="sec">Tips for Lima</h2><div class="glass rows" style="margin-top:14px"><div class="row"><div class="term">Getting around</div><div class="detail">Use Uber in Lima only.</div></div><div class="row"><div class="term">Arrival</div><div class="detail">Budget 8:00&ndash;9:20a for immigration, customs, and baggage; LIM can run slow for international arrivals.</div></div><div class="row"><div class="term">Money</div><div class="detail">Exchange cash and grab water near the airport hotel, not in Miraflores. Much less travel.</div></div><div class="row"><div class="term">Traffic</div><div class="detail">Allow 35&ndash;60 min from the airport to the Historic Center and 45&ndash;75 min back, depending on traffic.</div></div></div></section><section id="series"><h2 class="sec">More from this trip</h2><div class="series"><a class="glass gl" href="/peru/"><strong>Peru in 2 weeks</strong></a><a class="glass gl" href="/peru/amazon/"><strong>Refugio Amazonas review</strong></a><a class="glass gl" href="/peru/ausangate/"><strong>Ausangate 7 Lakes</strong></a><a class="glass gl" href="/peru/inca-trail/"><strong>Inca Trail and Machu Picchu</strong></a><a class="glass gl" href="/peru/practicalities/"><strong>Peru practicalities</strong></a></div></section></div></div>
 </main>
-</main>
-
 <footer>
   <div class="wrap">
     <div>run away with rhea &middot; Adventure travel</div>
     <div><a href="https://www.instagram.com/runawaywithrhea/" target="_blank" rel="noopener noreferrer">Instagram<span class="sr"> (opens in a new tab)</span></a></div>
   </div>
 </footer>
-
-<dialog id="lb" aria-label="Photo viewer">
-  <button type="button" class="lb-close" id="lbClose" aria-label="Close photo">Close</button>
-  <img id="lbImg" src="" alt="">
-  <div class="lb-bar">
-    <button type="button" id="lbPrev" aria-label="Previous photo">&larr;</button>
-    <div id="lbCap" aria-live="polite"></div>
-    <button type="button" id="lbNext" aria-label="Next photo">&rarr;</button>
-  </div>
-</dialog>
-
 <script>
 (function () {
-  /* Photo viewer */
-  var dlg = document.getElementById('lb');
-  var img = document.getElementById('lbImg');
-  var cap = document.getElementById('lbCap');
-  var photos = Array.prototype.slice.call(document.querySelectorAll('.ph'));
+  var stage = document.getElementById('eats');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll('.slide'));
+  var tabs = Array.prototype.slice.call(stage.querySelectorAll('[role=tab]'));
   var cur = 0;
-  function show(i) {
-    cur = (i + photos.length) % photos.length;
-    var p = photos[cur];
-    img.src = p.getAttribute('data-full');
-    img.alt = p.getAttribute('data-alt') || '';
-    cap.textContent = (p.getAttribute('data-alt') || '') + ' (' + (cur + 1) + ' of ' + photos.length + ')';
+  slides.forEach(function (s) { s.querySelector('.bg').style.backgroundImage = 'url("' + s.getAttribute('data-bg') + '")'; });
+  function go(i, focus) {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function (s, k) {
+      var on = k === cur;
+      s.classList.toggle('on', on);
+      if (on) { s.removeAttribute('aria-hidden'); } else { s.setAttribute('aria-hidden', 'true'); }
+      tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+      tabs[k].tabIndex = on ? 0 : -1;
+    });
+    var t = tabs[cur], bar = t.parentNode;
+    bar.scrollTo({ left: t.offsetLeft - (bar.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
+    if (focus) { t.focus(); }
+    try { history.replaceState(null, '', '#' + slides[cur].getAttribute('data-slug')); } catch (e) {}
   }
-  photos.forEach(function (p, i) {
-    p.addEventListener('click', function () {
-      show(i);
-      if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { go(i); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1, true); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1, true); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0, true); }
+      else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1, true); }
     });
   });
-  document.getElementById('lbClose').addEventListener('click', function () { dlg.close(); });
-  document.getElementById('lbPrev').addEventListener('click', function () { show(cur - 1); });
-  document.getElementById('lbNext').addEventListener('click', function () { show(cur + 1); });
-  dlg.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') { show(cur - 1); }
-    else if (e.key === 'ArrowRight') { show(cur + 1); }
-  });
-  dlg.addEventListener('click', function (e) { if (e.target === dlg) { dlg.close(); } });
-
-  /* Parallax for the hero photo and the photo bands */
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { return; }
-  var hero = document.getElementById('heroImg');
-  var bands = Array.prototype.slice.call(document.querySelectorAll('.band img'));
-  var ticking = false;
-  function frame() {
-    ticking = false;
-    var vh = window.innerHeight || 800;
-    if (hero) {
-      var y = Math.min(window.scrollY || 0, 900);
-      hero.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
-    }
-    bands.forEach(function (b) {
-      var r = b.parentNode.getBoundingClientRect();
-      if (r.bottom < -100 || r.top > vh + 100) { return; }
-      var p = ((r.top + r.height / 2) - vh / 2) / vh;
-      b.style.transform = 'translate3d(0,' + (-p * 60).toFixed(1) + 'px,0)';
-    });
-  }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  frame();
-})();
-
-</script>
-<script>
-(function () {
-  var ds = Array.prototype.slice.call(document.querySelectorAll('details.day'));
-  var e = document.getElementById('expandAll'), c = document.getElementById('collapseAll');
-  if (e) { e.addEventListener('click', function () { ds.forEach(function (d) { d.open = true; }); }); }
-  if (c) { c.addEventListener('click', function () { ds.forEach(function (d) { d.open = false; }); }); }
-  if (location.hash) { var t = document.querySelector(location.hash); if (t && t.tagName === 'DETAILS') { t.open = true; } }
+  stage.querySelector('.prev').addEventListener('click', function () { go(cur - 1); });
+  stage.querySelector('.next').addEventListener('click', function () { go(cur + 1); });
+  var x0 = null;
+  stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    if (x0 === null) { return; }
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) { go(cur + (dx < 0 ? 1 : -1)); }
+  }, { passive: true });
+  var h = location.hash.replace('#', '');
+  slides.forEach(function (s, i) { if (s.getAttribute('data-slug') === h) { go(i); } });
 })();
 </script>
 </body>
