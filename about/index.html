@@ -275,6 +275,10 @@ h2.sec::after { background: var(--line); }
 #philosophy .rcard h3 { font-weight: 500; margin: 0 0 10px; }
 #philosophy .rcard p { margin: 0 0 12px; line-height: 1.75; color: #D5E0E4; }
 #philosophy .rcard p:last-child { margin-bottom: 0; }
+.about-intro { display: grid; grid-template-columns: minmax(220px, 340px) 1fr; gap: 40px; align-items: center; }
+.about-photo { margin: 0; }
+.about-photo img { display: block; width: 100%; height: auto; border-radius: 4px; }
+@media (max-width: 720px) { .about-intro { grid-template-columns: 1fr; gap: 24px; } .about-photo { max-width: 340px; } }
 </style>
 </head>
 <body><div class="ambient" aria-hidden="true"></div>
@@ -287,8 +291,8 @@ h2.sec::after { background: var(--line); }
   <nav class="toc" aria-label="On this page"><h2>On this page</h2><a href="#story">My story</a><a href="#philosophy">My travel philosophy</a><a href="#memories">Favorite travel memories</a></nav>
   <article class="main">
     <section id="story"><h2 class="sec">My story</h2>
-      <div class="photo-slot" style="min-height:320px">Portrait or a favorite trip photo</div>
-      <div class="prose"><p>I&rsquo;m a travel content creator based in the San Francisco Bay Area. I have an insatiable wanderlust, a love for active adventures, and a habit of sharing recommendations with anyone who will listen.</p><p>I dream that my stories inspire you to plan your next adventure.</p></div>
+      <div class="about-intro"><figure class="about-photo"><img src="rhea-machu-picchu.jpg" alt="Rhea kneeling on a grassy terrace with Machu Picchu and Huayna Picchu behind her" width="722" height="963" decoding="async"></figure>
+      <div class="prose"><p>I&rsquo;m a travel content creator based in the San Francisco Bay Area. I have an insatiable wanderlust, a love for active adventures, and a habit of sharing recommendations with anyone who will listen.</p><p>I dream that my stories inspire you to plan your next adventure.</p></div></div>
     </section>
     <section id="philosophy"><h2 class="sec">My travel philosophy</h2>
       <article class="glass rcard" style="padding:20px 22px; margin-top:14px"><h3>Consider your impact</h3><p>Wherever you go, I urge you to consider the impact of your visit. Across the world, tourism has caused unnecessary burdens: lack of respect for the local customs and environment, short-term rentals pricing locals out of their homes, porters on treks being mistreated, and overtourism.</p><p>I encourage you to be a responsible traveler. Take some time to learn about the history of the place you visit, learn the basics of the local language and customs, follow leave no trace, and think about the impact of your visit while you plan your trips.</p></article>
