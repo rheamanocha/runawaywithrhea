@@ -208,7 +208,7 @@ a:hover { color: var(--parks); }
 <script>
 (function () {
   var W = 1600, H = 820;
-  var PINS = {"yellowstone":[363.1,183.4],"utah":[348.4,213.7],"olympic":[320.3,169],"bayarea":[301.4,218.2],"puertorico":[513.2,317.6],"japan":[1359.8,232],"udaipur":[1113.6,285.1],"peru":[487.3,478.5]};
+  var PINS = {"yellowstone":[363.1,183.4],"utah":[348.4,213.7],"bayarea":[301.4,218.2],"puertorico":[513.2,317.6],"japan":[1359.8,232],"udaipur":[1113.6,285.1],"peru":[487.3,478.5],"seattle":[318.3,167.5],"cagetaways":[322.0,226.0],"nashville":[445.0,225.4],"iceland":[718.5,82.6],"spain":[785.0,204.0],"portugal":[760.0,213.5],"dubai":[1034.5,281.8],"delhi":[1128.0,262.0],"thailand":[1241.0,340.4]};
   var TRIPS = [
     { id: 'peru', cat: 'intl', label: 'Peru', name: 'Peru', kind: 'International · South America', title: 'Peru in 2 weeks: the Amazon, Cusco, and Machu Picchu', photo: 'Photo · Peru', zoom: 12, facts: ['13', '[Level]', 'September'], url: '/peru/',
       stops: [['Lima', 'Days 1\u20132', '/peru/lima/'], ['Refugio Amazonas, Tambopata', 'Days 3\u20136', '/peru/amazon/'], ['Cusco and Ausangate', 'Days 6\u20138', '/peru/ausangate/'], ['Inca Trail and Machu Picchu', 'Days 9\u201311', '/peru/inca-trail/']],
@@ -219,15 +219,31 @@ a:hover { color: var(--parks); }
       stops: [['Old Faithful and the geyser basins', 'Day 1'], ['Grand Prismatic overlook', 'Day 2'], ['Lamar Valley wildlife', 'Day 3'], ['Jenny Lake and Grand Teton', 'Day 4']] },
     { id: 'utah', cat: 'parks', label: 'Utah', name: 'Utah national parks', kind: 'National parks · Utah', title: 'The Mighty 5, in the right order', photo: 'Photo · Utah arch', zoom: 14,
       stops: [['Zion', '[Day]'], ['Bryce Canyon', '[Day]'], ['Capitol Reef', '[Day]'], ['Arches and Canyonlands', '[Day]']] },
-    { id: 'olympic', cat: 'parks', label: 'Olympic and Rainier', name: 'Olympic and Mount Rainier', kind: 'National parks · Washington', title: 'Olympic and Rainier road trip', photo: 'Photo · Olympic coast', zoom: 14,
-      stops: [['Olympic coast', '[Day]'], ['Hoh Rain Forest', '[Day]'], ['Hurricane Ridge', '[Day]'], ['Mount Rainier', '[Day]']] },
-    { id: 'bayarea', cat: 'local', label: 'Bay Area weekends', name: 'Bay Area weekends', kind: 'Local trips · California', title: 'Weekend trips from the Bay Area', photo: 'Photo · Coast trail', zoom: 22,
-      stops: [['[Trail or town]', '[Day]'], ['[Trail or town]', '[Day]'], ['[Trail or town]', '[Day]']] },
+    { id: 'bayarea', cat: 'local', label: 'Bay Area', name: 'San Francisco and the Bay Area', kind: 'Local trips · California', title: 'San Francisco and the Bay Area: food, hikes, and day trips', photo: 'Photo coming soon', zoom: 22,
+      stops: [['SF food tour: places I love and why', 'Idea'], ['Underrated things to do in SF', 'Idea'], ['Hiking spots in the Bay Area', 'Idea'], ['Napa Valley: where to eat and drink', 'Idea'], ['Angel Island day trip', 'Idea'], ['Ice cream in the Bay Area', 'Idea']] },
     { id: 'puertorico', cat: 'intl', label: 'Puerto Rico', name: 'Puerto Rico', kind: 'International \u00b7 Caribbean', title: 'The cobblestones, rainforest, and island beaches of Puerto Rico', photo: 'Photo \u00b7 Puerto Rico', img: 'img/puerto-rico.jpg', zoom: 26, url: '/puerto-rico/',
       stops: [['Old San Juan', 'Days 1\u20136', '/puerto-rico/#base'], ['Culebra by catamaran', 'Day 2', '/puerto-rico/#culebra'], ['El Yunque and Luquillo', 'Day 3', '/puerto-rico/#yunque'], ['Zipline and Bio Bay', 'Day 4', '/puerto-rico/#adventure'], ['Santurce nights', 'Fri and Sat', '/puerto-rico/#nights']],
       posts: [['Puerto Rico in 6 days', 'Overview', '/puerto-rico/']] },
-    { id: 'japan', cat: 'intl', label: 'Japan', name: 'Japan', kind: 'International · East Asia', title: 'Kyoto without the crowds', photo: 'Photo · Kyoto', zoom: 12,
-      stops: [['Tokyo', '[Day]'], ['Kyoto', '[Day]'], ['Osaka', '[Day]']] }
+    { id: 'japan', cat: 'intl', label: 'Japan', name: 'Japan', kind: 'International · East Asia', title: 'Japan: Tokyo, Kyoto, Osaka, and Lake Kawaguchi', photo: 'Photo coming soon', zoom: 12,
+      stops: [['Tokyo by neighborhood', 'Idea'], ['Kyoto', 'Idea'], ['Osaka', 'Idea'], ['Lake Kawaguchi guide', 'Idea'], ['Japan souvenirs', 'Idea']] },
+    { id: 'cagetaways', cat: 'local', label: 'California getaways', name: 'California getaways', kind: 'Local trips · California', title: 'California getaways: deserts, coast, and mountains', photo: 'Photo coming soon', zoom: 16,
+      stops: [['Death Valley', 'Idea'], ['Joshua Tree weekend', 'Idea'], ['Tahoe in the summer and winter', 'Idea'], ['Mendocino', 'Idea'], ['Morro Bay, SLO, and Cambria', 'Idea'], ['Weekend in Ojai', 'Idea'], ['Kings Canyon', 'Idea']] },
+    { id: 'seattle', cat: 'local', label: 'Seattle', name: 'Seattle', kind: 'City guide · Washington', title: 'My Seattle favorites', photo: 'Photo coming soon', zoom: 22,
+      stops: [['Favorite spots', 'Idea']] },
+    { id: 'nashville', cat: 'local', label: 'Nashville', name: 'Nashville', kind: 'Girls trip · Tennessee', title: 'Nashville girls trip itinerary', photo: 'Photo coming soon', zoom: 20,
+      stops: [['Girls trip itinerary', 'Idea']] },
+    { id: 'iceland', cat: 'intl', label: 'Iceland', name: 'Iceland', kind: 'International · Europe', title: 'Iceland in 7 days: the Ring Road', photo: 'Photo coming soon', zoom: 14,
+      stops: [['7-day Ring Road itinerary', 'Idea']] },
+    { id: 'spain', cat: 'intl', label: 'Spain', name: 'Spain', kind: 'International · Europe', title: 'Spain: Madrid, Barcelona, and Sevilla', photo: 'Photo coming soon', zoom: 14,
+      stops: [['Madrid itinerary', 'Idea'], ['Barcelona itinerary, with a note on tourism', 'Idea'], ['Sevilla weekend', 'Idea']] },
+    { id: 'portugal', cat: 'intl', label: 'Portugal', name: 'Portugal', kind: 'International · Europe', title: 'Portugal: Lisbon, Porto, and Lagos', photo: 'Photo coming soon', zoom: 16,
+      stops: [['Lisbon itinerary', 'Idea'], ['Porto itinerary and where to stay', 'Idea'], ['Lagos itinerary', 'Idea']] },
+    { id: 'dubai', cat: 'intl', label: 'Dubai', name: 'Dubai', kind: 'International · Middle East', title: 'Dubai: a solo weekend and general travel tips', photo: 'Photo coming soon', zoom: 22,
+      stops: [['Solo weekend itinerary', 'Idea'], ['General travel tips', 'Idea']] },
+    { id: 'delhi', cat: 'intl', label: 'Delhi', name: 'Delhi, India', kind: 'International · India', title: 'Delhi: top sights and where to eat', photo: 'Photo coming soon', zoom: 16,
+      stops: [['Top tourist destinations', 'Idea'], ['Places to eat', 'Idea']] },
+    { id: 'thailand', cat: 'intl', label: 'Thailand', name: 'Thailand', kind: 'International · Southeast Asia', title: 'Thailand in 10 days: Bangkok, Chiang Mai, and Krabi', photo: 'Photo coming soon', zoom: 12,
+      stops: [['Bangkok', 'Idea'], ['Chiang Mai', 'Idea'], ['Krabi', 'Idea']] }
   ];
   var FILTERS = [['all', 'All'], ['parks', 'National parks'], ['local', 'Local'], ['intl', 'International']];
 
