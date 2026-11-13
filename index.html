@@ -323,7 +323,10 @@ a:hover { color: var(--parks); }
     b.setAttribute('aria-pressed', 'false');
     b.innerHTML = '<span class="pin-inner"><span class="hit"><span class="dot"></span></span><span class="lab"></span></span>';
     b.querySelector('.lab').textContent = t.label;
-    b.addEventListener('click', function () { select(t.id, true); });
+    b.addEventListener('click', function () {
+      var from = current();
+      if (from && from.id !== t.id) { select(t.id, false); travel(from, t); } else { select(t.id, true); }
+    });
     world.appendChild(b);
     pinEls[t.id] = b;
   });
