@@ -41,3 +41,7 @@ for slug, trip in PAGES.items():
         home, n2 = pat2.subn(lambda mm: mm.group(1) + f" img: '{tile.lstrip('/')}'," + mm.group(2), home, count=1)
     print(f'{slug}: tile -> {tile} (guides {n}, map {n2 if trip else "-"})')
 write('guides/index.html', guides); write('index.html', home)
+
+# Also point each page's blurred backdrop at its hero photo
+import runpy
+runpy.run_path(os.path.join(ROOT, 'tools', 'sync-ambient.py'), run_name='__main__')
