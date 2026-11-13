@@ -294,13 +294,13 @@ details.day summary { padding: 18px 0; }
 .trip-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding-top: 28px; padding-bottom: 36px; font-size: 15px; border-top: 1px solid var(--line); }
 .trip-row span { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .trip-row a { display: inline-flex; align-items: center; min-height: 44px; }
-.board { display: flex; flex-wrap: wrap; justify-content: center; padding: 36px 0 90px; }
-.pol { position: relative; flex: 0 0 23%; margin: -4px 1%; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s, 1)); transition: transform .25s ease, box-shadow .25s; z-index: var(--z, 1); }
-.pol:hover, .pol:focus-visible { transform: translate(var(--x), var(--y)) rotate(0deg) scale(1.07); z-index: 200; }
+.board { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 22vw, 260px), 1fr)); gap: 34px 0; padding: 20px 0 100px; }
+.pol { position: relative; width: 90%; justify-self: center; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s, 1)); transition: transform .25s ease, box-shadow .25s; z-index: 1; }
+.pol:hover, .pol:focus-visible { transform: translate(var(--x), var(--y)) rotate(0deg) scale(1.07); z-index: 5; }
 .pol:focus-visible { outline: 3px solid var(--local); outline-offset: 6px; }
 .frame { display: block; background: #F5F0E6; padding: 4.5% 4.5% 0; box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 14px 30px rgba(0,0,0,.45); }
 .frame img { display: block; width: 100%; aspect-ratio: 1 / 1.08; object-fit: cover; background: #222; filter: saturate(.95) contrast(1.02); }
-.cap { display: flex; align-items: center; justify-content: center; text-align: center; min-height: clamp(54px, 8vw, 84px); padding: 4px 13% 8px; font-family: "Caveat", "Bradley Hand", cursive; font-weight: 600; font-size: clamp(20px, 2.6vw, 30px); line-height: 1; color: #2B2A33; text-wrap: balance; transform: rotate(-1deg); }
+.cap { display: flex; align-items: center; justify-content: center; text-align: center; min-height: clamp(54px, 8vw, 84px); padding: 4px 6px 8px; font-family: "Caveat", "Bradley Hand", cursive; font-weight: 600; font-size: clamp(20px, 2.6vw, 30px); line-height: 1; color: #2B2A33; text-wrap: balance; transform: rotate(-1deg); }
 .tape { position: absolute; top: -12px; left: 50%; width: 38%; height: 22px; margin-left: -19%; background: rgba(242,185,75,.55); transform: rotate(var(--t, -3deg)); box-shadow: 0 1px 2px rgba(0,0,0,.2); z-index: 2; }
 .count { position: absolute; right: -4px; top: -8px; z-index: 3; }
 dialog { padding: 0; border: 0; background: transparent; color: var(--ink); max-width: min(94vw, 860px); max-height: 94vh; overflow: visible; }
@@ -315,7 +315,6 @@ dialog::backdrop { background: rgba(5,10,12,.82); }
 .more { font-family: var(--mono); font-size: 12px; color: var(--local); letter-spacing: .08em; text-transform: uppercase; }
 .close { position: absolute; top: -52px; right: 0; min-height: 44px; padding: 0 18px; background: rgba(10,19,23,.85); color: var(--ink); border: 1px solid rgba(255,255,255,.2); border-radius: 4px; font: inherit; cursor: pointer; }
 @media (max-width: 720px) { .big { grid-template-columns: 1fr; gap: 20px; } .big .frame { max-width: 320px; margin: 0 auto; } .info h2 { font-size: 32px; } }
-@media (max-width: 720px) { .pol { flex-basis: 45%; margin: 6px 2.5%; transform: translate(calc(var(--x) * .3), calc(var(--y) * .5)) rotate(var(--r)) scale(1); } .pol:hover, .pol:focus-visible { transform: translate(calc(var(--x) * .3), calc(var(--y) * .5)) rotate(0deg) scale(1.05); } .cap { padding: 4px 8% 8px; font-size: 21px; } }
 @media (prefers-reduced-motion: reduce) { .pol { transition: none; } }
 </style>
 </head>
@@ -362,13 +361,13 @@ var DISHES = [
  {s:'turkey-sandwich', cap:'Turkey sandwich', title:'Turkey sandwich', d:'A warm roll piled with sliced roast turkey and onions. A simple Lima lunch, and one of the best sandwiches on the trip.', n:1}
 ];
 /* hand-tuned scatter: rotation (deg), nudge (px), size, tape */
-var SC = [[-7,-14,8,1.03,1],[5,12,-18,.97,0],[-4,16,10,1.04,1],[8,6,-10,.98,0],[-8,10,16,1.02,0],[4,-14,-6,.97,1],[-5,14,-16,1.04,0],[7,6,12,.98,0],[-3,16,-8,1.03,1],[8,-12,10,.97,0],[-7,12,-12,1.04,0],[5,-16,8,.98,1],[-8,10,14,1.02,0],[6,-6,-10,1.03,0]];
+var SC = [[-7,-18,6,1.02,1],[5,14,-22,.95,0],[-4,20,14,1.05,1],[8,-14,-10,.97,0],[-8,12,18,1.03,0],[4,-20,-6,.95,1],[-5,16,-18,1.06,0],[7,-10,16,.96,0],[-3,22,-8,1.04,1],[8,-16,12,.95,0],[-7,18,-14,1.05,0],[5,-22,10,.97,1],[-8,14,16,1.02,0],[6,-8,-12,1.04,0]];
 var board = document.getElementById('board');
 DISHES.forEach(function (d, i) {
   var sc = SC[i % SC.length];
   var b = document.createElement('button');
   b.type = 'button'; b.className = 'pol';
-  b.style.cssText = '--z:' + (100 - i) + ';--r:' + sc[0] + 'deg;--x:' + sc[1] + 'px;--y:' + sc[2] + 'px;--s:' + sc[3] + ';--t:' + (sc[0] * -1) + 'deg';
+  b.style.cssText = '--r:' + sc[0] + 'deg;--x:' + sc[1] + 'px;--y:' + sc[2] + 'px;--s:' + sc[3] + ';--t:' + (sc[0] * -1) + 'deg';
   b.setAttribute('aria-label', d.cap);
   b.innerHTML = (sc[4] ? '<span class="tape" aria-hidden="true"></span>' : '') +
     '<span class="frame"><img src="img/' + d.s + '-1.jpg" alt="" loading="' + (i < 4 ? 'eager' : 'lazy') + '"><span class="cap">' + d.cap + '</span></span>';
