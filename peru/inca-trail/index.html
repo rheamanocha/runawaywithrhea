@@ -257,6 +257,33 @@ details.day[open] .dchev { transform: rotate(90deg); }
 .home-bar .hsearch input{width:170px;min-height:44px;padding:8px 12px;background:#17303A;border:1px solid #2B424B;border-radius:0;color:#E8EEF0;font:500 14px "Space Grotesk",system-ui,sans-serif}
 .home-bar .hsearch input:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
 @media(max-width:860px){.home-bar .nav{margin-left:0;width:100%;order:3;overflow-x:auto}.home-bar .hsearch{margin-left:auto}.home-bar .hsearch input{width:130px}}
+/* lighter pass: fewer boxes, calmer background, more air */
+.ambient { filter: blur(90px) saturate(1) brightness(0.28); }
+.glass { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.band figcaption.glass { background: rgba(10,19,23,0.72); }
+.facts { gap: 0; margin-top: 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.fact { padding: 20px 22px; border-radius: 0; border-left: 1px solid var(--line); }
+.fact:first-child { border-left: 0; padding-left: 0; }
+.toc { padding: 0; }
+.toc a { min-height: 38px; color: var(--muted); }
+.toc a:hover { color: var(--ink); background: none; }
+h2.sec { font-size: clamp(28px, 3.4vw, 38px); font-weight: 400; }
+h2.sec::after { background: var(--line); }
+.main { gap: 96px; }
+.prose p { font-size: 17px; line-height: 1.85; color: #D5E0E4; }
+.layout { padding-top: 72px; }
+details.day { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; margin: 0; }
+details.day summary { padding: 18px 0; }
+.dtitle { font-weight: 500; }
+.dnum { font-size: 30px; color: var(--local); }
+.dbody { padding: 0 0 20px 78px; }
+.drow { border-top: 0; padding: 6px 0; }
+.dnote { background: none; padding: 8px 0 0; }
+.callout, .tipcard, .story { background: rgba(255,255,255,0.025) !important; border: 0 !important; border-left: 2px solid var(--local) !important; border-radius: 0 !important; }
+.band { border: 0; box-shadow: none; border-radius: 0; }
+.series .glass { border: 1px solid var(--line); border-radius: 4px; }
+.itin-tools button { border-color: var(--line); font-weight: 500; }
+.tags .tag { background: none; border: 1px solid var(--line); }
 </style>
 </head>
 <body>
