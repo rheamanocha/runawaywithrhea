@@ -282,6 +282,16 @@ details.day summary { padding: 18px 0; }
  .home-bar .hsearch{margin:0;width:100%}
  .home-bar .hsearch input{flex:1;width:auto}
 }
+
+/* Film strip galleries (3+ photos) */
+.film { --hole: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2712%27%3E%3Crect x=%276%27 y=%270%27 width=%278%27 height=%2711%27 rx=%271%27 fill=%27%23e9e3d2%27 fill-opacity=%27.5%27/%3E%3C/svg%3E"); position: relative; margin: 26px 0; border-radius: 6px; overflow: hidden; background: linear-gradient(115deg, rgba(255,255,255,.14), rgba(255,255,255,0) 38%, rgba(255,255,255,.07) 68%, rgba(255,255,255,0)), rgba(24,20,16,.62); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,.14); }
+.film::before, .film::after { content: ""; display: block; height: 12px; background: var(--hole) repeat-x; margin: 8px 0; }
+.film .edge { display: flex; justify-content: space-between; gap: 12px; padding: 0 18px 6px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #e8a33d; }
+.mosaic.filmstrip { display: flex; gap: 10px; overflow-x: auto; margin: 0; padding: 0 18px 2px; scrollbar-width: thin; scrollbar-color: rgba(232,163,61,.5) transparent; counter-reset: fr; }
+.mosaic.filmstrip .tile { flex: 0 0 auto; width: auto; height: auto; grid-column: auto; grid-row: auto; border-radius: 2px; counter-increment: fr; }
+.mosaic.filmstrip .tile::before { content: counter(fr); position: absolute; top: 5px; left: 7px; z-index: 2; font-family: var(--mono); font-size: 10px; color: #e8a33d; text-shadow: 0 1px 3px rgba(0,0,0,.8); pointer-events: none; }
+.mosaic.filmstrip .tile img { height: 230px; width: auto; max-width: none; aspect-ratio: auto; object-fit: cover; }
+@media (max-width: 860px) { .mosaic.filmstrip .tile img { height: 190px; } .film .edge, .mosaic.filmstrip { padding-left: 14px; padding-right: 14px; } }
 </style></head>
 <body>
 
@@ -342,14 +352,14 @@ details.day summary { padding: 18px 0; }
         <div class="glass item panel">
           <h3><a class="tlink" href="https://www.getyourguide.com/s/?q=City+Palace+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">City Palace tour<span class="sr"> (opens in a new tab)</span></a></h3>
           <div class="time">Time: 3 to 4 hours</div>
-          <div class="mosaic" role="group" aria-label="City Palace photos">
+          <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>City Palace</span></div><div class="mosaic filmstrip" role="group" aria-label="City Palace photos">
 <button type="button" class="ph tile lead" data-full="img/p07.jpg" data-alt="City Palace glowing at dusk" aria-label="Enlarge photo: City Palace glowing at dusk"><img src="img/p07.jpg" alt="City Palace glowing at dusk" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
 <button type="button" class="ph tile" data-full="img/p04.jpg" data-alt="Stained-glass floral windows set in a carved wall" aria-label="Enlarge photo: Stained-glass floral windows set in a carved wall"><img src="img/p04.jpg" alt="Stained-glass floral windows set in a carved wall" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 30%"></button>
 <button type="button" class="ph tile" data-full="img/p06.jpg" data-alt="Close-up of a carved arched facade" aria-label="Enlarge photo: Close-up of a carved arched facade"><img src="img/p06.jpg" alt="Close-up of a carved arched facade" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 45%"></button>
 <button type="button" class="ph tile" data-full="img/p05.jpg" data-alt="Palace courtyard with a black-and-white checkered floor" aria-label="Enlarge photo: Palace courtyard with a black-and-white checkered floor"><img src="img/p05.jpg" alt="Palace courtyard with a black-and-white checkered floor" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 35%"></button>
 <button type="button" class="ph tile" data-full="img/p03.jpg" data-alt="Palace courtyard garden with trees and visitors" data-more="+1" aria-label="View all 6 photos. First: Palace courtyard garden with trees and visitors"><img src="img/p03.jpg" alt="" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 60%"></button>
 <button type="button" class="ph tile" hidden data-full="img/p02.jpg" data-alt="A traveler in a pink outfit under the arches of City Palace" aria-label="Enlarge photo: A traveler in a pink outfit under the arches of City Palace"></button>
-</div>
+</div></div>
           <div class="prose">
             <p>The most popular destination in Udaipur is City Palace. Built 450 years ago, it was the residence for the rulers of Mewar and has been incredibly well preserved. It showcases unique Indian architecture and a rotating Indian art collection, including depictions of local history. Built on the banks of Lake Pichola, the palace offers expansive views of the lake.</p>
             <p>One of my favorite parts was the courtyard, a common feature in Indian homes and palaces that serves as a private gathering place and helps naturally cool the building.</p>
@@ -360,13 +370,13 @@ details.day summary { padding: 18px 0; }
         <div class="glass item panel">
           <h3><a class="tlink" href="https://www.getyourguide.com/s/?q=Lake+Pichola+boat+ride+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Boat ride to Jagmandir Island Palace<span class="sr"> (opens in a new tab)</span></a></h3>
           <div class="time">Time: 1 hour</div>
-          <div class="mosaic" role="group" aria-label="Lake Pichola boat ride photos">
+          <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>Lake Pichola boat ride</span></div><div class="mosaic filmstrip" role="group" aria-label="Lake Pichola boat ride photos">
 <button type="button" class="ph tile lead" data-full="img/p01.jpg" data-alt="City Palace stretching along Lake Pichola, seen from the water" aria-label="Enlarge photo: City Palace stretching along Lake Pichola, seen from the water"><img src="img/p01.jpg" alt="City Palace stretching along Lake Pichola, seen from the water" loading="lazy" decoding="async" width="900" height="900" style="object-position: 35% 50%"></button>
 <button type="button" class="ph tile" data-full="img/p10.jpg" data-alt="Sun setting over Lake Pichola" aria-label="Enlarge photo: Sun setting over Lake Pichola"><img src="img/p10.jpg" alt="Sun setting over Lake Pichola" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 45%"></button>
 <button type="button" class="ph tile" data-full="img/p08.jpg" data-alt="Jagmandir Island palace with a palm tree, seen from the lake" aria-label="Enlarge photo: Jagmandir Island palace with a palm tree, seen from the lake"><img src="img/p08.jpg" alt="Jagmandir Island palace with a palm tree, seen from the lake" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 45%"></button>
 <button type="button" class="ph tile" data-full="img/p09.jpg" data-alt="Clipped hedges and garden paths on Jagmandir Island" aria-label="Enlarge photo: Clipped hedges and garden paths on Jagmandir Island"><img src="img/p09.jpg" alt="Clipped hedges and garden paths on Jagmandir Island" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
 <button type="button" class="ph tile" data-full="img/p12.jpg" data-alt="Passengers inside a canopied boat on the lake" aria-label="Enlarge photo: Passengers inside a canopied boat on the lake"><img src="img/p12.jpg" alt="Passengers inside a canopied boat on the lake" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
-</div>
+</div></div>
           <div class="prose">
             <p>After your self-guided tour of City Palace, you can also take a boat ride on Lake Pichola. The boat ride will take you around the lake, with views of City Palace and a stop at Jagmandir Island. Highly recommend not skipping the boat, as the views are breathtaking.</p>
             <p>After purchasing your ticket, there&rsquo;s a 10 minute walk or shuttle (extra cost) down to the dock. Sunset is the most popular (and most expensive) time, but after seeing how the sunset illuminates the palace and the lake it is well worth it. The boats leave repeatedly, with a last boat going out around sunset (timings dependent on season).</p>
@@ -383,7 +393,7 @@ details.day summary { padding: 18px 0; }
         <div class="glass item panel">
           <h3><a class="tlink" href="https://www.getyourguide.com/s/?q=Vintage+Car+Collection+Udaipur" target="_blank" rel="noopener noreferrer sponsored" data-aff="pending">Vintage car museum and Jeep tour<span class="sr"> (opens in a new tab)</span></a></h3>
           <div class="time">Time: 1 to 3 hours</div>
-          <div class="mosaic" role="group" aria-label="Vintage car collection and jeep tour photos">
+          <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>Vintage car collection</span></div><div class="mosaic filmstrip" role="group" aria-label="Vintage car collection and jeep tour photos">
 <button type="button" class="ph tile lead" data-full="img/p15.jpg" data-alt="A row of vintage cars in a showroom" aria-label="Enlarge photo: A row of vintage cars in a showroom"><img src="img/p15.jpg" alt="A row of vintage cars in a showroom" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 60%"></button>
 <button type="button" class="ph tile" data-full="img/p13.jpg" data-alt="Burgundy vintage car in the collection" aria-label="Enlarge photo: Burgundy vintage car in the collection"><img src="img/p13.jpg" alt="Burgundy vintage car in the collection" loading="lazy" decoding="async" width="900" height="900" style="object-position: center 55%"></button>
 <button type="button" class="ph tile" data-full="img/p16.jpg" data-alt="An old horse-drawn carriage" aria-label="Enlarge photo: An old horse-drawn carriage"><img src="img/p16.jpg" alt="An old horse-drawn carriage" loading="lazy" decoding="async" width="900" height="900" style="object-position: 65% 50%"></button>
@@ -392,7 +402,7 @@ details.day summary { padding: 18px 0; }
 <button type="button" class="ph tile" hidden data-full="img/p17.jpg" data-alt="Cream-colored classic car with an information plaque" aria-label="Enlarge photo: Cream-colored classic car with an information plaque"></button>
 <button type="button" class="ph tile" hidden data-full="img/p14.jpg" data-alt="Burgundy vintage car with its doors open" aria-label="Enlarge photo: Burgundy vintage car with its doors open"></button>
 <button type="button" class="ph tile" hidden data-full="img/p18.jpg" data-alt="A visitor at a railing above a river valley" aria-label="Enlarge photo: A visitor at a railing above a river valley"></button>
-</div>
+</div></div>
           <div class="prose">
             <p>A scenic road takes you to a hidden gem nestled in the hills of Udaipur: the Vintage Car Collection at Fateh Vilas, a must stop for car enthusiasts. Behind dramatic Indian heritage doors lies a collection that ranges from Land Rovers to Rolls Royces to an Impala and even an old carriage. My personal favorite was a burgundy behemoth, dubbed the &ldquo;mafia car.&rdquo;</p>
             <p>This purported quick stop unexpectedly became our favorite experience in Udaipur. Our tour guide (who was also the auto mechanic, receptionist, and more), took us on a private tour of the collection. His depth of knowledge on each car, from its history to how rare it was to the inner workings, gave much color to the tour. If you ask nicely, you may even get to look under the hood or sit inside one.</p>
