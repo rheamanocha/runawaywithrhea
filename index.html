@@ -463,7 +463,11 @@ a:hover { color: var(--parks); }
     if (many) { cur.posts.forEach(function (p) { row(pl, p, true, true); }); }
     $('tabs').hidden = !many;
     $('tabPosts').textContent = many ? 'Guides \u00b7 ' + cur.posts.length : '';
+    /* Guides is the default tab for every trip; only keep Stops if the visitor picked it on this same trip */
+    if (state.lastTrip !== cur.id) state.tab = 'posts';
+    state.lastTrip = cur.id;
     showTab(many && state.tab !== 'stops' ? 'posts' : 'stops');
+    if (!many) state.tab = 'posts';
     $('counter').textContent = 'Trip ' + (v.indexOf(cur) + 1) + ' of ' + v.length;
     $('prev').disabled = $('next').disabled = v.length < 2;
   }
