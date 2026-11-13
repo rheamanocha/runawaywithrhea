@@ -35,7 +35,7 @@ for page,(name,src,focus,desc,path) in PAGES.items():
     t=open(page).read()
     t=re.sub(r'\n?<!-- og:start -->.*?<!-- og:end -->','',t,flags=re.S)
     title=re.search(r'<title>(.*?)</title>',t,re.S).group(1)
-    v='?v=2' if name=='home' else ''
+    v='?v=3' if name=='home' else ''
     d=desc.replace("'","&#39;")
     tags=f'''<!-- og:start -->
 <meta name="description" content="{d}">
