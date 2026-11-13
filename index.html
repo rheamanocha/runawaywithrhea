@@ -452,13 +452,13 @@ a:hover { color: var(--parks); }
         a.appendChild(n); a.appendChild(m); li.appendChild(a);
       } else {
         var a2 = document.createElement('span'); a2.textContent = s[0];
-        var b2 = document.createElement('span'); b2.textContent = s[1];
-        li.appendChild(a2); li.appendChild(b2);
+        li.appendChild(a2);
+        if (iconOnly) { a2.setAttribute('title', s[1]); } else { var b2 = document.createElement('span'); b2.textContent = s[1]; li.appendChild(b2); }
       }
       parent.appendChild(li);
     }
     ul.textContent = ''; pl.textContent = '';
-    cur.stops.forEach(function (s) { row(ul, s, true); });
+    cur.stops.forEach(function (s) { row(ul, s, true, true); });
     var many = cur.posts && cur.posts.length > 1;
     if (many) { cur.posts.forEach(function (p) { row(pl, p, true, true); }); }
     $('tabs').hidden = !many;
