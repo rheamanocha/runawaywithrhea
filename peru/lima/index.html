@@ -264,6 +264,7 @@ details.day[open] .dchev { transform: rotate(90deg); }
 .facts { gap: 0; margin-top: 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .fact { padding: 20px 22px; border-radius: 0; border-left: 1px solid var(--line); }
 .fact:first-child { border-left: 0; padding-left: 0; }
+@media (max-width: 860px) { .fact:nth-child(odd) { border-left: 0; padding-left: 0; } }
 .toc { padding: 0; }
 .toc a { min-height: 38px; color: var(--muted); }
 .toc a:hover { color: var(--ink); background: none; }
