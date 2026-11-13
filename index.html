@@ -148,6 +148,41 @@ a:hover { color: var(--parks); }
   .legend { display: none; }
   .hint { display: none; }
 }
+
+/* Desktop: the panel is invisible plumbing; mobile: the menu button opens it */
+.menu-btn { display: none; }
+.menu-panel { display: contents; }
+@media (max-width: 820px) {
+  .bar { position: relative; z-index: 30; flex-wrap: nowrap; padding: 4px 12px; gap: 8px; }
+  .logo { font-size: 17px; padding: 6px 2px; }
+  .menu-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; background: transparent; border: 1px solid var(--line); font-size: 14px; font-weight: 500; cursor: pointer; }
+  .menu-ico { width: 14px; height: 10px; background: linear-gradient(currentColor 0 0) top / 100% 2px no-repeat, linear-gradient(currentColor 0 0) center / 100% 2px no-repeat, linear-gradient(currentColor 0 0) bottom / 100% 2px no-repeat; }
+  .menu-btn[aria-expanded="true"] { background: var(--accent); color: var(--onaccent); border-color: var(--accent); }
+  .menu-panel { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 16px; padding: 12px 12px 18px; background: var(--panel); border-bottom: 1px solid var(--line); box-shadow: 0 18px 30px rgba(0,0,0,0.45); }
+  .bar.open .menu-panel { display: flex; }
+  .mnav { margin: 0; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+  .mnav a { padding: 0 4px; font-size: 16px; border-bottom: 1px solid var(--line); }
+  .bar-right { flex-direction: column; align-items: stretch; gap: 12px; }
+  .seg { flex-wrap: wrap; }
+  .seg button { min-height: 40px; padding: 6px 12px; }
+  .search { width: 100%; }
+  .search input { flex: 1; width: auto; }
+  /* Trip card: compact so the title, tabs, and list all fit */
+  .card { height: min(48%, 400px); }
+  .card-body { padding: 14px 16px 12px; gap: 10px; }
+  .kind { font-size: 11px; }
+  .title { font-size: 20px; line-height: 1.2; }
+  .fact { padding: 6px 8px; }
+  .tabs button { min-height: 36px; padding: 4px 12px; font-size: 13px; }
+  .stops li { font-size: 14px; }
+  .stops li > span:first-child, .stops li > a, .stops li > span:last-child { padding: 9px 0; }
+  .card-body { padding-bottom: 0; }
+  .card-foot { position: sticky; bottom: 0; margin: auto -16px 0; padding: 8px 16px 12px; flex-direction: row; align-items: center; gap: 8px; background: var(--panel); border-top: 1px solid var(--line); }
+  .pager { display: contents; }
+  .pager button { order: 0; width: 40px; height: 40px; font-size: 18px; flex: none; }
+  #prev { order: 1; } .cta { order: 2; flex: 1; min-height: 40px; padding: 8px 12px; font-size: 14px; } #next { order: 3; }
+  .counter { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .dot { transition: none; }
 }
@@ -157,6 +192,8 @@ a:hover { color: var(--parks); }
 <div id="app">
   <header class="bar">
     <a class="logo" href="#">run away with rhea</a>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel"><span class="menu-ico" aria-hidden="true"></span>Menu</button>
+    <div class="menu-panel" id="menuPanel">
     <nav class="mnav" aria-label="Main"><a href="#" aria-current="page">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav>
     <div class="bar-right">
       <div class="seg" role="group" aria-label="Filter trips" id="filters"></div>
@@ -164,6 +201,7 @@ a:hover { color: var(--parks); }
         <label for="search">Search</label>
         <input id="search" type="search" placeholder="Park, city, trip" autocomplete="off">
       </div>
+    </div>
     </div>
   </header>
 
@@ -499,6 +537,15 @@ a:hover { color: var(--parks); }
   });
 
   window.addEventListener('resize', function () { updateArea(); apply(); });
+
+
+  /* Mobile menu */
+  var bar = document.querySelector('.bar'), menuBtn = $('menuBtn');
+  function setMenu(o) { bar.classList.toggle('open', o); menuBtn.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+  menuBtn.addEventListener('click', function () { setMenu(!bar.classList.contains('open')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', function (e) { if (!bar.contains(e.target)) setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 820) setMenu(false); });
 
   /* Start: all trips in view, first trip selected */
   updateArea();

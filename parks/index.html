@@ -274,9 +274,26 @@ details.day[open] .dchev { transform: rotate(90deg); }
 .home-bar .hsearch input:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
 @media(max-width:860px){.home-bar .nav{margin-left:0;width:100%;order:3;overflow-x:auto}.home-bar .hsearch{margin-left:auto}.home-bar .hsearch input{width:130px}}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></head>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"><style id="menu-css">
+.menu-btn{display:none}
+.menu-panel{display:contents}
+@media(max-width:820px){
+ .bar.home-bar{flex-wrap:nowrap!important;justify-content:space-between!important;position:relative;padding:4px 12px!important;gap:8px!important}
+ .home-bar .logo{font-size:17px;padding:6px 2px}
+ .menu-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;background:transparent;border:1px solid #2B424B;color:#E8EEF0;font:500 14px "Space Grotesk",system-ui,sans-serif;cursor:pointer}
+ .menu-ico{width:14px;height:10px;background:linear-gradient(currentColor 0 0) top/100% 2px no-repeat,linear-gradient(currentColor 0 0) center/100% 2px no-repeat,linear-gradient(currentColor 0 0) bottom/100% 2px no-repeat}
+ .menu-btn[aria-expanded="true"]{background:#7CE0C3;color:#0E1A1F;border-color:#7CE0C3}
+ .menu-btn:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
+ .menu-panel{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:16px;padding:12px 12px 18px;background:#0E1A1F;border-bottom:1px solid #2B424B;box-shadow:0 18px 30px rgba(0,0,0,.45);z-index:60}
+ .bar.open .menu-panel{display:flex}
+ .home-bar .nav{flex-direction:column;width:100%!important;margin:0!important;order:0;gap:0;border-top:1px solid #2B424B;overflow:visible}
+ .home-bar .nav a{padding:0 4px;font-size:16px;border-bottom:1px solid #2B424B}
+ .home-bar .hsearch{margin:0;width:100%}
+ .home-bar .hsearch input{flex:1;width:auto}
+}
+</style></head>
 <body><div class="ambient" aria-hidden="true"></div>
-<header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></header><script>(function(){var f=document.querySelector('.hsearch');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('hq').value.trim();var q=document.getElementById('q');if(q){q.value=v;q.dispatchEvent(new Event('input'));q.scrollIntoView({block:'center'});}else{window.open('/guides/#q='+encodeURIComponent(v),'_blank');}});})();</script>
+<header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel"><span class="menu-ico" aria-hidden="true"></span>Menu</button><div class="menu-panel" id="menuPanel"><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></div></header><script>(function(){var f=document.querySelector('.hsearch');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('hq').value.trim();var q=document.getElementById('q');if(q){q.value=v;q.dispatchEvent(new Event('input'));q.scrollIntoView({block:'center'});}else{window.open('/guides/#q='+encodeURIComponent(v),'_blank');}});})();</script>
 <style>
 .np{--np-ink:#E8EEF0;--np-mute:#9FB5BD;--np-line:#2B424B;--np-mint:#7CE0C3;--np-amber:#F2B94B;--np-coral:#FF8A6B;--np-panel:#0E1A1F;font-family:'Zilla Slab',Georgia,serif}
 .np-poster{position:relative;overflow:hidden;text-align:center;padding:72px 24px 150px;background:linear-gradient(180deg,#0E1A1F,#0A1317)}
@@ -468,5 +485,5 @@ console.assert(T===63&&V===21,'counts',T,V);
 })();
 
 </script>
-</body>
+<script id="menu-js">(function(){var b=document.querySelector('.bar'),m=document.getElementById('menuBtn');if(!b||!m)return;function s(o){b.classList.toggle('open',o);m.setAttribute('aria-expanded',o?'true':'false')}m.addEventListener('click',function(){s(!b.classList.contains('open'))});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)});document.addEventListener('click',function(e){if(!b.contains(e.target))s(false)});window.addEventListener('resize',function(){if(innerWidth>820)s(false)})})();</script></body>
 </html>
