@@ -39,7 +39,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 [hidden] { display: none !important; }
 
 /* Fixed ambient layer: the hero photo, blurred and darkened */
-.ambient { position: fixed; inset: -10%; z-index: -1; background: #0A1317 radial-gradient(ellipse at 25% 15%, #2FB5C9 0%, transparent 55%), radial-gradient(ellipse at 80% 70%, #F2B94B 0%, transparent 55%), linear-gradient(160deg, #0f5f73, #1f3b2e) center / cover no-repeat; filter: blur(70px) saturate(1.3) brightness(0.42); transform: translateZ(0); }
+.ambient { position: fixed; inset: -10%; z-index: -1; background: #0A1317 url(img/p00.jpg) center / cover no-repeat; filter: blur(70px) saturate(1.3) brightness(0.42); transform: translateZ(0); }
 
 /* Glass surface */
 .glass { background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02) 55%), var(--glass); -webkit-backdrop-filter: blur(24px) saturate(1.5); backdrop-filter: blur(24px) saturate(1.5); border: 1px solid var(--edge); border-radius: 6px; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 6px 18px rgba(0, 0, 0, 0.22); }
@@ -225,8 +225,8 @@ dialog img { display: block; max-width: 92vw; max-height: 78vh; width: auto; hei
 .photo-slot { display: grid; place-items: center; text-align: center; padding: 16px; min-height: 168px; border: 1px dashed var(--edge); border-radius: 4px; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; background: rgba(255,255,255,0.03); }
 .mosaic .photo-slot { min-height: 0; height: 100%; }
 .mosaic .photo-slot.lead { grid-column: span 2; grid-row: span 2; }
-.hero-wrap.empty { height: 420px; }
-.hero-wrap.empty .photo-slot { position: absolute; inset: 24px max(24px, calc((100% - 1200px) / 2 + 24px)); min-height: 0; background: rgba(10,19,23,0.25); }
+.hero-wrap.empty .photo-slot { position: absolute; inset: 0; min-height: 0; border: 0; border-radius: 0; background: linear-gradient(135deg, rgba(47,181,201,0.18), rgba(242,185,75,0.10) 60%, rgba(10,19,23,0.35)); }
+.hero-wrap.empty .photo-slot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,19,23,0.6), rgba(10,19,23,0) 35%); }
 .story { border-left: 3px solid var(--local); padding: 14px 18px; color: var(--muted); font-style: italic; background: rgba(255,255,255,0.03); border-radius: 0 4px 4px 0; }
 .story strong { color: var(--ink); font-style: normal; }
 .region-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
@@ -267,7 +267,10 @@ details.day[open] .dchev { transform: rotate(90deg); }
 <header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></header>
 
 <main>
-  <div class="hero-wrap empty"><div class="photo-slot">Hero photo (wide, roughly 3:1 crop works best)</div></div>
+  <div class="hero-wrap">
+    <img class="hero-img" id="heroImg" src="img/p00.jpg" alt="Friends walking the shoreline at sunset in Puerto Rico" width="1284" height="963" style="object-position:center 62%">
+    <div class="hero-scrim"></div>
+  </div>
   <div class="wrap"><div class="title-card"><div class="crumbs"><a href="/guides/">Guides</a> / <a href="/guides/#q=Puerto%20Rico">Caribbean</a> / Puerto Rico</div><h1>The Cobblestones, Rainforest, and Island Beaches of Puerto Rico</h1><div class="byline"><span>Written by Rhea Manocha</span><span>April 2026</span></div><div class="tags" aria-label="Tags"><span class="tag">Caribbean</span><span class="tag">Puerto Rico</span><span class="tag">Old San Juan</span><span class="tag">Beaches</span><span class="tag">Group trip</span></div></div></div>
   <div class="wrap facts" aria-label="Quick facts"><div class="glass fact"><span>When</span><span>April 2026</span></div><div class="glass fact"><span>Base</span><span>Old San Juan, all six days</span></div><div class="glass fact"><span>Headliners</span><span>Culebra, El Yunque, Bio Bay</span></div><div class="glass fact"><span>Getting around</span><span>Rental car and Uber</span></div></div>
   <div class="wrap layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><a href="#overview">Overview</a><a href="#itinerary">Day-by-day itinerary</a><a href="#base">Old San Juan: the base</a><a href="#culebra">Culebra by catamaran</a><a href="#yunque">El Yunque and Luquillo</a><a href="#adventure">Zipline and the bioluminescent bay</a><a href="#nights">Nights out in Santurce</a><a href="#practical">Practicalities</a></nav><article class="main"><section id="overview"><h2 class="sec">Overview</h2><div class="story"><strong>Your story:</strong> a short hook. Why Puerto Rico, why April, and who you went with.</div><div class="prose"><p>Six days, six friends, and one base: an apartment in Old San Juan. From there we did a catamaran day to Culebra, a rainforest day at El Yunque, a zipline plus a glowing bay, and two nights out in Santurce. Below is the day-by-day, then a section on each part of the trip.</p></div></section><section id="itinerary"><h2 class="sec">Day-by-day itinerary</h2><div class="itin-tools"><button type="button" id="expandAll">Expand all days</button><button type="button" id="collapseAll">Collapse all</button></div>

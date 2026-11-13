@@ -225,8 +225,8 @@ dialog img { display: block; max-width: 92vw; max-height: 78vh; width: auto; hei
 .photo-slot { display: grid; place-items: center; text-align: center; padding: 16px; min-height: 168px; border: 1px dashed var(--edge); border-radius: 4px; color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; background: rgba(255,255,255,0.03); }
 .mosaic .photo-slot { min-height: 0; height: 100%; }
 .mosaic .photo-slot.lead { grid-column: span 2; grid-row: span 2; }
-.hero-wrap.empty { height: 420px; }
-.hero-wrap.empty .photo-slot { position: absolute; inset: 24px max(24px, calc((100% - 1200px) / 2 + 24px)); min-height: 0; background: rgba(10,19,23,0.25); }
+.hero-wrap.empty .photo-slot { position: absolute; inset: 0; min-height: 0; border: 0; border-radius: 0; background: linear-gradient(135deg, rgba(47,181,201,0.18), rgba(242,185,75,0.10) 60%, rgba(10,19,23,0.35)); }
+.hero-wrap.empty .photo-slot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,19,23,0.6), rgba(10,19,23,0) 35%); }
 .story { border-left: 3px solid var(--local); padding: 14px 18px; color: var(--muted); font-style: italic; background: rgba(255,255,255,0.03); border-radius: 0 4px 4px 0; }
 .story strong { color: var(--ink); font-style: normal; }
 .region-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
