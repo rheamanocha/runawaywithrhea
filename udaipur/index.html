@@ -292,6 +292,8 @@ details.day summary { padding: 18px 0; }
 .mosaic.filmstrip .tile { flex: 0 0 auto; width: auto; height: auto; grid-column: auto; grid-row: auto; border-radius: 2px; counter-increment: fr; }
 .mosaic.filmstrip .tile::before { content: counter(fr); position: absolute; top: 5px; left: 7px; z-index: 2; font-family: var(--mono); font-size: 10px; color: #e8a33d; text-shadow: 0 1px 3px rgba(0,0,0,.8); pointer-events: none; }
 .mosaic.filmstrip .tile img { height: 230px; width: auto; max-width: none; aspect-ratio: auto; object-fit: cover; }
+.rcard .film { margin: 0; border-radius: 0; border: 0; }
+.rcard .mosaic.filmstrip .tile img { height: 170px; }
 @media (max-width: 860px) { .mosaic.filmstrip .tile img { height: 190px; } .film .edge, .mosaic.filmstrip { padding-left: 14px; padding-right: 14px; } }
 </style></head>
 <body>
@@ -444,18 +446,18 @@ details.day summary { padding: 18px 0; }
         <div class="cards2">
 
           <article class="glass rcard">
-            <div class="strip" role="group" aria-label="Nyoto and rooftop photos" style="--n: 3">
-<button type="button" class="ph sq" data-full="img/p21.jpg" data-alt="Fried chicken popcorn served in a paper cone" aria-label="Enlarge photo: Fried chicken popcorn served in a paper cone"><img src="img/p21.jpg" alt="Fried chicken popcorn served in a paper cone" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p24.jpg" data-alt="Nyoto tawa pulao in a bowl" aria-label="Enlarge photo: Nyoto tawa pulao in a bowl"><img src="img/p24.jpg" alt="Nyoto tawa pulao in a bowl" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p25.jpg" data-alt="Rooftop view over the old town and the lake" data-more="+7" aria-label="View all 10 photos. First: Rooftop view over the old town and the lake"><img src="img/p25.jpg" alt="" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" hidden data-full="img/p22.jpg" data-alt="Samosas in a basket" aria-label="Enlarge photo: Samosas in a basket"></button>
-<button type="button" class="ph sq" hidden data-full="img/p23.jpg" data-alt="Filter coffee mille feuille dessert" aria-label="Enlarge photo: Filter coffee mille feuille dessert"></button>
-<button type="button" class="ph sq" hidden data-full="img/p26.jpg" data-alt="Rooftop view over white domes and the old city" aria-label="Enlarge photo: Rooftop view over white domes and the old city"></button>
-<button type="button" class="ph sq" hidden data-full="img/p27.jpg" data-alt="Hotel pool lit up at night" aria-label="Enlarge photo: Hotel pool lit up at night"></button>
-<button type="button" class="ph sq" hidden data-full="img/p28.jpg" data-alt="Sun setting over the rooftops" aria-label="Enlarge photo: Sun setting over the rooftops"></button>
-<button type="button" class="ph sq" hidden data-full="img/p29.jpg" data-alt="Scalloped arch window framing the lake" aria-label="Enlarge photo: Scalloped arch window framing the lake"></button>
-<button type="button" class="ph sq" hidden data-full="img/p30.jpg" data-alt="Rooftop restaurant with hanging lamps and flowers" aria-label="Enlarge photo: Rooftop restaurant with hanging lamps and flowers"></button>
-</div>
+            <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>Nyoto and rooftop</span></div><div class="mosaic filmstrip" role="group" aria-label="Nyoto and rooftop photos">
+<button type="button" class="ph tile" data-full="img/p21.jpg" data-alt="Fried chicken popcorn served in a paper cone" aria-label="Enlarge photo: Fried chicken popcorn served in a paper cone"><img src="img/p21.jpg" alt="Fried chicken popcorn served in a paper cone" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p24.jpg" data-alt="Nyoto tawa pulao in a bowl" aria-label="Enlarge photo: Nyoto tawa pulao in a bowl"><img src="img/p24.jpg" alt="Nyoto tawa pulao in a bowl" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p25.jpg" data-alt="Rooftop view over the old town and the lake" aria-label="Enlarge photo: Rooftop view over the old town and the lake"><img src="img/p25.jpg" alt="Rooftop view over the old town and the lake" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p22.jpg" data-alt="Samosas in a basket" aria-label="Enlarge photo: Samosas in a basket"><img src="img/p22.jpg" alt="Samosas in a basket" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p23.jpg" data-alt="Filter coffee mille feuille dessert" aria-label="Enlarge photo: Filter coffee mille feuille dessert"><img src="img/p23.jpg" alt="Filter coffee mille feuille dessert" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p26.jpg" data-alt="Rooftop view over white domes and the old city" aria-label="Enlarge photo: Rooftop view over white domes and the old city"><img src="img/p26.jpg" alt="Rooftop view over white domes and the old city" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p27.jpg" data-alt="Hotel pool lit up at night" aria-label="Enlarge photo: Hotel pool lit up at night"><img src="img/p27.jpg" alt="Hotel pool lit up at night" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p28.jpg" data-alt="Sun setting over the rooftops" aria-label="Enlarge photo: Sun setting over the rooftops"><img src="img/p28.jpg" alt="Sun setting over the rooftops" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p29.jpg" data-alt="Scalloped arch window framing the lake" aria-label="Enlarge photo: Scalloped arch window framing the lake"><img src="img/p29.jpg" alt="Scalloped arch window framing the lake" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p30.jpg" data-alt="Rooftop restaurant with hanging lamps and flowers" aria-label="Enlarge photo: Rooftop restaurant with hanging lamps and flowers"><img src="img/p30.jpg" alt="Rooftop restaurant with hanging lamps and flowers" loading="lazy" decoding="async" width="900" height="900"></button>
+</div></div>
             <div class="rb">
               <h3><a class="tlink" href="https://www.google.com/maps/search/?api=1&amp;query=Nyoto+restaurant+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Nyoto<span class="sr"> (opens in a new tab)</span></a></h3>
               <div class="chips"><span class="chip">Modern fusion</span><span class="chip">Old town</span><span class="chip">Lake Pichola views</span></div>
@@ -474,12 +476,12 @@ details.day summary { padding: 18px 0; }
           </article>
 
           <article class="glass rcard">
-            <div class="strip" role="group" aria-label="Ambrai photos" style="--n: 4">
-<button type="button" class="ph sq" data-full="img/p32.jpg" data-alt="Lake and palace glowing at night, with restaurant tables in the foreground" aria-label="Enlarge photo: Lake and palace glowing at night, with restaurant tables in the foreground"><img src="img/p32.jpg" alt="Lake and palace glowing at night, with restaurant tables in the foreground" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p34.jpg" data-alt="Colorful drinks beside a plate of chaat" aria-label="Enlarge photo: Colorful drinks beside a plate of chaat"><img src="img/p34.jpg" alt="Colorful drinks beside a plate of chaat" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p31.jpg" data-alt="Hotel facade lit up at night" aria-label="Enlarge photo: Hotel facade lit up at night"><img src="img/p31.jpg" alt="Hotel facade lit up at night" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p33.jpg" data-alt="City lights reflected on the lake at night" aria-label="Enlarge photo: City lights reflected on the lake at night"><img src="img/p33.jpg" alt="City lights reflected on the lake at night" loading="lazy" decoding="async" width="600" height="600"></button>
-</div>
+            <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>Ambrai</span></div><div class="mosaic filmstrip" role="group" aria-label="Ambrai photos">
+<button type="button" class="ph tile" data-full="img/p32.jpg" data-alt="Lake and palace glowing at night, with restaurant tables in the foreground" aria-label="Enlarge photo: Lake and palace glowing at night, with restaurant tables in the foreground"><img src="img/p32.jpg" alt="Lake and palace glowing at night, with restaurant tables in the foreground" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p34.jpg" data-alt="Colorful drinks beside a plate of chaat" aria-label="Enlarge photo: Colorful drinks beside a plate of chaat"><img src="img/p34.jpg" alt="Colorful drinks beside a plate of chaat" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p31.jpg" data-alt="Hotel facade lit up at night" aria-label="Enlarge photo: Hotel facade lit up at night"><img src="img/p31.jpg" alt="Hotel facade lit up at night" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p33.jpg" data-alt="City lights reflected on the lake at night" aria-label="Enlarge photo: City lights reflected on the lake at night"><img src="img/p33.jpg" alt="City lights reflected on the lake at night" loading="lazy" decoding="async" width="900" height="900"></button>
+</div></div>
             <div class="rb">
               <h3><a class="tlink" href="https://www.google.com/maps/search/?api=1&amp;query=Ambrai+restaurant+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Ambrai<span class="sr"> (opens in a new tab)</span></a></h3>
               <div class="chips"><span class="chip">Hotel setting</span><span class="chip">City Palace views</span><span class="chip">Cocktails</span></div>
@@ -498,13 +500,13 @@ details.day summary { padding: 18px 0; }
           </article>
 
           <article class="glass rcard">
-            <div class="strip" role="group" aria-label="Ghati Pe photos" style="--n: 3">
-<button type="button" class="ph sq" data-full="img/p37.jpg" data-alt="Dal baati churma on a steel platter" aria-label="Enlarge photo: Dal baati churma on a steel platter"><img src="img/p37.jpg" alt="Dal baati churma on a steel platter" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p38.jpg" data-alt="Red curry in a bowl" aria-label="Enlarge photo: Red curry in a bowl"><img src="img/p38.jpg" alt="Red curry in a bowl" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p35.jpg" data-alt="Rooftop terrace with a black-and-white floor" data-more="+2" aria-label="View all 5 photos. First: Rooftop terrace with a black-and-white floor"><img src="img/p35.jpg" alt="" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" hidden data-full="img/p36.jpg" data-alt="Hazy view over the city and the lake from a balcony" aria-label="Enlarge photo: Hazy view over the city and the lake from a balcony"></button>
-<button type="button" class="ph sq" hidden data-full="img/p39.jpg" data-alt="Curry in a steel serving dish" aria-label="Enlarge photo: Curry in a steel serving dish"></button>
-</div>
+            <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>Ghati Pe</span></div><div class="mosaic filmstrip" role="group" aria-label="Ghati Pe photos">
+<button type="button" class="ph tile" data-full="img/p37.jpg" data-alt="Dal baati churma on a steel platter" aria-label="Enlarge photo: Dal baati churma on a steel platter"><img src="img/p37.jpg" alt="Dal baati churma on a steel platter" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p38.jpg" data-alt="Red curry in a bowl" aria-label="Enlarge photo: Red curry in a bowl"><img src="img/p38.jpg" alt="Red curry in a bowl" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p35.jpg" data-alt="Rooftop terrace with a black-and-white floor" aria-label="Enlarge photo: Rooftop terrace with a black-and-white floor"><img src="img/p35.jpg" alt="Rooftop terrace with a black-and-white floor" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p36.jpg" data-alt="Hazy view over the city and the lake from a balcony" aria-label="Enlarge photo: Hazy view over the city and the lake from a balcony"><img src="img/p36.jpg" alt="Hazy view over the city and the lake from a balcony" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p39.jpg" data-alt="Curry in a steel serving dish" aria-label="Enlarge photo: Curry in a steel serving dish"><img src="img/p39.jpg" alt="Curry in a steel serving dish" loading="lazy" decoding="async" width="900" height="900"></button>
+</div></div>
             <div class="rb">
               <h3><a class="tlink" href="https://www.google.com/maps/search/?api=1&amp;query=Ghati+Pe+restaurant+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">Ghati Pe<span class="sr"> (opens in a new tab)</span></a></h3>
               <div class="chips"><span class="chip">Well decorated</span><span class="chip">Great portions</span></div>
@@ -513,12 +515,12 @@ details.day summary { padding: 18px 0; }
           </article>
 
           <article class="glass rcard">
-            <div class="strip" role="group" aria-label="O&#x27;Brew photos" style="--n: 4">
-<button type="button" class="ph sq" data-full="img/p40.jpg" data-alt="O&#x27;Brew entrance with a carved wooden door" aria-label="Enlarge photo: O&#x27;Brew entrance with a carved wooden door"><img src="img/p40.jpg" alt="O&#x27;Brew entrance with a carved wooden door" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p43.jpg" data-alt="A hand holding an iced coffee" aria-label="Enlarge photo: A hand holding an iced coffee"><img src="img/p43.jpg" alt="A hand holding an iced coffee" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p41.jpg" data-alt="View of the lake over the rooftops" aria-label="Enlarge photo: View of the lake over the rooftops"><img src="img/p41.jpg" alt="View of the lake over the rooftops" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p42.jpg" data-alt="View through a large window inside the cafe" aria-label="Enlarge photo: View through a large window inside the cafe"><img src="img/p42.jpg" alt="View through a large window inside the cafe" loading="lazy" decoding="async" width="600" height="600"></button>
-</div>
+            <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>O&#x27;Brew</span></div><div class="mosaic filmstrip" role="group" aria-label="O&#x27;Brew photos">
+<button type="button" class="ph tile" data-full="img/p40.jpg" data-alt="O&#x27;Brew entrance with a carved wooden door" aria-label="Enlarge photo: O&#x27;Brew entrance with a carved wooden door"><img src="img/p40.jpg" alt="O&#x27;Brew entrance with a carved wooden door" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p43.jpg" data-alt="A hand holding an iced coffee" aria-label="Enlarge photo: A hand holding an iced coffee"><img src="img/p43.jpg" alt="A hand holding an iced coffee" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p41.jpg" data-alt="View of the lake over the rooftops" aria-label="Enlarge photo: View of the lake over the rooftops"><img src="img/p41.jpg" alt="View of the lake over the rooftops" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p42.jpg" data-alt="View through a large window inside the cafe" aria-label="Enlarge photo: View through a large window inside the cafe"><img src="img/p42.jpg" alt="View through a large window inside the cafe" loading="lazy" decoding="async" width="900" height="900"></button>
+</div></div>
             <div class="rb">
               <h3><a class="tlink" href="https://www.google.com/maps/search/?api=1&amp;query=O%27Brew+Udaipur" target="_blank" rel="noopener noreferrer" data-aff="pending">O&rsquo;Brew<span class="sr"> (opens in a new tab)</span></a></h3>
               <div class="chips"><span class="chip">Filter coffee</span><span class="chip">Spacious balcony</span></div>
@@ -550,13 +552,13 @@ details.day summary { padding: 18px 0; }
         <div class="cards2">
 
           <article class="glass rcard">
-            <div class="strip" role="group" aria-label="Luxury hotel photos" style="--n: 4">
-<button type="button" class="ph sq" data-full="img/p44.jpg" data-alt="Colorful hotel facade with flowers in the foreground" aria-label="Enlarge photo: Colorful hotel facade with flowers in the foreground"><img src="img/p44.jpg" alt="Colorful hotel facade with flowers in the foreground" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p45.jpg" data-alt="Hotel lounge with arched windows and mountain views" aria-label="Enlarge photo: Hotel lounge with arched windows and mountain views"><img src="img/p45.jpg" alt="Hotel lounge with arched windows and mountain views" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p46.jpg" data-alt="Domed pavilions reflected in a dark floor at night" aria-label="Enlarge photo: Domed pavilions reflected in a dark floor at night"><img src="img/p46.jpg" alt="Domed pavilions reflected in a dark floor at night" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p47.jpg" data-alt="A car decorated with flowers in front of the hotel" data-more="+1" aria-label="View all 5 photos. First: A car decorated with flowers in front of the hotel"><img src="img/p47.jpg" alt="" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" hidden data-full="img/p48.jpg" data-alt="Ornate bed on a checkered floor" aria-label="Enlarge photo: Ornate bed on a checkered floor"></button>
-</div>
+            <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>Luxury hotel</span></div><div class="mosaic filmstrip" role="group" aria-label="Luxury hotel photos">
+<button type="button" class="ph tile" data-full="img/p44.jpg" data-alt="Colorful hotel facade with flowers in the foreground" aria-label="Enlarge photo: Colorful hotel facade with flowers in the foreground"><img src="img/p44.jpg" alt="Colorful hotel facade with flowers in the foreground" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p45.jpg" data-alt="Hotel lounge with arched windows and mountain views" aria-label="Enlarge photo: Hotel lounge with arched windows and mountain views"><img src="img/p45.jpg" alt="Hotel lounge with arched windows and mountain views" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p46.jpg" data-alt="Domed pavilions reflected in a dark floor at night" aria-label="Enlarge photo: Domed pavilions reflected in a dark floor at night"><img src="img/p46.jpg" alt="Domed pavilions reflected in a dark floor at night" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p47.jpg" data-alt="A car decorated with flowers in front of the hotel" aria-label="Enlarge photo: A car decorated with flowers in front of the hotel"><img src="img/p47.jpg" alt="A car decorated with flowers in front of the hotel" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p48.jpg" data-alt="Ornate bed on a checkered floor" aria-label="Enlarge photo: Ornate bed on a checkered floor"><img src="img/p48.jpg" alt="Ornate bed on a checkered floor" loading="lazy" decoding="async" width="900" height="900"></button>
+</div></div>
             <div class="rb">
               <h3>Luxury hotels</h3>
               <div class="hotels">
@@ -576,11 +578,11 @@ details.day summary { padding: 18px 0; }
           </article>
 
           <article class="glass rcard">
-            <div class="strip" role="group" aria-label="More affordable hotel photos" style="--n: 3">
-<button type="button" class="ph sq" data-full="img/p49.jpg" data-alt="Hotel room with twin beds and a window view" aria-label="Enlarge photo: Hotel room with twin beds and a window view"><img src="img/p49.jpg" alt="Hotel room with twin beds and a window view" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p50.jpg" data-alt="Rooftop infinity pool facing the hills" aria-label="Enlarge photo: Rooftop infinity pool facing the hills"><img src="img/p50.jpg" alt="Rooftop infinity pool facing the hills" loading="lazy" decoding="async" width="600" height="600"></button>
-<button type="button" class="ph sq" data-full="img/p51.jpg" data-alt="Window view over the city from a hotel room" aria-label="Enlarge photo: Window view over the city from a hotel room"><img src="img/p51.jpg" alt="Window view over the city from a hotel room" loading="lazy" decoding="async" width="600" height="600"></button>
-</div>
+            <div class="film"><div class="edge" aria-hidden="true"><span>Rhea 400</span><span>More affordable hotel</span></div><div class="mosaic filmstrip" role="group" aria-label="More affordable hotel photos">
+<button type="button" class="ph tile" data-full="img/p49.jpg" data-alt="Hotel room with twin beds and a window view" aria-label="Enlarge photo: Hotel room with twin beds and a window view"><img src="img/p49.jpg" alt="Hotel room with twin beds and a window view" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p50.jpg" data-alt="Rooftop infinity pool facing the hills" aria-label="Enlarge photo: Rooftop infinity pool facing the hills"><img src="img/p50.jpg" alt="Rooftop infinity pool facing the hills" loading="lazy" decoding="async" width="900" height="900"></button>
+<button type="button" class="ph tile" data-full="img/p51.jpg" data-alt="Window view over the city from a hotel room" aria-label="Enlarge photo: Window view over the city from a hotel room"><img src="img/p51.jpg" alt="Window view over the city from a hotel room" loading="lazy" decoding="async" width="900" height="900"></button>
+</div></div>
             <div class="rb">
               <h3>More affordable than luxury</h3>
               <div class="hotels">
