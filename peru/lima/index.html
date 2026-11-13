@@ -288,7 +288,7 @@ details.day summary { padding: 18px 0; }
 .tags .tag { background: none; border: 1px solid var(--line); }
 
 /* Everything to eat: slideshow */
-.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.eat-head { padding: 56px 24px 36px; display: flex; flex-direction: column; gap: 14px; }
 .eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
 .eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
 .eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
@@ -313,7 +313,7 @@ details.day summary { padding: 18px 0; }
 .eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
 .after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
 @media (max-width: 860px) {
-  .eat-head { padding: 36px 0 24px; }
+  .eat-head { padding: 36px 24px 24px; }
   .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
   .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 52%; bottom: auto; justify-content: center; }
   .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
@@ -324,162 +324,10 @@ details.day summary { padding: 18px 0; }
   .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
 }
 @media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
-.after section { display: flex; flex-direction: column; gap: 28px; }
-
-/* Everything to eat: slideshow */
-.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
-.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
-.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
-.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
-.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
-.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
-.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
-.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
-.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-.slide .shots.n1 img { aspect-ratio: 3 / 4; }
-.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
-.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
-.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
-.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
-.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
-.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.eat-arrow:hover { background: rgba(10,19,23,.9); }
-.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
-.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
-.eat-tabs::-webkit-scrollbar { display: none; }
-.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
-.eat-tabs button:hover { color: var(--ink); }
-.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
-.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
-@media (max-width: 860px) {
-  .eat-head { padding: 36px 0 24px; }
-  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
-  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 52%; bottom: auto; justify-content: center; }
-  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
-  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
-  .eat-card h2 { font-size: 28px; }
-  .eat-card p:last-child { font-size: 14.5px; }
-  .eat-arrow { top: 22%; width: 40px; height: 40px; }
-  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
-}
-@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
-.after section { display: flex; flex-direction: column; gap: 28px; }
-
-/* Everything to eat: slideshow */
-.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
-.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
-.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
-.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
-.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
-.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
-.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
-.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
-.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-.slide .shots.n1 img { aspect-ratio: 3 / 4; }
-.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
-.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
-.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
-.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
-.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
-.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.eat-arrow:hover { background: rgba(10,19,23,.9); }
-.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
-.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
-.eat-tabs::-webkit-scrollbar { display: none; }
-.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
-.eat-tabs button:hover { color: var(--ink); }
-.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
-.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
-@media (max-width: 860px) {
-  .eat-head { padding: 36px 0 24px; }
-  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
-  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 52%; bottom: auto; justify-content: center; }
-  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
-  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
-  .eat-card h2 { font-size: 28px; }
-  .eat-card p:last-child { font-size: 14.5px; }
-  .eat-arrow { top: 22%; width: 40px; height: 40px; }
-  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
-}
-@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
-.after section { display: flex; flex-direction: column; gap: 28px; }
-
-/* Everything to eat: slideshow */
-.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
-.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
-.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
-.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
-.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
-.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
-.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
-.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
-.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-.slide .shots.n1 img { aspect-ratio: 3 / 4; }
-.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
-.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
-.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
-.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
-.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
-.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; font-size: 20px; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.eat-arrow:hover { background: rgba(10,19,23,.9); }
-.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
-.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
-.eat-tabs::-webkit-scrollbar { display: none; }
-.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
-.eat-tabs button:hover { color: var(--ink); }
-.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
-.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
-@media (max-width: 860px) {
-  .eat-head { padding: 36px 0 24px; }
-  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
-  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 58%; bottom: auto; justify-content: center; }
-  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
-  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
-  .eat-card h2 { font-size: 28px; }
-  .eat-card p:last-child { font-size: 14.5px; }
-  .eat-arrow { top: 22%; width: 40px; height: 40px; }
-  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
-}
-@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
-.after section { display: flex; flex-direction: column; gap: 28px; }
-
-/* Everything to eat: slideshow */
-.eat-head { padding: 56px 0 36px; display: flex; flex-direction: column; gap: 14px; }
-.eat-head h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; }
-.eat-head .lede { max-width: 56ch; color: var(--muted); font-size: 18px; }
-.eats { position: relative; width: 100%; height: clamp(600px, 88svh, 860px); overflow: hidden; background: #0A1317; isolation: isolate; touch-action: pan-y; }
-.slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .55s ease, visibility 0s linear .55s; }
-.slide.on { opacity: 1; visibility: visible; transition: opacity .55s ease; }
-.slide .bg { position: absolute; inset: -60px; background: hsl(var(--h) 38% 20%) center / cover no-repeat; filter: blur(46px) saturate(1.25) brightness(.62); transform: scale(1.05); }
-.slide .shots { position: absolute; top: 0; bottom: 56px; right: max(24px, calc((100% - 1200px) / 2 + 24px)); width: min(62%, 760px); display: flex; justify-content: flex-end; gap: 10px; padding: 36px 0 36px; }
-.slide .shots img { height: 100%; width: auto; aspect-ratio: 3 / 4; flex: 0 1 auto; min-width: 0; object-fit: cover; border-radius: 2px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-.slide .shots.n1 img { aspect-ratio: 3 / 4; }
-.eats::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,19,23,.55), rgba(10,19,23,0) 45%), linear-gradient(to top, rgba(10,19,23,.6), rgba(10,19,23,0) 30%); pointer-events: none; z-index: 1; }
-.eat-card { position: absolute; z-index: 2; left: max(24px, calc((100% - 1200px) / 2 + 24px)); bottom: 96px; width: min(360px, calc(100% - 48px)); padding: 20px 22px 22px; background: rgba(10,19,23,.8); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-left: 2px solid var(--local); display: flex; flex-direction: column; gap: 10px; }
-.eat-card .count { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--local); }
-.eat-card h2 { font-size: 34px; font-weight: 500; line-height: 1.05; }
-.eat-card p:last-child { font-size: 15.5px; line-height: 1.6; color: #D5E0E4; }
-.eat-arrow { position: absolute; z-index: 3; top: calc(50% - 28px); width: 48px; height: 48px; display: grid; place-items: center; background: rgba(10,19,23,.7); color: var(--ink); border: 1px solid var(--edge); border-radius: 50%; padding: 0; line-height: 0; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.eat-arrow:hover { background: rgba(10,19,23,.9); }
-.eat-arrow.prev { left: 16px; } .eat-arrow.next { right: 16px; }
-.eat-tabs { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 56px; display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(10,19,23,.86); border-top: 1px solid var(--line); padding: 0 max(12px, calc((100% - 1200px) / 2 + 12px)); }
-.eat-tabs::-webkit-scrollbar { display: none; }
-.eat-tabs button { flex: none; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 0; border-top: 2px solid transparent; padding: 0 16px; cursor: pointer; white-space: nowrap; }
-.eat-tabs button:hover { color: var(--ink); }
-.eat-tabs button[aria-selected="true"] { color: var(--ink); border-top-color: var(--local); }
-.after { max-width: 880px; display: flex; flex-direction: column; gap: 96px; padding-top: 88px; padding-bottom: 96px; }
-@media (max-width: 860px) {
-  .eat-head { padding: 36px 0 24px; }
-  .eats { height: min(100svh - 70px, 780px); min-height: 580px; }
-  .slide .shots { left: 0; right: 0; width: auto; top: 0; bottom: 56px; padding: 16px 16px 0; height: 58%; bottom: auto; justify-content: center; }
-  .eats::after { background: linear-gradient(to top, rgba(10,19,23,.7), rgba(10,19,23,0) 50%); }
-  .eat-card { left: 12px; right: 12px; width: auto; bottom: 68px; padding: 16px 18px; gap: 6px; }
-  .eat-card h2 { font-size: 28px; }
-  .eat-card p:last-child { font-size: 14.5px; }
-  .eat-arrow { top: 22%; width: 40px; height: 40px; }
-  .eat-arrow.prev { left: 6px; } .eat-arrow.next { right: 6px; }
-}
-@media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; } }
+.trip-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding-top: 28px; padding-bottom: 36px; font-size: 15px; }
+.trip-row span { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.trip-row a { display: inline-flex; align-items: center; min-height: 44px; }
+.eat-head { padding: 48px 24px 28px; }
 .after section { display: flex; flex-direction: column; gap: 28px; }
 </style>
 </head>
@@ -488,10 +336,7 @@ details.day summary { padding: 18px 0; }
 <header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></header><script>(function(){var f=document.querySelector('.hsearch');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('hq').value.trim();var q=document.getElementById('q');if(q){q.value=v;q.dispatchEvent(new Event('input'));q.scrollIntoView({block:'center'});}else{window.open('/guides/#q='+encodeURIComponent(v),'_blank');}});})();</script>
 <main>
   <div class="wrap eat-head">
-    <div class="crumbs"><a href="/">Destinations</a> / <a href="/guides/">South America</a> / <a href="/peru/">Peru</a> / Lima</div>
     <h1>Everything to eat in Lima</h1>
-    <div class="byline"><span>September 2026</span></div>
-    <p class="lede">Fourteen things I ate and drank around Lima, from street snacks to a sit-down seafood lunch. Click through the tabs or use the arrow keys.</p>
   </div>
   <div class="eats" id="eats" role="region" aria-roledescription="carousel" aria-label="Lima food slideshow">
     <div class="slide on" id="slide-coffee" role="tabpanel" aria-labelledby="tab-coffee" data-slug="coffee" data-bg="img/coffee-1.jpg" style="--h:15" ><div class="bg" aria-hidden="true"></div><div class="shots n3"><img src="img/coffee-1.jpg" alt="Iced coffee next to a Museo del Café Peruano brochure" fetchpriority="high" decoding="async"><img src="img/coffee-2.jpg" alt="Wooden civet figure among coffee beans at the museum" fetchpriority="high" decoding="async"><img src="img/coffee-3.jpg" alt="Jars and bowls of coffee beans at different roasts" fetchpriority="high" decoding="async"></div><div class="eat-card"><p class="count">01 / 14</p><h2>Local coffee and Museo del Café Peruano</h2><p>Peruvian coffee is grown in the highlands, and the museum walks through it from bean to cup. Order an iced coffee and look at the beans up close.</p></div></div><div class="slide" id="slide-empanadas" role="tabpanel" aria-labelledby="tab-empanadas" data-slug="empanadas" data-bg="img/empanadas-1.jpg" style="--h:52" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/empanadas-1.jpg" alt="Cut open chicken empanada with an iced coffee" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">02 / 14</p><h2>Empanadas</h2><p>Baked pastry pockets with a savory filling. This one was stuffed with shredded chicken and came with a lime wedge.</p></div></div><div class="slide" id="slide-chifa" role="tabpanel" aria-labelledby="tab-chifa" data-slug="chifa" data-bg="img/chifa-1.jpg" style="--h:89" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/chifa-1.jpg" alt="Crispy wontons with a dipping sauce" loading="lazy" decoding="async"><img src="img/chifa-2.jpg" alt="Pork dumplings in a cup" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">03 / 14</p><h2>Chifa</h2><p>Peru’s Chinese-Peruvian cooking, and a whole genre of its own in Lima. Wontons, dumplings, and wok dishes made with Peruvian ingredients.</p></div></div><div class="slide" id="slide-choco-museo" role="tabpanel" aria-labelledby="tab-choco-museo" data-slug="choco-museo" data-bg="img/choco-museo-1.jpg" style="--h:126" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/choco-museo-1.jpg" alt="Cacao tree with colorful pods at Choco Museo" loading="lazy" decoding="async"><img src="img/choco-museo-2.jpg" alt="Illustrated wall showing how cacao becomes chocolate" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">04 / 14</p><h2>Choco Museo</h2><p>A small museum and shop for Peruvian cacao. The wall map follows the pod from harvest to roasting, grinding, and chocolate.</p></div></div><div class="slide" id="slide-choclo-con-queso" role="tabpanel" aria-labelledby="tab-choclo-con-queso" data-slug="choclo-con-queso" data-bg="img/choclo-con-queso-1.jpg" style="--h:163" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/choclo-con-queso-1.jpg" alt="Boiled choclo with a block of fresh cheese in a bag" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">05 / 14</p><h2>Choclo con queso</h2><p>Choclo is the Andean corn with huge, chewy kernels. Street vendors serve it boiled with a slab of fresh, salty cheese.</p></div></div><div class="slide" id="slide-papa-rellena" role="tabpanel" aria-labelledby="tab-papa-rellena" data-slug="papa-rellena" data-bg="img/papa-rellena-1.jpg" style="--h:200" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/papa-rellena-1.jpg" alt="Fried papa rellena on a plate" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">06 / 14</p><h2>Papa rellena</h2><p>A mashed potato shell stuffed with seasoned filling, then fried until golden. A classic street snack.</p></div></div><div class="slide" id="slide-inca-kola" role="tabpanel" aria-labelledby="tab-inca-kola" data-slug="inca-kola" data-bg="img/inca-kola-1.jpg" style="--h:237" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/inca-kola-1.jpg" alt="Bottle of Inca Kola on a diner table" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">07 / 14</p><h2>Inca Kola</h2><p>Peru’s fluorescent yellow soda, sweet and a little like bubblegum. It is everywhere, and it goes with just about everything.</p></div></div><div class="slide" id="slide-chifles-cancha" role="tabpanel" aria-labelledby="tab-chifles-cancha" data-slug="chifles-cancha" data-bg="img/chifles-cancha-1.jpg" style="--h:274" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/chifles-cancha-1.jpg" alt="Plantain chips and cancha on a plate" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">08 / 14</p><h2>Plantain chips and corn nuts</h2><p>Chifles are crisp fried plantain slices. Cancha is toasted corn kernels, salty and crunchy. Both show up next to ceviche.</p></div></div><div class="slide" id="slide-ceviche" role="tabpanel" aria-labelledby="tab-ceviche" data-slug="ceviche" data-bg="img/ceviche-1.jpg" style="--h:311" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/ceviche-1.jpg" alt="Plate of fish ceviche with cancha and plantain chips" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">09 / 14</p><h2>Ceviche</h2><p>Raw fish cured in lime juice with onion and chili. Peru’s national dish, served cold and best eaten at lunch.</p></div></div><div class="slide" id="slide-jalea-mixta" role="tabpanel" aria-labelledby="tab-jalea-mixta" data-slug="jalea-mixta" data-bg="img/jalea-mixta-1.jpg" style="--h:348" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/jalea-mixta-1.jpg" alt="Plate of fried seafood topped with red onion salad" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">10 / 14</p><h2>Jalea mixta</h2><p>A pile of fried seafood under a heap of pickled red onion, with crispy plantain chips on the side. Made to share.</p></div></div><div class="slide" id="slide-fruit" role="tabpanel" aria-labelledby="tab-fruit" data-slug="fruit" data-bg="img/fruit-1.jpg" style="--h:25" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/fruit-1.jpg" alt="Fruit stand stacked with bananas, grapes, oranges, and avocados" loading="lazy" decoding="async"><img src="img/fruit-2.jpg" alt="Cherimoya, passion fruit, and other local fruits" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">11 / 14</p><h2>Local fruits</h2><p>The markets are stacked with fruit you rarely see at home, including cherimoya, passion fruit, and lucuma. Buy a few and taste your way through.</p></div></div><div class="slide" id="slide-lucuma-smoothie" role="tabpanel" aria-labelledby="tab-lucuma-smoothie" data-slug="lucuma-smoothie" data-bg="img/lucuma-smoothie-1.jpg" style="--h:62" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/lucuma-smoothie-1.jpg" alt="Cheers with small cups of lucuma smoothie" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">12 / 14</p><h2>Lucuma smoothie</h2><p>Lucuma is a Peruvian fruit with a creamy, caramel-like flavor, and it is blended into smoothies and ice cream. Easy to find at the markets.</p></div></div><div class="slide" id="slide-picarones" role="tabpanel" aria-labelledby="tab-picarones" data-slug="picarones" data-bg="img/picarones-1.jpg" style="--h:99" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n2"><img src="img/picarones-1.jpg" alt="Vendor frying picarones at a street cart" loading="lazy" decoding="async"><img src="img/picarones-2.jpg" alt="Plate of freshly fried picarones" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">13 / 14</p><h2>Picarones</h2><p>Ring-shaped fritters made from squash and sweet potato, fried to order and served with a sweet syrup.</p></div></div><div class="slide" id="slide-turkey-sandwich" role="tabpanel" aria-labelledby="tab-turkey-sandwich" data-slug="turkey-sandwich" data-bg="img/turkey-sandwich-1.jpg" style="--h:136" aria-hidden="true"><div class="bg" aria-hidden="true"></div><div class="shots n1"><img src="img/turkey-sandwich-1.jpg" alt="Roast turkey sandwich on a crusty roll" loading="lazy" decoding="async"></div><div class="eat-card"><p class="count">14 / 14</p><h2>Turkey sandwich</h2><p>A warm roll piled with sliced roast turkey and onions. A simple Lima lunch, and one of the best sandwiches on the trip.</p></div></div>
@@ -500,6 +345,7 @@ details.day summary { padding: 18px 0; }
     <div class="eat-tabs" role="tablist" aria-label="Dishes"><button type="button" role="tab" id="tab-coffee" aria-controls="slide-coffee" aria-selected="true" tabindex="0">Coffee</button><button type="button" role="tab" id="tab-empanadas" aria-controls="slide-empanadas" aria-selected="false" tabindex="-1">Empanadas</button><button type="button" role="tab" id="tab-chifa" aria-controls="slide-chifa" aria-selected="false" tabindex="-1">Chifa</button><button type="button" role="tab" id="tab-choco-museo" aria-controls="slide-choco-museo" aria-selected="false" tabindex="-1">Choco Museo</button><button type="button" role="tab" id="tab-choclo-con-queso" aria-controls="slide-choclo-con-queso" aria-selected="false" tabindex="-1">Choclo con queso</button><button type="button" role="tab" id="tab-papa-rellena" aria-controls="slide-papa-rellena" aria-selected="false" tabindex="-1">Papa rellena</button><button type="button" role="tab" id="tab-inca-kola" aria-controls="slide-inca-kola" aria-selected="false" tabindex="-1">Inca Kola</button><button type="button" role="tab" id="tab-chifles-cancha" aria-controls="slide-chifles-cancha" aria-selected="false" tabindex="-1">Plantain chips and corn nuts</button><button type="button" role="tab" id="tab-ceviche" aria-controls="slide-ceviche" aria-selected="false" tabindex="-1">Ceviche</button><button type="button" role="tab" id="tab-jalea-mixta" aria-controls="slide-jalea-mixta" aria-selected="false" tabindex="-1">Jalea mixta</button><button type="button" role="tab" id="tab-fruit" aria-controls="slide-fruit" aria-selected="false" tabindex="-1">Local fruits</button><button type="button" role="tab" id="tab-lucuma-smoothie" aria-controls="slide-lucuma-smoothie" aria-selected="false" tabindex="-1">Lucuma smoothie</button><button type="button" role="tab" id="tab-picarones" aria-controls="slide-picarones" aria-selected="false" tabindex="-1">Picarones</button><button type="button" role="tab" id="tab-turkey-sandwich" aria-controls="slide-turkey-sandwich" aria-selected="false" tabindex="-1">Turkey sandwich</button></div>
   </div>
   
+  <nav class="wrap trip-row" aria-label="More from this trip"><span>More from Peru</span><a href="/peru/">Peru in 2 weeks</a><a href="/peru/amazon/">Refugio Amazonas review</a><a href="/peru/ausangate/">Ausangate 7 Lakes</a><a href="/peru/inca-trail/">Inca Trail and Machu Picchu</a><a href="/peru/practicalities/">Peru practicalities</a></nav>
 </main>
 <footer>
   <div class="wrap">
