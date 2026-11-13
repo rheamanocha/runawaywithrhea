@@ -9,6 +9,7 @@ PAGES={
  'index.html':('home','peru/img/p00.jpg',0.5,"Adventure travel guides, itineraries, and honest tips from Rhea. Explore the map to find your next trip.",'/'),
  'about/index.html':('about','about/rhea-machu-picchu.jpg',0.62,"Hi, I'm Rhea, a travel content creator sharing adventure travel stories, itineraries, and tips.",'/about/'),
  'guides/index.html':('guides','puerto-rico/img/p00.jpg',0.62,"All of my travel guides in one place: Peru, Puerto Rico, Udaipur, and more on the way.",'/guides/'),
+ 'ojai/index.html':('ojai','ojai/img/p00.jpg',0.5,"Ojai, California: a charming small town full of hidden gems, from Bart's Books to a trail ride, plus where we stayed and ate.",'/ojai/'),
  'parks/index.html':('parks','peru/img/p00.jpg',0.5,"My national parks tracker: the parks I've visited and the ones still on the list.",'/parks/'),
  'peru/index.html':('peru','peru/img/p00.jpg',0.5,"Two weeks in Peru: the Amazon, Cusco, Ausangate on horseback, and the Inca Trail to Machu Picchu, with tips for each stop.",'/peru/'),
  'puerto-rico/index.html':('puerto-rico','puerto-rico/img/p00.jpg',0.62,"Six days in Puerto Rico with friends: Old San Juan, Culebra, El Yunque, a zipline, and a bioluminescent kayak, plus where we ate.",'/puerto-rico/'),
