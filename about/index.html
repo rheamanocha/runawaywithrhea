@@ -258,6 +258,24 @@ details.day[open] .dchev { transform: rotate(90deg); }
 .home-bar .hsearch input:focus-visible{outline:3px solid #F2B94B;outline-offset:2px}
 @media(max-width:860px){.home-bar .nav{margin-left:0;width:100%;order:3;overflow-x:auto}.home-bar .hsearch{margin-left:auto}.home-bar .hsearch input{width:130px}}
 </style>
+<style id="lighter">
+/* lighter pass: fewer boxes, calmer background, more air (matches the trip pages) */
+.ambient { filter: blur(90px) saturate(1) brightness(0.28); }
+.glass { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.toc { padding: 0; }
+.toc a { min-height: 38px; color: var(--muted); }
+.toc a:hover { color: var(--ink); background: none; }
+h2.sec { font-size: clamp(28px, 3.4vw, 38px); font-weight: 400; }
+h2.sec::after { background: var(--line); }
+.main { gap: 96px; }
+.prose p { font-size: 17px; line-height: 1.85; color: #D5E0E4; }
+.layout { padding-top: 72px; }
+#philosophy .rcard { border: 0; border-left: 2px solid var(--local); border-radius: 0; background: rgba(255,255,255,0.025); padding: 18px 22px !important; }
+.series .glass { border: 1px solid var(--line); border-radius: 4px; }
+#philosophy .rcard h3 { font-weight: 500; margin: 0 0 10px; }
+#philosophy .rcard p { margin: 0 0 12px; line-height: 1.75; color: #D5E0E4; }
+#philosophy .rcard p:last-child { margin-bottom: 0; }
+</style>
 </head>
 <body><div class="ambient" aria-hidden="true"></div>
 <header class="bar home-bar"><a class="logo" href="/">run away with rhea</a><nav class="nav" aria-label="Main"><a href="/">Map</a><a href="/guides/">Guides</a><a href="/parks/">Parks</a><a href="/about/">About</a></nav><form class="hsearch" role="search"><label for="hq">Search</label><input id="hq" type="search" placeholder="Park, city, trip" autocomplete="off"></form></header><script>(function(){var f=document.querySelector('.hsearch');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('hq').value.trim();var q=document.getElementById('q');if(q){q.value=v;q.dispatchEvent(new Event('input'));q.scrollIntoView({block:'center'});}else{window.open('/guides/#q='+encodeURIComponent(v),'_blank');}});})();</script>
