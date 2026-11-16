@@ -365,13 +365,13 @@ a:hover { color: var(--parks); }
     map.classList.toggle('labels', v.S >= 4);
   }
   function stopAnim() { if (anim) { cancelAnimationFrame(anim); anim = null; } }
-  function flyTo(cx, cy, S, done, ms) {
+  function flyTo(cx, cy, S, done) {
     stopAnim();
     S = clamp(S, minScale(), MAXS);
     var from = { cx: state.view.cx, cy: state.view.cy, l: Math.log(state.view.S) };
     var to = { cx: clamp(cx, 0, W), cy: clamp(cy, 0, H), l: Math.log(S) };
     if (reduce) { state.view = { cx: to.cx, cy: to.cy, S: S }; apply(); if (done) done(); return; }
-    var t0 = performance.now(), dur = ms || 700;
+    var t0 = performance.now(), dur = 700;
     function step(now) {
       var k = clamp((now - t0) / dur, 0, 1);
       var e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
@@ -426,7 +426,7 @@ a:hover { color: var(--parks); }
     var tok = routeTok, a = PINS[from.id], b = PINS[to.id], ar = state.area, pad = 90, started = false;
     var S = Math.min((ar.r - ar.l - 2 * pad) / Math.max(Math.abs(a[0] - b[0]), 1), (ar.b - ar.t - 2 * pad) / Math.max(Math.abs(a[1] - b[1]), 1));
     S = Math.min(S, Math.max(from.zoom, to.zoom));
-    function arrive() { if (tok === routeTok) flyTo(b[0], b[1], to.zoom, null, 450); }
+    function arrive() { if (tok === routeTok) flyTo(b[0], b[1], to.zoom); }
     function draw() {
       var pts = legPoints(a, b);
       routePath.setAttribute('d', 'M' + pts.map(function (q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L'));
@@ -447,8 +447,8 @@ a:hover { color: var(--parks); }
       routeRaf = requestAnimationFrame(frame);
     }
     function begin() { if (started || tok !== routeTok) return; started = true; draw(); }
-    flyTo((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, S, begin, 450);
-    setTimeout(begin, reduce ? 0 : 550);
+    flyTo((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, S, begin);
+    setTimeout(begin, reduce ? 0 : 800);
   }
   function step(dir) {
     var v = visible();
